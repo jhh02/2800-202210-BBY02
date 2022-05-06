@@ -55,7 +55,8 @@ body {
 
 #name,
 #email,
-#password {
+#password,
+#address {
     width: 80vw;
     padding: 1.5rem 2rem;
     border-radius: 15px;
