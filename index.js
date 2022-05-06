@@ -28,7 +28,8 @@ app.use(session({
 
 app.get("/", function (req, res) {
     let doc = fs.readFileSync("./app/html/index.html", "utf8");
-
+    res.set("Server", "Wazubi Engine");
+    res.set("X-Powered-By", "Wazubi");
     // just send the text stream
     res.send(doc);
 });
@@ -65,9 +66,9 @@ app.get("/organization", function (req, res) {
 
 app.get("/sign_up", function (req, res) {
     if (req.session.loggedIn) {
-        res.redirect("/");
+        res.redirect("/admin");
     } else {
-        let doc = fs.readFileSync("./app/html/login.html", "utf8");
+        let doc = fs.readFileSync("./app/html/sign_up.html", "utf8");
         res.set("Server", "Wazubi Engine");
         res.set("X-Powered-By", "Wazubi");
         // just send the text stream
@@ -86,7 +87,19 @@ app.use(express.urlencoded({
     extended: true
 }));
 
-app.post("/login", function (req, res) {
+app.get("/login", function (req, res) {
+    if (req.session.loggedIn) {
+        res.redirect("/admin");
+    } else {
+        let doc = fs.readFileSync("./app/html/login.html", "utf8");
+        res.set("Server", "Wazubi Engine");
+        res.set("X-Powered-By", "Wazubi");
+        // just send the text stream
+        res.send(doc);
+    }
+});
+
+app.post("/loginInput", function (req, res) {
     res.setHeader("Content-Type", "application/json");
 
     console.log("What was sent", req.body.username, req.body.password);
@@ -96,7 +109,7 @@ app.post("/login", function (req, res) {
         host: "localhost",
         user: "root",
         password: "",
-        port: 3305,
+        //port: 3305,
         database: "foodonation"
     });
 
@@ -151,6 +164,78 @@ app.get("/logout", function (req, res) {
     }
 });
 
+app.post("/signup", function (req, res) {
+    res.setHeader("Content-Type", "application/json");
+
+    // in values
+    let eml = req.body.email;
+    let usr = req.body.username;
+    let pwd = req.body.password;
+    //let adr = req.body.address;
+    //let rol = req.body.role;
+    console.log(eml, usr, pwd);
+
+    // db values
+    let mailResults = null;
+    let userResults = null;
+
+    // connect to sql
+    const mysql = require("mysql2");
+    const connection = mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "",
+        database: "foodonation"
+    });
+
+    // connect to database and get the data
+    connection.connect();
+    //signup --------------------------------------------------------------------
+    // to check if email or name is taken
+    connection.execute(
+        "SELECT 1 FROM BBY36_user WHERE BBY36_user.email = ? OR BBY36_user.username = ?",
+        [eml, usr],
+        function (error, results, fields) {
+            //console.log("results:", results);
+
+            //console.log(results);
+            //console.log(results.length);
+            
+            if (error) {
+                console.log(error);
+                console.log("did you misspell a table/field value?");
+            }
+            //console.log(mailResults, userResults, passResults);
+            console.log(results[0])
+
+            // check if user and email taken
+            if (results.length > 0) {
+                console.log("ID taken!")
+                res.send({ status: "error", msg: "ID taken!" });
+            
+            // if user and email not taken then make new account
+            } else {
+                
+                // insert new account
+                connection.query('INSERT INTO BBY36_user (email, username, password) VALUES (?, ?, ?)',
+                [eml, usr, pwd],
+                function (error, results, fields) {
+                    if (error) {
+                        console.log("Uh oh");
+                        console.log(error);
+                    }
+                //console.log('Rows returned are: ', results);
+                
+                //req.session.uid = results[0].UID;
+                res.send({ status: "success", msg: "Record added." });
+                //res.redirect("/");
+                });
+                
+            }
+            connection.end();
+        }
+    )
+});
 
 // for page not found (i.e., 404)
 app.use(function (req, res, next) {
@@ -168,7 +253,7 @@ async function init() {
         host: "localhost",
         user: "root",
         password: "",
-        port: 3305,
+        //port: 3305,
         multipleStatements: true
     });
     const createDBAndTables = `CREATE DATABASE IF NOT EXISTS foodonation;
