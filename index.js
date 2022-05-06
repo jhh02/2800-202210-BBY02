@@ -134,8 +134,8 @@ app.post("/loginInput", function (req, res) {
                 req.session.password = password;
                 req.session.name = results[0].username;
                 req.session.uid = results[0].UID;
-                req.session.admin = true;
                 if (results[0].admin == 1) {
+                    req.session.admin = true;
                     res.send({
                         status: "admin",
                         msg: "Logged in as admin"
@@ -202,6 +202,7 @@ app.post("/signup", function (req, res) {
         host: "localhost",
         user: "root",
         password: "",
+        //port: 50,
         database: "foodonation"
     });
 
@@ -283,6 +284,7 @@ async function init() {
         lastname varchar(15),
         email varchar(30),
         password varchar(30),
+        admin BOOLEAN NOT NULL,
         PRIMARY KEY (UID));`;
     await connection.query(createDBAndTables);
 
@@ -293,7 +295,7 @@ async function init() {
         // no records, so let's add a couple
         let userRecords = "insert into BBY36_user (username, firstname, lastname, email, password) values ?";
         let recordValues = [
-            ["admin", "Dongil", "Kwon", "dkwon5@bcit.ca", "admin"],
+            ["admin", "Dongil", "Kwon", "dkwon5@bcit.ca", "admin", 1],
 
         ];
         await connection.query(userRecords, [recordValues]);
