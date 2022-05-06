@@ -3,15 +3,27 @@
 
 // REQUIRES
 const express = require("express");
+const session = require("express-session");
 const app = express();
-app.use(express.json());
 const fs = require("fs");
+const {
+    JSDOM
+} = require('jsdom');
+
 
 // just like a simple web server like Apache web server
 // we are mapping file system paths to the app's virtual paths
 app.use("/js", express.static("./public/js"));
 app.use("/css", express.static("./public/css"));
 app.use("/img", express.static("./public/img"));
+
+app.use(session({
+    secret: "extra text that no one will guess",
+    name: "wazaSessionID",
+    resave: false,
+    // create a unique identifier for that client
+    saveUninitialized: true
+}));
 
 
 app.get("/", function (req, res) {
@@ -21,39 +33,124 @@ app.get("/", function (req, res) {
     res.send(doc);
 });
 
-app.get("/markers", function (req, res) {
+app.get("/admin", function (req, res) {
+    let doc = fs.readFileSync("./app/html/admin.html", "utf8");
 
-    let doc = fs.readFileSync("./app/data/google-map-markers.js", "utf8");
-    res.setHeader("Content-Type", "application/json");
     // just send the text stream
     res.send(doc);
+});
+
+app.get("/bakery", function (req, res) {
+    let doc = fs.readFileSync("./app/html/bakery.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
+
+app.get("/driver", function (req, res) {
+    let doc = fs.readFileSync("./app/html/driver.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
+
+
+
+app.get("/organization", function (req, res) {
+    let doc = fs.readFileSync("./app/html/organization.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
+
+app.get("/sign_up", function (req, res) {
+    if (req.session.loggedIn) {
+        res.redirect("/");
+    } else {
+        let doc = fs.readFileSync("./app/html/login.html", "utf8");
+        res.set("Server", "Wazubi Engine");
+        res.set("X-Powered-By", "Wazubi");
+        // just send the text stream
+        res.send(doc);
+    }
+   
+   
+    // let doc = fs.readFileSync("./app/html/sign_up.html", "utf8");
+
+    // // just send the text stream
+    // res.send(doc);
+});
+
+app.use(express.json());
+app.use(express.urlencoded({
+    extended: true
+}));
+
+app.post("/login", function (req, res) {
+    res.setHeader("Content-Type", "application/json");
+
+    console.log("What was sent", req.body.username, req.body.password);
+
+    const mysql = require("mysql2");
+    const connection = mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "",
+        port: 3305,
+        database: "foodonation"
+    });
+
+    connection.connect();
+    //login---------------------------------------------------------- 
+    var password = req.body.password;
+    var username = req.body.username;
+    if (password && username) {
+        connection.query('SELECT * FROM BBY36_user WHERE password = ? AND username = ?', [password, username], function (error, results, fields) {
+            if (error) throw error;
+            if (results.length > 0) {
+                req.session.loggedIn = true;
+                req.session.password = password;
+                req.session.name = results[0].username;
+                req.session.uid = results[0].UID;
+
+                res.send({
+                    status: "success",
+                    msg: "Logged in."
+                });
+            } else {
+                res.send({
+                    status: "fail",
+                    msg: "User account not found."
+                });
+            }
+        });
+    } else {
+        res.send({
+            status: "fail",
+            msg: "User account not found."
+        });
+        //res.end();
+    }
+    connection.end();
+    //-----------------------------------------------------------------
 
 });
 
-/*
- * This one accepts a query string
- */
-app.get("/weekdays", function (req, res) {
 
-    let formatOfResponse = req.query["format"];
+app.get("/logout", function (req, res) {
 
-    // e.g.,: http://localhost:8000/weekdays?format=html
-    // e.g.,: http://localhost:8000/weekdays?format=json
-    if (formatOfResponse == "html") {
-        // MIME type
-        res.setHeader("Content-Type", "text/html");
-        res.send(fs.readFileSync("./app/data/weekdays.html", "utf8"));
-
-    } else if (formatOfResponse == "json") {
-        // MIME type
-        res.setHeader("Content-Type", "application/json");
-        res.send(fs.readFileSync("./app/data/weekdays.js", "utf8"));
-
-    } else {
-        // just send JSON message
-        res.send({ status: "fail", msg: "Wrong format!" });
+    if (req.session) {
+        req.session.destroy(function (error) {
+            if (error) {
+                res.status(400).send("Unable to log out")
+            } else {
+                // session deleted, redirect to home
+                res.redirect("/");
+            }
+        });
     }
 });
+
 
 // for page not found (i.e., 404)
 app.use(function (req, res, next) {
@@ -62,8 +159,49 @@ app.use(function (req, res, next) {
     res.status(404).send("<html><head><title>Page not found!</title></head><body><p>Nothing here.</p></body></html>");
 });
 
+
+
+async function init() {
+
+    const mysql = require("mysql2/promise");
+    const connection = await mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "",
+        port: 3305,
+        multipleStatements: true
+    });
+    const createDBAndTables = `CREATE DATABASE IF NOT EXISTS foodonation;
+        use foodonation;
+        CREATE TABLE IF NOT EXISTS BBY36_user (
+        UID int NOT NULL AUTO_INCREMENT,
+        username varchar(30),
+        firstname varchar(15),
+        lastname varchar(15),
+        email varchar(30),
+        password varchar(30),
+        PRIMARY KEY (UID));`;
+    await connection.query(createDBAndTables);
+
+    
+    const [rows, fields] = await connection.query("SELECT * FROM BBY36_user");
+    // no records? Let's add a couple - for testing purposes
+    if (rows.length == 0) {
+        // no records, so let's add a couple
+        let userRecords = "insert into BBY36_user (username, firstname, lastname, email, password) values ?";
+        let recordValues = [
+            ["admin", "Dongil", "Kwon", "dkwon5@bcit.ca", "admin"],
+            
+        ];
+        await connection.query(userRecords, [recordValues]);
+    }
+
+    connection.end();
+    console.log("index.js app listening on port " + port + "!");
+}
+
+
 // RUN SERVER
 let port = 8000;
-app.listen(port, function () {
-    console.log("Example app listening on port " + port + "!");
-});
+// RUN SERVER
+app.listen(port, init);

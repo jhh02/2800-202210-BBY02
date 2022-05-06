@@ -2,12 +2,32 @@
 ready(function () {
 
     console.log("Client script loaded.");
+    // POST TO THE SERVER
+    function ajaxPOST(url, callback, data) {
 
-    // a function declaration inside of a callback ... which takes a callback function :O
-    function ajaxGET(url, callback) {
+        /*
+         * - Keys method of the object class returns an array of all of the keys for an object
+         * - The map method of the array type returns a new array with the values of the old array
+         *   and allows a callback function to perform an action on each key
+         *   The join method of the arra type accepts an array and creates a string based on the values
+         *   of the array, using '&' we are specifying the delimiter
+         * - The encodeURIComponent function escapes a string so that non-valid characters are replaced
+         *   for a URL (e.g., space character, ampersand, less than symbol, etc.)
+         *
+         *
+         * References:
+         * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
+         * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
+         * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
+         */
+        let params = typeof data == 'string' ? data : Object.keys(data).map(
+            function (k) {
+                return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+            }
+        ).join('&');
+        console.log("params in ajaxPOST", params);
 
         const xhr = new XMLHttpRequest();
-        console.log("xhr", xhr);
         xhr.onload = function () {
             if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
                 //console.log('responseText:' + xhr.responseText);
@@ -17,76 +37,39 @@ ready(function () {
                 console.log(this.status);
             }
         }
-        xhr.open("GET", url);
-        xhr.send();
+        xhr.open("POST", url);
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send(params);
     }
+    document.querySelector("#submit").addEventListener("click", function (e) {
+        e.preventDefault();
+        let username = document.getElementById("username");
+        let password = document.getElementById("password");
+        let queryString = "username=" + username.value + "&password=" + password.value;
+        console.log("data that we will send", username.value, password.value);
+        const vars = {
+            "username": username,
+            "password": password
+        }
+        ajaxPOST("/login", function (data) {
 
-    document.querySelectorAll(".clear").forEach(function (currentElement, currentIndex, listObj) {
-        //console.log(currentElement, currentIndex, listObj);
-        currentElement.addEventListener("click", function (e) {
-
-            for (let i = 0; i < this.parentNode.childNodes.length; i++) {
-                if (this.parentNode.childNodes[i].nodeType == Node.ELEMENT_NODE) {
-                    if (this.parentNode.childNodes[i].getAttribute("class") == "ajax-stuff") {
-                        this.parentNode.childNodes[i].innerHTML = "";
-                        break;
-                    }
+            if (data) {
+                let dataParsed = JSON.parse(data);
+                console.log(dataParsed);
+                if (dataParsed.status == "fail") {
+                    document.getElementById("errMsg").innerHTML = dataParsed.msg;
+                } else {
+                    window.location.replace("/");
                 }
             }
+            //document.getElementById("errorMsg").innerHTML = dataParsed.msg;
 
-        });
+        }, queryString);
     });
 
-    //  /path-to?key2=value1&key2=value2&key3=value3
-    /*  { key1: value1, key2: value2, key3: value3 }
-     */
-    document.querySelector("#weekdaysJSON").addEventListener("click", function (e) {
-        let something = null;
-        ajaxGET("/weekdays?format=json", function (data) {
-            console.log("Before parsing", data);
-            // this call is JSON so we have to parse it:
-            let parsedData = JSON.parse(data);
-            something = parsedData;
-            console.log("what is something in the AJAX call?", something);
-            console.log("Before parsing", parsedData);
-            let str = "<ol>"
-            for (let i = 0; i < parsedData.length; i++) {
-                str += "<li>" + parsedData[i] + "</li>";
-            }
-            str += "</ol>";
-            document.getElementById("weekdays-json").innerHTML = str;
-        });
-        console.log("what is something?", something);
-    });
+    
 
-    document.querySelector("#weekdaysHTML").addEventListener("click", function (e) {
-        ajaxGET("/weekdays?format=html", function (data) {
-            console.log(data);
-            // since it's HTML, let's drop it right in
-            document.getElementById("weekdays-html").innerHTML = data;
-        });
-    });
-
-    // let's wire our ajax call function to an mouse click so we get data
-    // when the user clicks
-    document.querySelector("#marker").addEventListener("click", function (e) {
-        ajaxGET("/markers", function (data) {
-            //console.log("before parsing", data);
-            // this call is JSON so we have to parse it:
-            let parsedData = JSON.parse(data);
-            let str = "<table>";
-            for(let i = 0; i < parsedData.length; i++) {
-                let item = parsedData[i];
-                str += "<tr><td>" + item["title"] + "</td><td>" + item["lat"] + "</td><td>" + item["lng"]
-                    + "</td><td>" + item["description"] + "</td></tr><tr>";
-            }
-            str += "</table>";
-            let d1 = document.createElement("div");
-            d1.innerHTML = str;
-            document.body.appendChild(d1);
-            console.log("after parsing", parsedData);
-        });
-    });
 
 });
 
