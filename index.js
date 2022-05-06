@@ -41,6 +41,11 @@ app.get("/admin", function (req, res) {
     res.send(doc);
 });
 
+app.get("/donationform", function (req, res) {
+    let doc = fs.readFileSync("./app/html/donationform.html", "utf8");
+    res.send(doc);
+})
+
 app.get("/bakery", function (req, res) {
     let doc = fs.readFileSync("./app/html/bakery.html", "utf8");
 
@@ -65,8 +70,10 @@ app.get("/organization", function (req, res) {
 });
 
 app.get("/sign_up", function (req, res) {
-    if (req.session.loggedIn) {
+    if (req.session.admin) {
         res.redirect("/admin");
+    } else if (req.session.loggedIn) {
+        res.redirect("/donationform");
     } else {
         let doc = fs.readFileSync("./app/html/sign_up.html", "utf8");
         res.set("Server", "Wazubi Engine");
@@ -88,8 +95,10 @@ app.use(express.urlencoded({
 }));
 
 app.get("/login", function (req, res) {
-    if (req.session.loggedIn) {
+    if (req.session.admin) {
         res.redirect("/admin");
+    } else if (req.session.loggedIn) {
+        res.redirect("/donationform");
     } else {
         let doc = fs.readFileSync("./app/html/login.html", "utf8");
         res.set("Server", "Wazubi Engine");
@@ -109,7 +118,7 @@ app.post("/loginInput", function (req, res) {
         host: "localhost",
         user: "root",
         password: "",
-        port: 50,
+        //port: 50,
         database: "foodonation"
     });
 
@@ -125,11 +134,19 @@ app.post("/loginInput", function (req, res) {
                 req.session.password = password;
                 req.session.name = results[0].username;
                 req.session.uid = results[0].UID;
-
-                res.send({
-                    status: "success",
-                    msg: "Logged in."
-                });
+                req.session.admin = true;
+                if (results[0].admin == 1) {
+                    res.send({
+                        status: "admin",
+                        msg: "Logged in as admin"
+                    });
+                } else {
+                    res.send({
+                        status: "success",
+                        msg: "Logged in."
+                    });
+                }
+                
             } else {
                 res.send({
                     status: "fail",
@@ -254,7 +271,7 @@ async function init() {
         user: "root",
         password: "",
         //port: 3305,
-        port: 50,
+        //port: 50,
         multipleStatements: true
     });
     const createDBAndTables = `CREATE DATABASE IF NOT EXISTS foodonation;

@@ -56,9 +56,12 @@ ready(function () {
             if (data) {
                 let dataParsed = JSON.parse(data);
                 console.log(dataParsed);
-                if (dataParsed.status == "success") {
-                    console.log("success!");
+                if (dataParsed.status == "admin") {
+                    console.log("admin login!");
                     window.location.replace("/admin");
+                } else if (dataParsed.status == "success") {
+                    console.log("success!");
+                    window.location.replace("/donationform");
                 } else {
                     console.log("Wrong user!");
                 }
