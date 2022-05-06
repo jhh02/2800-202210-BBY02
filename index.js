@@ -74,8 +74,8 @@ app.get("/sign_up", function (req, res) {
         // just send the text stream
         res.send(doc);
     }
-   
-   
+
+
     // let doc = fs.readFileSync("./app/html/sign_up.html", "utf8");
 
     // // just send the text stream
@@ -109,7 +109,7 @@ app.post("/loginInput", function (req, res) {
         host: "localhost",
         user: "root",
         password: "",
-        //port: 3305,
+        port: 50,
         database: "foodonation"
     });
 
@@ -200,7 +200,7 @@ app.post("/signup", function (req, res) {
 
             //console.log(results);
             //console.log(results.length);
-            
+
             if (error) {
                 console.log(error);
                 console.log("did you misspell a table/field value?");
@@ -212,25 +212,25 @@ app.post("/signup", function (req, res) {
             if (results.length > 0) {
                 console.log("ID taken!")
                 res.send({ status: "error", msg: "ID taken!" });
-            
-            // if user and email not taken then make new account
+
+                // if user and email not taken then make new account
             } else {
-                
+
                 // insert new account
                 connection.query('INSERT INTO BBY36_user (email, username, password) VALUES (?, ?, ?)',
-                [eml, usr, pwd],
-                function (error, results, fields) {
-                    if (error) {
-                        console.log("Uh oh");
-                        console.log(error);
-                    }
-                //console.log('Rows returned are: ', results);
-                
-                //req.session.uid = results[0].UID;
-                res.send({ status: "success", msg: "Record added." });
-                //res.redirect("/");
-                });
-                
+                    [eml, usr, pwd],
+                    function (error, results, fields) {
+                        if (error) {
+                            console.log("Uh oh");
+                            console.log(error);
+                        }
+                        //console.log('Rows returned are: ', results);
+
+                        //req.session.uid = results[0].UID;
+                        res.send({ status: "success", msg: "Record added." });
+                        //res.redirect("/");
+                    });
+
             }
             connection.end();
         }
@@ -254,6 +254,7 @@ async function init() {
         user: "root",
         password: "",
         //port: 3305,
+        port: 50,
         multipleStatements: true
     });
     const createDBAndTables = `CREATE DATABASE IF NOT EXISTS foodonation;
@@ -268,7 +269,7 @@ async function init() {
         PRIMARY KEY (UID));`;
     await connection.query(createDBAndTables);
 
-    
+
     const [rows, fields] = await connection.query("SELECT * FROM BBY36_user");
     // no records? Let's add a couple - for testing purposes
     if (rows.length == 0) {
@@ -276,7 +277,7 @@ async function init() {
         let userRecords = "insert into BBY36_user (username, firstname, lastname, email, password) values ?";
         let recordValues = [
             ["admin", "Dongil", "Kwon", "dkwon5@bcit.ca", "admin"],
-            
+
         ];
         await connection.query(userRecords, [recordValues]);
     }
