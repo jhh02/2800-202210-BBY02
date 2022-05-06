@@ -27,7 +27,23 @@
                 <input type="password" name="password" id="password" placeholder="Password" required>
             </div>
             <div class="form-signup">
-                <input type="submit" value="Sign Up">
+                <div>
+                    <input type="radio" id="bakery" name="user-role" value="bakery" checked>
+                    <label for="bakery">Bakery</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="organization" name="user-role" value="organization">
+                    <label for="organization">Organization</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="driver" name="user-role" value="driver">
+                    <label for="driver">Driver</label>
+                </div>
+            </div>
+            <div class="form-example">
+                <input type="submit" value="Sign up">
             </div>
         </form>
         <div class="registernow">Already a member? <a href="./login.html">Sign in</a></div>
