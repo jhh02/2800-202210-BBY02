@@ -64,6 +64,8 @@ ready(function () {
                     window.location.replace("/donationform");
                 } else {
                     console.log("Wrong user!");
+                    document.getElementById("errorMsg").innerHTML = dataParsed.msg;
+
                 }
             }
         }, queryString);

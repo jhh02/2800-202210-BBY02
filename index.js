@@ -35,15 +35,29 @@ app.get("/", function (req, res) {
 });
 
 app.get("/admin", function (req, res) {
-    let doc = fs.readFileSync("./app/html/admin.html", "utf8");
-
-    // just send the text stream
-    res.send(doc);
+    if (!req.session.loggedIn) {
+        res.redirect("/login");
+    } else if (!req.session.admin) {
+        res.redirect("donationform");
+    } else {
+        let doc = fs.readFileSync("./app/html/admin.html", "utf8");
+        res.set("Server", "Wazubi Engine");
+        res.set("X-Powered-By", "Wazubi");
+        // just send the text stream
+        res.send(doc);
+    }
 });
 
 app.get("/donationform", function (req, res) {
-    let doc = fs.readFileSync("./app/html/donationform.html", "utf8");
-    res.send(doc);
+    if (!req.session.loggedIn) {
+        res.redirect("/login");
+    } else {
+        let doc = fs.readFileSync("./app/html/donationform.html", "utf8");
+        res.set("Server", "Wazubi Engine");
+        res.set("X-Powered-By", "Wazubi");
+        // just send the text stream
+        res.send(doc);
+    }
 })
 
 app.get("/bakery", function (req, res) {
@@ -157,7 +171,7 @@ app.post("/loginInput", function (req, res) {
     } else {
         res.send({
             status: "fail",
-            msg: "User account not found."
+            msg: "User login not found."
         });
         //res.end();
     }

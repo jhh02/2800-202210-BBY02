@@ -104,3 +104,8 @@ body {
     text-decoration: none;
     color: #9c6644;
 }
+
+#errorMsg {
+    font-size: 18px;
+    color: crimson;
+}
