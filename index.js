@@ -133,7 +133,7 @@ app.post("/loginInput", function (req, res) {
         user: "root",
         password: "",
         //port: 50,
-        database: "foodonation"
+        database: "COMP2800"
     });
 
     connection.connect();
@@ -217,7 +217,7 @@ app.post("/signup", function (req, res) {
         user: "root",
         password: "",
         //port: 50,
-        database: "foodonation"
+        database: "COMP2800"
     });
 
     // connect to database and get the data
@@ -289,8 +289,8 @@ async function init() {
         //port: 50,
         multipleStatements: true
     });
-    const createDBAndTables = `CREATE DATABASE IF NOT EXISTS foodonation;
-        use foodonation;
+    const createDBAndTables = `CREATE DATABASE IF NOT EXISTS COMP2800;
+        use COMP2800;
         CREATE TABLE IF NOT EXISTS BBY36_user (
         UID int NOT NULL AUTO_INCREMENT,
         username varchar(30),
@@ -307,7 +307,7 @@ async function init() {
     // no records? Let's add a couple - for testing purposes
     if (rows.length == 0) {
         // no records, so let's add a couple
-        let userRecords = "insert into BBY36_user (username, firstname, lastname, email, password) values ?";
+        let userRecords = "insert into BBY36_user (username, firstname, lastname, email, password, admin) values ?";
         let recordValues = [
             ["admin", "Dongil", "Kwon", "dkwon5@bcit.ca", "admin", 1],
 
