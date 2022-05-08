@@ -35,10 +35,17 @@ app.get("/", function (req, res) {
 })
 
 app.get("/profile", function (req, res) {
-    let doc = fs.readFileSync("./app/html/profile.html", "utf8");
-
-    // just send the text stream
-    res.send(doc);
+    if (!req.session.loggedIn) {
+        res.redirect("/login");
+    } else if (!req.session.admin) {
+        res.redirect("/login");
+    } else {
+        let doc = fs.readFileSync("./app/html/profile.html", "utf8");
+        res.set("Server", "Wazubi Engine");
+        res.set("X-Powered-By", "Wazubi");
+        // just send the text stream
+        res.send(doc);
+    }
 });
 
 
