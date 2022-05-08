@@ -132,7 +132,7 @@ app.post("/loginInput", function (req, res) {
         host: "localhost",
         user: "root",
         password: "",
-        //port: 50,
+        port: 50,
         database: "COMP2800"
     });
 
@@ -160,7 +160,7 @@ app.post("/loginInput", function (req, res) {
                         msg: "Logged in."
                     });
                 }
-                
+
             } else {
                 res.send({
                     status: "fail",
@@ -216,7 +216,7 @@ app.post("/signup", function (req, res) {
         host: "localhost",
         user: "root",
         password: "",
-        //port: 50,
+        port: 50,
         database: "COMP2800"
     });
 
@@ -286,7 +286,7 @@ async function init() {
         user: "root",
         password: "",
         //port: 3305,
-        //port: 50,
+        port: 50,
         multipleStatements: true
     });
     const createDBAndTables = `CREATE DATABASE IF NOT EXISTS COMP2800;

@@ -1,3 +1,5 @@
+@import url('../fonts/Hind-Regular.ttf');
+
 :root {
     --admin-header-height: 70px;
     --admin-footer-height: 70px;
@@ -29,7 +31,7 @@ body {
     height: 100%;
     overflow-x: hidden;
     margin: 0;
-    font-family: "Open Sans", Helvetica, sans-serif;
+    font-family: "Hind", Helvetica, sans-serif;
     color: var(--text);
 }
 
