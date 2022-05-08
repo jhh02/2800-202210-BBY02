@@ -122,3 +122,40 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+
+@media screen and (min-width: 600px) {
+
+
+
+    .top-wraper {
+
+        min-width: 60vw;
+        font-size: 3em;
+        font-weight: 100;
+        margin-bottom: 5rem;
+    }
+
+    .top-main-profile {
+        margin-top: 2rem;
+    }
+
+    #name,
+    #password,
+    #submit {
+        font-size: 3rem;
+    }
+
+    .timeline-title {
+        font-size: 3rem;
+    }
+
+    .user-data {
+        font-size: 2rem;
+    }
+
+    .edit {
+        margin-top: 2rem;
+        font-size: 3rem;
+    }
+}

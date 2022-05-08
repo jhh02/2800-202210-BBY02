@@ -670,3 +670,17 @@ a {
 @media screen and (max-width: 320px) {
     /* Phone (Small) */
 }
+
+.prof {
+    padding: 0 1rem;
+    border: none;
+    color: white;
+    background-color: #9c6644;
+    border-bottom-left-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+form {
+    text-align: end;
+}

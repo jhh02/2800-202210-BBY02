@@ -107,3 +107,35 @@ body {
     font-size: 18px;
     color: crimson;
 }
+
+
+@media screen and (min-width: 600px) {
+    .login-welcome {
+        font-size: 4rem;
+    }
+
+
+    .login-welcome-messege {
+        min-width: 60vw;
+        font-size: 3em;
+        font-weight: 100;
+        margin-bottom: 5rem;
+    }
+
+    #name,
+    #password,
+    #submit {
+        font-size: 3rem;
+    }
+
+    .login-icons {
+        font-size: 2rem;
+    }
+
+    .registernow,
+    .form-login_comp-recovery,
+    .continue {
+        font-size: 2rem;
+    }
+
+}
