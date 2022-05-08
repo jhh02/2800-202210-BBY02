@@ -32,7 +32,15 @@ app.get("/", function (req, res) {
     res.set("X-Powered-By", "Wazubi");
     // just send the text stream
     res.send(doc);
+})
+
+app.get("/profile", function (req, res) {
+    let doc = fs.readFileSync("./app/html/profile.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
 });
+
 
 app.get("/admin", function (req, res) {
     if (!req.session.loggedIn) {

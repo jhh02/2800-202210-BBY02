@@ -41,12 +41,14 @@ body {
 .edit {
     text-decoration: none;
     border: none;
-    min-width: 60%;
-    padding: .5rem 0;
+    font-weight: bold;
+    min-width: 50vw;
+    padding: 1rem 1rem;
     border-radius: 15px;
-    font-size: 1.5rem;
-    background-color: white;
+    font-size: 1.3rem;
+    background-color: transparent;
     color: #9c6644;
+    cursor: pointer;
 }
 
 #uploadBtn {
