@@ -23,7 +23,7 @@ body {
 }
 
 .landing-img {
-    max-height: fit-content;
+    height: 50vh;
     border-radius: 20px;
     margin-bottom: 8rem;
 }
