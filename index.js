@@ -16,6 +16,7 @@ const {
 app.use("/js", express.static("./public/js"));
 app.use("/css", express.static("./public/css"));
 app.use("/img", express.static("./public/img"));
+app.use("/font", express.static("./public/fonts"))
 
 app.use(session({
     secret: "extra text that no one will guess",
