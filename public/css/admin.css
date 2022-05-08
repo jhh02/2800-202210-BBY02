@@ -1,3 +1,5 @@
+@import url('../fonts/Hind-Regular.ttf');
+
 :root {
     --admin-header-height: 70px;
     --admin-footer-height: 70px;
@@ -29,7 +31,7 @@ body {
     height: 100%;
     overflow-x: hidden;
     margin: 0;
-    font-family: "Open Sans", Helvetica, sans-serif;
+    font-family: "Hind", Helvetica, sans-serif;
     color: var(--text);
 }
 
@@ -667,4 +669,18 @@ a {
 
 @media screen and (max-width: 320px) {
     /* Phone (Small) */
+}
+
+.prof {
+    padding: 0 1rem;
+    border: none;
+    color: white;
+    background-color: #9c6644;
+    border-bottom-left-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+form {
+    text-align: end;
 }

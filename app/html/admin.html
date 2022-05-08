@@ -5,18 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/css/admin.css">
+    <link rel="stylesheet" href="/css/admin.css">
     <title>Document</title>
 </head>
 
 <body>
 
     <body>
+        <form action="/logout" method="get">
+            <input class="prof" type="submit" value="Logout" />
+        </form>
         <div class="admin">
             <header class="admin__header">
-                <div class="logo"><img
-                        src="https://ozcanzaferayan.github.io/fitness-admin-panel-css-grid/img/logo.png" />
-                    <span>Urban GYM</span>
+                <div class="logo"><img src="img/logo.png" />
+                    <span>Admin Panel</span>
                 </div>
                 <nav class="navContainer">
                     <div class="search">
@@ -25,7 +27,7 @@
                     </div>
                     <a class="link active" href="#">Dashboard</a>
                     <a class="link" href="#">Schedule</a>
-                    <a class="link" href="#">Trainers</a>
+                    <a class="link" href="#">Donators</a>
                     <a class="link" href="#">Customers</a>
                     <div class="userContainer">
                         <div class="notifications">
@@ -33,7 +35,7 @@
                         </div>
                         <div class="user">
                             <div class="img"></div>
-                            <span class="name">Lena Kaziynian</span>
+                            <span class="name">Dong-il Kwon</span>
                             <i class="caret fas fa-angle-down"></i>
                         </div>
                     </div>
@@ -45,14 +47,15 @@
                     <div class="tabButtonBorder"></div>
                     <div class="panel">
                         <ul>
-                            <li><input type="checkbox" /><span>İstanbul</span> </li>
-                            <li><input type="checkbox" /><span>Ankara</span> </li>
-                            <li><input type="checkbox" /><span>İzmir</span> </li>
-                            <li><input type="checkbox" /><span>Balıkesir</span> </li>
+                            <li><input type="checkbox" /><span>Vancouver</span> </li>
+                            <li><input type="checkbox" /><span>Burnaby</span> </li>
+                            <li><input type="checkbox" /><span>Richmond</span> </li>
+                            <li><input type="checkbox" /><span>North Vancouver</span> </li>
                         </ul>
                     </div>
                 </div>
                 <div class="tabContainer">
+                    <!--
                     <div class="tabButton"><span>Type of skills</span><i class="caret fas fa-angle-up"></i></div>
                     <div class="tabButtonBorder"></div>
                     <div class="panel">
@@ -62,7 +65,7 @@
                             <li><input type="checkbox" /><span>Yoga</span> </li>
                             <li><input type="checkbox" /><span>Box</span> </li>
                         </ul>
-                    </div>
+                    </div>-->
                 </div>
                 <div class="tabContainer">
                     <div class="tabButton"><span>By reviews</span><i class="caret fas fa-angle-up"></i></div>
@@ -105,6 +108,7 @@
                     </div>
                 </div>
                 <div class="tabContainer">
+                    <!--
                     <div class="tabButton"><span>Customer base</span><i class="caret fas fa-angle-up"></i></div>
                     <div class="tabButtonBorder"></div>
                     <div class="panel">
@@ -115,9 +119,11 @@
                             <li><input type="checkbox" /><span>Balıkesir</span> </li>
                         </ul>
                     </div>
+                -->
                 </div>
             </aside>
             <main class="admin__main">
+                <!--
                 <div class="upgradeAccount">
                     <img class="person girl"
                         src="https://ozcanzaferayan.github.io/fitness-admin-panel-css-grid/img/girl.png" alt="">
@@ -140,8 +146,9 @@
                         <a href="#"><i class="fa fa-times"></i></a>
                     </div>
                 </div>
+            -->
                 <div class="searchResultsHeader">
-                    <span>Found 6 trainers</span>
+                    <span>Found 3 users</span>
                     <div class="layoutContainer">
                         <a class="table active" href="#"><i class="fas fa-table"></i></a>
                         <a class="list" href="#"><i class="fas fa-list"></i></a>
@@ -152,7 +159,7 @@
                         <div class="user">
                             <div class="img"></div>
                             <div class="nameAndStars">
-                                <div class="name">Jane Anderson</div>
+                                <div class="name">User 1</div>
                                 <div class="stars">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -166,11 +173,11 @@
                             </div>
                         </div>
                         <div class="skills">
-                            <span class="header">Skills</span>
+                            <span class="header">Type</span>
                             <div class="skillsContainer">
-                                <a href="#" class="skill">Crossfit</a>
-                                <a href="#" class="skill">TRX</a>
-                                <a href="#" class="skill">Yoga</a>
+                                <a href="#" class="skill">Donor</a>
+                                <!--<a href="#" class="skill">TRX</a>
+                                <a href="#" class="skill">Yoga</a>-->
                             </div>
                         </div>
                         <hr class="seperator" />
@@ -204,7 +211,7 @@
                         <div class="user">
                             <div class="img"></div>
                             <div class="nameAndStars">
-                                <div class="name">Jane Anderson</div>
+                                <div class="name">User 2</div>
                                 <div class="stars">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -218,11 +225,11 @@
                             </div>
                         </div>
                         <div class="skills">
-                            <span class="header">Skills</span>
+                            <span class="header">Type</span>
                             <div class="skillsContainer">
-                                <a href="#" class="skill">Crossfit</a>
-                                <a href="#" class="skill">TRX</a>
-                                <a href="#" class="skill">Yoga</a>
+                                <a href="#" class="skill">Driver</a>
+                                <!--<a href="#" class="skill">TRX</a>
+                                <a href="#" class="skill">Yoga</a>-->
                             </div>
                         </div>
                         <hr class="seperator" />
@@ -256,7 +263,7 @@
                         <div class="user">
                             <div class="img"></div>
                             <div class="nameAndStars">
-                                <div class="name">Jane Anderson</div>
+                                <div class="name">User 3</div>
                                 <div class="stars">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -270,16 +277,16 @@
                             </div>
                         </div>
                         <div class="skills">
-                            <span class="header">Skills</span>
+                            <span class="header">Type</span>
                             <div class="skillsContainer">
-                                <a href="#" class="skill">Crossfit</a>
-                                <a href="#" class="skill">TRX</a>
-                                <a href="#" class="skill">Yoga</a>
+                                <a href="#" class="skill">Organization</a>
+                                <!--<a href="#" class="skill">TRX</a>
+                                <a href="#" class="skill">Yoga</a>-->
                             </div>
                         </div>
                         <hr class="seperator" />
                         <div class="customers">
-                            <span class="header">Customers</span>
+                            <span class="header">Partnerships</span>
                             <div class="customersContainer">
                                 <img src="https://i.pravatar.cc/50?img=1" />
                                 <img src="https://i.pravatar.cc/50?img=2" />
@@ -304,7 +311,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card">
+                    <!--<div class="card">
                         <div class="user">
                             <div class="img"></div>
                             <div class="nameAndStars">
@@ -460,7 +467,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </main>
             <footer class="admin__footer">
                 <a class="link active" href="#"><i class="fa fa-home"></i><span>Dashboard</span></a>

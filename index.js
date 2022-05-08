@@ -35,17 +35,10 @@ app.get("/", function (req, res) {
 })
 
 app.get("/profile", function (req, res) {
-    if (!req.session.loggedIn) {
-        res.redirect("/login");
-    } else if (!req.session.admin) {
-        res.redirect("/login");
-    } else {
-        let doc = fs.readFileSync("./app/html/profile.html", "utf8");
-        res.set("Server", "Wazubi Engine");
-        res.set("X-Powered-By", "Wazubi");
-        // just send the text stream
-        res.send(doc);
-    }
+    let doc = fs.readFileSync("./app/html/profile.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
 });
 
 
@@ -147,7 +140,7 @@ app.post("/loginInput", function (req, res) {
         host: "localhost",
         user: "root",
         password: "",
-        port: 50,
+        //port: 50,
         database: "COMP2800"
     });
 
@@ -231,7 +224,7 @@ app.post("/signup", function (req, res) {
         host: "localhost",
         user: "root",
         password: "",
-        port: 50,
+        //port: 50,
         database: "COMP2800"
     });
 
@@ -301,7 +294,7 @@ async function init() {
         user: "root",
         password: "",
         //port: 3305,
-        port: 50,
+        //port: 50,
         multipleStatements: true
     });
     const createDBAndTables = `CREATE DATABASE IF NOT EXISTS COMP2800;

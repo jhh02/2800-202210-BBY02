@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Hind&display=swap');
+@import url('../fonts/Hind-Regular.ttf');
 
 * {
     box-sizing: border-box;
@@ -31,18 +31,16 @@ body {
 }
 
 .login-welcome {
-    font-size: 5rem;
+    font-size: 2rem;
     font-weight: bold;
     margin-bottom: 2rem;
-
 }
 
 .login-welcome-messege {
-    font-size: 4rem;
-    width: 600px;
+    font-size: 1rem;
+    min-width: 400px;
     text-align: center;
-    margin-bottom: 8rem;
-    line-height: 4rem;
+    margin-bottom: 3rem;
 }
 
 .form-login {
@@ -54,12 +52,12 @@ body {
 }
 
 #name,
-#email {
+#password {
     width: 80vw;
-    padding: 1.5rem 2rem;
+    padding: 1rem 1.5rem;
     border-radius: 15px;
     border: none;
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .form-login_comp-recovery {
@@ -72,13 +70,13 @@ body {
 
 .form-login_comp input[type="submit"] {
     width: 80vw;
-    padding: 2rem 1rem;
+    padding: 1rem 1.5rem;
     border-radius: 15px;
     border: none;
     color: white;
     background-color: #9c6644;
-    font-size: 1.5rem;
-    margin-bottom: 5rem;
+    font-size: 1rem;
+    margin-bottom: 3rem;
 }
 
 .login-icons {
@@ -88,8 +86,8 @@ body {
 }
 
 .icon {
-    margin-top: 5rem;
-    height: 100px;
+    margin-top: 3rem;
+    height: 80px;
     border-radius: 15px;
     padding: 1rem 3rem;
     cursor: pointer;
@@ -103,4 +101,41 @@ body {
 .registernow a {
     text-decoration: none;
     color: #9c6644;
+}
+
+#errorMsg {
+    font-size: 18px;
+    color: crimson;
+}
+
+
+@media screen and (min-width: 600px) {
+    .login-welcome {
+        font-size: 4rem;
+    }
+
+
+    .login-welcome-messege {
+        min-width: 60vw;
+        font-size: 3em;
+        font-weight: 100;
+        margin-bottom: 5rem;
+    }
+
+    #name,
+    #password,
+    #submit {
+        font-size: 3rem;
+    }
+
+    .login-icons {
+        font-size: 2rem;
+    }
+
+    .registernow,
+    .form-login_comp-recovery,
+    .continue {
+        font-size: 2rem;
+    }
+
 }

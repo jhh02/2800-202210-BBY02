@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/css/login.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/login.css">
+    <title>Login</title>
 </head>
 
 <body>
@@ -18,23 +18,25 @@
                 <input type="text" name="name" id="name" placeholder="Enter username" required>
             </div>
             <div class="form-login_comp">
-                <input type="email" name="email" id="email" placeholder="Password" required>
+                <input type="password" name="password" id="password" placeholder="Password" required>
             </div>
+            <div id="errorMsg"></div>
             <div class="form-login_comp-recovery">Recovery Password</div>
             <div class="form-login_comp">
-                <input type="submit" value="Sign In">
+                <input type="submit" id="submit" value="Sign In">
             </div>
 
         </form>
-        <div>Or continue with</div>
+
+        <div class="continue">Or continue with</div>
         <div class="login-icons">
-            <img src="../../public/img/google-icon.png" alt="" class="icon">
-            <img src="../../public/img/apple-icon.png" alt="" class="icon">
-            <img src="../../public/img/facebook-icon.png" alt="" class="icon">
+            <img src="/img/google-icon.png" alt="" class="icon">
+            <img src="/img/apple-icon.png" alt="" class="icon">
+            <img src="/img/facebook-icon.png" alt="" class="icon">
         </div>
         <div class="registernow">Not a member? <a href="./sign_up.html">Register now</a></div>
     </div>
-
+    <script src="/js/login.js"></script>
 </body>
 
 </html>
