@@ -42,6 +42,11 @@ ready(function () {
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.send(params);
     }
+
+    document.querySelector("#register-btn").addEventListener("click", function(e){
+        
+    })
+
     document.querySelector("#submit").addEventListener("click", function (e) {
         e.preventDefault();
         let username = document.getElementById("username");

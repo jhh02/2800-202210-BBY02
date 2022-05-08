@@ -54,7 +54,7 @@ body {
 }
 
 #name,
-#email {
+#password {
     width: 80vw;
     padding: 1.5rem 2rem;
     border-radius: 15px;
@@ -103,4 +103,9 @@ body {
 .registernow a {
     text-decoration: none;
     color: #9c6644;
+}
+
+#errorMsg {
+    font-size: 18px;
+    color: crimson;
 }
