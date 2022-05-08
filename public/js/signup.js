@@ -1,3 +1,4 @@
+'use strict';
 ready(function () {
 
     console.log("Client script loaded.");
@@ -71,10 +72,10 @@ ready(function () {
                 let dataParsed = JSON.parse(data);
                 console.log(dataParsed);
                 if (dataParsed.status == "success") {
-                    console.log("success!");
+                    //console.log("success!");
                     window.location.replace("/login");
                 } else {
-                    console.log("ID taken!");
+                    //console.log("ID taken!");
                 }
             }
         }, queryString);

@@ -1,5 +1,5 @@
 // https://expressjs.com/en/guide/routing.html
-
+'use strict';
 
 // REQUIRES
 const express = require("express");
@@ -146,7 +146,7 @@ app.get("/login", function (req, res) {
 app.post("/loginInput", function (req, res) {
     res.setHeader("Content-Type", "application/json");
 
-    console.log("What was sent", req.body.username, req.body.password);
+    //console.log("What was sent", req.body.username, req.body.password);
 
     const mysql = require("mysql2");
     const connection = mysql.createConnection({
@@ -225,7 +225,7 @@ app.post("/signup", function (req, res) {
     let pwd = req.body.password;
     //let adr = req.body.address;
     //let rol = req.body.role;
-    console.log(eml, usr, pwd);
+    //console.log(eml, usr, pwd);
 
     // db values
     let mailResults = null;
@@ -319,7 +319,7 @@ async function init() {
         lastname varchar(15),
         email varchar(30),
         password varchar(30),
-        admin BOOLEAN NOT NULL,
+        admin BOOLEAN NOT NULL DEFAULT 0,
         PRIMARY KEY (UID));`;
     await connection.query(createDBAndTables);
 

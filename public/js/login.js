@@ -1,3 +1,4 @@
+'use strict';
 ready(function () {
 
     console.log("Client script loaded.");
@@ -55,15 +56,15 @@ ready(function () {
         ajaxPOST("/loginInput", function (data) {
             if (data) {
                 let dataParsed = JSON.parse(data);
-                console.log(dataParsed);
+                //console.log(dataParsed);
                 if (dataParsed.status == "admin") {
-                    console.log("admin login!");
+                    //console.log("admin login!");
                     window.location.replace("/admin");
                 } else if (dataParsed.status == "success") {
-                    console.log("success!");
+                    //console.log("success!");
                     window.location.replace("/donationform");
                 } else {
-                    console.log("Wrong user!");
+                    //console.log("Wrong user!");
                     document.getElementById("errorMsg").innerHTML = dataParsed.msg;
 
                 }
