@@ -22,7 +22,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node backend/server.js",
-    "server": "nodemon backend/server.js"
+    "server": "nodemon backend/server.js",
+    "Nischey": "nodemon index.js"
   },
   "repository": {
     "type": "git",
