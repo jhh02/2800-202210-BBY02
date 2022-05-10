@@ -2,14 +2,22 @@
 
 
 // REQUIRES
+
 const express = require("express");
 const session = require("express-session");
+const router = express.Router();
 const app = express();
+
 const fs = require("fs");
 const {
     JSDOM
 } = require('jsdom');
 
+
+
+
+
+app.set('view engine', 'ejs');
 
 // just like a simple web server like Apache web server
 // we are mapping file system paths to the app's virtual paths
@@ -27,13 +35,32 @@ app.use(session({
 }));
 
 
-app.get("/", function (req, res) {
-    let doc = fs.readFileSync("./app/html/index.html", "utf8");
-    res.set("Server", "Wazubi Engine");
-    res.set("X-Powered-By", "Wazubi");
-    // just send the text stream
-    res.send(doc);
+// app.get("/", function (req, res) {
+//     let doc = fs.readFileSync("./app/html/index.html", "utf8");
+//     res.set("Server", "Wazubi Engine");
+//     res.set("X-Powered-By", "Wazubi");
+//     // just send the text stream
+//     res.send(doc);
+// })
+
+
+// middleware that is specific to this router
+router.use((req, res, next) => {
+    console.log('Time: ', Date.now())
+    next()
 })
+// define the home page route
+router.get('/', (req, res) => {
+    res.send('Birds home page')
+})
+// define the about route
+router.get('/about', (req, res) => {
+    res.send('About birds')
+})
+
+module.exports = router
+
+
 
 app.get("/profile", function (req, res) {
     if (!req.session.loggedIn) {
@@ -82,18 +109,44 @@ app.get("/donationform", function (req, res) {
     }
 })
 
-app.get("/bakery", function (req, res) {
-    let doc = fs.readFileSync("./app/html/bakery.html", "utf8");
 
-    // just send the text stream
-    res.send(doc);
+// Express guide
+
+
+
+app.get("/bakery", function (req, res) {
+    // if (!req.session.loggedIn) {
+    //     res.redirect("/admin");
+    // } else {
+    //     let doc = fs.readFileSync("./app/html/login.html", "utf8");
+    //     res.set("Server", "Wazubi Engine");
+    //     res.set("X-Powered-By", "Wazubi");
+    //     // just send the text stream
+    //     res.send(doc);
+    // }
+
+    console.log('here');
+    res.render('bakery', { text: "World" })
+    // res.status(500).json({ message: "Error" })
 });
+
+const userRouter = require('./routes/users')
+
+app.use('/users', userRouter)
+
+
+
+
+
+
+
+
 
 app.get("/driver", function (req, res) {
     let doc = fs.readFileSync("./app/html/driver.html", "utf8");
 
     // just send the text stream
-    res.send(doc);
+    res.render(doc);
 });
 
 
@@ -162,8 +215,10 @@ app.post("/loginInput", function (req, res) {
     //login---------------------------------------------------------- 
     var password = req.body.password;
     var username = req.body.username;
+    let sql = 'SELECT * FROM BBY36_user WHERE password = ? AND username = ?';
+
     if (password && username) {
-        connection.query('SELECT * FROM BBY36_user WHERE password = ? AND username = ?', [password, username], function (error, results, fields) {
+        connection.query(sql, [password, username], function (error, results, fields) {
             if (error) throw error;
             if (results.length > 0) {
                 req.session.loggedIn = true;
