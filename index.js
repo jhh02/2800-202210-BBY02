@@ -72,7 +72,7 @@ app.get("/donationform", function (req, res) {
         let docDOM = new JSDOM(doc);
 
         docDOM.window.document.getElementsByClassName("donation-msg")[0].innerHTML
-        = "Ready to donate " + req.session.name + "?" ;
+            = "Ready to donate " + req.session.name + "?";
 
         res.set("Server", "Wazubi Engine");
         res.set("X-Powered-By", "Wazubi");
@@ -153,7 +153,7 @@ app.post("/loginInput", function (req, res) {
         host: "localhost",
         user: "root",
         password: "",
-        //port: 50,
+        port: 50,
         database: "COMP2800"
     });
 
@@ -237,7 +237,7 @@ app.post("/signup", function (req, res) {
         host: "localhost",
         user: "root",
         password: "",
-        //port: 50,
+        port: 50,
         database: "COMP2800"
     });
 
@@ -307,7 +307,7 @@ async function init() {
         user: "root",
         password: "",
         //port: 3305,
-        // port: 50,
+        port: 50,
         multipleStatements: true
     });
     const createDBAndTables = `CREATE DATABASE IF NOT EXISTS COMP2800;
