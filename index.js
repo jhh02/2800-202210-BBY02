@@ -35,13 +35,13 @@ app.use(session({
 }));
 
 
-// app.get("/", function (req, res) {
-//     let doc = fs.readFileSync("./app/html/index.html", "utf8");
-//     res.set("Server", "Wazubi Engine");
-//     res.set("X-Powered-By", "Wazubi");
-//     // just send the text stream
-//     res.send(doc);
-// })
+app.get("/", function (req, res) {
+    let doc = fs.readFileSync("./app/html/index.html", "utf8");
+    res.set("Server", "Wazubi Engine");
+    res.set("X-Powered-By", "Wazubi");
+    // just send the text stream
+    res.send(doc);
+})
 
 
 // // middleware that is specific to this router
