@@ -92,27 +92,3 @@ body {
     text-decoration: none;
     color: #9c6644;
 }
-
-
-@media screen and (min-width: 600px) {
-    .signup-title {
-        font-size: 4rem;
-    }
-
-
-    .signup-msg {
-        min-width: 60vw;
-        font-size: 3em;
-        font-weight: 100;
-        margin-bottom: 5rem;
-    }
-
-    .radio-title {
-        font-size: 2em;
-    }
-
-    .form-signup-radio {
-        font-size: 1.5em;
-    }
-
-}
