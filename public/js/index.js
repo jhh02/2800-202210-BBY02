@@ -10,6 +10,23 @@ const {
     JSDOM
 } = require('jsdom');
 
+const router = express.Router();
+
+router.get('/', function (req, res, next) {
+    let viewCount = 0;
+    viewCount++;
+    res.render('index', { viewCount });
+})
+
+
+
+
+
+
+
+
+
+
 
 // just like a simple web server like Apache web server
 // we are mapping file system paths to the app's virtual paths
@@ -42,12 +59,7 @@ app.get("/admin", function (req, res) {
     res.send(doc);
 });
 
-app.get("/bakery", function (req, res) {
-    let doc = fs.readFileSync("./app/html/bakery.html", "utf8");
 
-    // just send the text stream
-    res.send(doc);
-});
 
 app.get("/driver", function (req, res) {
     let doc = fs.readFileSync("./app/html/driver.html", "utf8");
