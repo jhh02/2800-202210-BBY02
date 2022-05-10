@@ -1,20 +1,16 @@
 {
-  "devDependencies": {
-    "nodemon": "^2.0.16"
-  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
-    "dotenv": "^16.0.0",
-    "ejs": "^3.1.7",
-    "express": "^4.18.1",
+    "dotenv": "^15.0.0",
+    "express": "^4.17.2",
     "express-async-handler": "^1.2.0",
-    "express-session": "^1.17.2",
-    "jsdom": "^19.0.0",
     "jsonwebtoken": "^8.5.1",
-    "livereload": "^0.9.3",
-    "mongoose": "^6.3.3",
-    "mysql2": "^2.3.3"
+    "mongoose": "^6.1.9"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15"
   },
   "name": "2800-202210-bby36",
   "description": "",
@@ -23,7 +19,9 @@
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
-    "Nischey": "nodemon index.js"
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "repository": {
     "type": "git",
