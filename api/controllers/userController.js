@@ -52,16 +52,20 @@ const registerUser = asyncHandler(async (req, res) => {
 // @route   POST /api/users/login
 // @access  Public
 const loginUser = asyncHandler(async (req, res) => {
-    const { email, password } = req.body
+    const { email, password, isAdmin, role } = req.body
 
     // Check for user email
     const user = await User.findOne({ email })
 
-    if (user && (await bcrypt.compare(password, user.password))) {
+    //check for admin
+    if (user && user.isAdmin && await bcrypt.compare(password, user.password)) {
+        res.render('dashboard')
+    } else if (user && (await bcrypt.compare(password, user.password))) {
         res.json({
             _id: user.id,
             name: user.name,
             email: user.email,
+            role: user.role,
             // token: generateToken(user._id),
         })
     } else {
