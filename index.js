@@ -16,6 +16,7 @@ const {
 app.use("/js", express.static("./public/js"));
 app.use("/css", express.static("./public/css"));
 app.use("/img", express.static("./public/img"));
+app.use("/fonts", express.static("./public/fonts"));
 
 app.use(session({
     secret: "extra text that no one will guess",
@@ -68,10 +69,16 @@ app.get("/donationform", function (req, res) {
         res.redirect("/login");
     } else {
         let doc = fs.readFileSync("./app/html/donationform.html", "utf8");
+
+        let docDOM = new JSDOM(doc);
+
+        docDOM.window.document.getElementsByClassName("donation-msg")[0].innerHTML
+            = "Ready to donate " + req.session.name + "?";
+
         res.set("Server", "Wazubi Engine");
         res.set("X-Powered-By", "Wazubi");
         // just send the text stream
-        res.send(doc);
+        res.send(docDOM.serialize());
     }
 })
 
@@ -147,7 +154,7 @@ app.post("/loginInput", function (req, res) {
         host: "localhost",
         user: "root",
         password: "",
-        //port: 50,
+        port: 50,
         database: "COMP2800"
     });
 
@@ -231,7 +238,7 @@ app.post("/signup", function (req, res) {
         host: "localhost",
         user: "root",
         password: "",
-        //port: 50,
+        port: 50,
         database: "COMP2800"
     });
 
@@ -253,7 +260,7 @@ app.post("/signup", function (req, res) {
                 console.log("did you misspell a table/field value?");
             }
             //console.log(mailResults, userResults, passResults);
-            console.log(results[0])
+            //console.log(results[0])
 
             // check if user and email taken
             if (results.length > 0) {
@@ -301,7 +308,7 @@ async function init() {
         user: "root",
         password: "",
         //port: 3305,
-        //port: 50,
+        port: 50,
         multipleStatements: true
     });
     const createDBAndTables = `CREATE DATABASE IF NOT EXISTS COMP2800;
