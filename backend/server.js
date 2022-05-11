@@ -1,6 +1,11 @@
+// Using dotenv to manage ENV vairables in NodeJS
+require('dotenv').config()
+//{ path: path/filename }
+// Access ENV variable by process.env
+
 const express = require('express')
 const colors = require('colors')
-const dotenv = require('dotenv').config()
+
 const { errorHandler } = require('./middleware/errorMiddleware')
 const connectDB = require('./config/db')
 const port = process.env.PORT || 3000
