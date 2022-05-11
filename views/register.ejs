@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+
+<body>
+    <div class="signup-wrapper">
+        <div class="signup-title">Sign up</div>
+        <div class="signup-msg">Create an account, It's free</div>
+        <form action="/register" method="post" class="form-signups">
+            <div class="form-signup">
+                <input type="email" name="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="form-signup">
+                <input type="text" name="name" id="name" placeholder="Name" required>
+            </div>
+            <div class="form-signup">
+                <input type="password" name="password" id="password" placeholder="Password" required>
+            </div>
+            <div class="form-signup">
+                <input type="text" name="address" id="address" placeholder="Address" required>
+            </div>
+            <div class="radio-title">Choose one of the following:</div>
+            <div class="form-signup-radio">
+                <div>
+                    <input type="radio" id="bakery" name="role" value="bakery" checked>
+                    <label for="bakery">Bakery</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="organization" name="role" value="organization">
+                    <label for="organization">Organization</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="driver" name="role" value="driver">
+                    <label for="driver">Driver</label>
+                </div>
+            </div>
+            <div class="form-signup">
+                <button type="submit" id="submit">Register</button>
+            </div>
+        </form>
+        <div class="registernow">Already a member? <a href="/users/login">Sign in</a></div>
+    </div>
+</body>
+
+</html>
