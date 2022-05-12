@@ -12,9 +12,9 @@
     <div class="login-wrapper">
         <div class="login-welcome">Hello Again!</div>
         <div class="login-welcome-messege">Welcome back you've been missed!</div>
-        <form action="/users" method="post" class="form-login">
+        <form action="/login" method="post" class="form-login">
             <div class="form-login_comp">
-                <input type="text" name="name" id="name" placeholder="Enter username" required>
+                <input type="email" name="email" id="name" placeholder="Enter email" required>
             </div>
             <div class="form-login_comp">
                 <input type="password" name="password" id="password" placeholder="Password" required>
@@ -22,11 +22,11 @@
             <div id="errorMsg"></div>
             <div class="form-login_comp-recovery">Recovery Password</div>
             <div class="form-login_comp">
-                <input type="submit" id="submit" value="Sign In">
+                <button type="submit">Sign in</button>
             </div>
 
         </form>
-        <div class="registernow">Not a member? <a href="/users/register">Register now</a></div>
+        <div class="registernow">Not a member? <a href="/register">Register now</a></div>
     </div>
 </body>
 
