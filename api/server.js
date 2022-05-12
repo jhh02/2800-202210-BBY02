@@ -2,6 +2,7 @@
 const express = require('express')
 const colors = require('colors')
 const bcrypt = require('bcrypt')
+const path = require('path')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 require('dotenv').config()
@@ -15,21 +16,26 @@ connectDB()
 const app = express()
 //register view engine
 app.set('view engine', 'ejs')
+// app.set('views', path.join(__dirname, 'views'));
+
 //parsing the incoming data
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 //routes
 const userRoutes = require('../api/routes/userRoutes')
+const registeRoutes = require('../api/routes/registerRoutes')
+const loginRoutes = require('../api/routes/loginRoutes')
 
 //serving public files
 app.use(express.static(__dirname))
 app.use(cookieParser())
+
+app.use('/', require('./routes/root'))
+app.use('/login', loginRoutes)
+app.use('/register', registeRoutes)
 app.use('/users', userRoutes)
 
-app.get('/', (req, res) => {
-    res.render('index')
-})
 
 // app.post('/users', async (req, res) => {
 //     try {
