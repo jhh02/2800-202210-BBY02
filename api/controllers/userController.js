@@ -36,16 +36,17 @@ const registerUser = asyncHandler(async (req, res) => {
     })
 
     if (user) {
-        res.status(201).json({
-            _id: user.id,
-            name: user.name,
-            email: user.email,
-            password: user.password,
-            address: user.address,
-            role: user.role,
-            isAdmin: user.isAdmin,
-            token: generateToken(user._id)
-        })
+        res.redirect('http://localhost:8000/user/login')
+        // res.status(201).json({
+        //     _id: user.id,
+        //     name: user.name,
+        //     email: user.email,
+        //     password: user.password,
+        //     address: user.address,
+        //     role: user.role,
+        //     isAdmin: user.isAdmin,
+        //     token: generateToken(user._id)
+        // })
     } else {
         res.status(400)
         throw new Error('Invalid User')
@@ -69,13 +70,13 @@ const loginUser = asyncHandler(async (req, res) => {
         // })
         // check for admin
         if (user.isAdmin) {
-            res.json({
-                status: 'ok', message: 'Admin access authorized.', _id: user.id,
-                name: user.name,
-                email: user.email,
-                isAdmin: user.isAdmin,
-                token: generateToken(user._id)
-            })
+            // res.json({
+            //     status: 'ok', message: 'Admin access authorized.', _id: user.id,
+            //     name: user.name,
+            //     email: user.email,
+            //     isAdmin: user.isAdmin,
+            //     token: generateToken(user._id)
+            // })
             res.redirect('/user/dashboard')
         }
         // if (user.role === 'bakery') {
@@ -109,6 +110,13 @@ const getMe = asyncHandler(async (req, res) => {
         email
     })
 })
+
+
+const editUser = asyncHandler(async (req, res) => [
+
+])
+
+
 
 
 // Generate JWT
