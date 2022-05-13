@@ -1,0 +1,44 @@
+<html lang="en">
+
+<body>
+
+    <div class="details content">
+        <h3 class="name">
+            <%= user.name %>
+        </h3>
+        <div class="email">
+            <%= user.email %>
+        </div>
+        <div class="password">
+            <%= user.password %>
+        </div>
+        <div class="address">
+            <%= user.address %>
+        </div>
+        <div class="role">
+            <%= user.role %>
+        </div>
+        <div class="admin">
+            <%= (user.isAdmin) ? 'Yes' : 'No' %>
+        </div>
+        <a class="edit" data-doc="<%= user._id %> "> Edit</a>
+        <a class="delete" data-doc="<%= blog._id %>">Delete</a>
+    </div>
+
+    <!-- 
+    <script>
+        const trashcan = document.querySelector('a.delete');
+        trashcan.addEventListener('click', (e) => {
+            const endpoint = `/blogs/${trashcan.dataset.doc}`;
+            fetch(endpoint, {
+                method: 'DELETE',
+            })
+                .then(response => response.json())
+                .then(data => window.location.href = data.redirect)
+                .catch(err => console.log(err));
+        });
+
+    </script> -->
+</body>
+
+</html>
