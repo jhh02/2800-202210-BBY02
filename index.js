@@ -105,6 +105,19 @@ app.get("/organization", function (req, res) {
     res.send(doc);
 });
 
+app.get("/role", function (req, res) {
+    let doc = fs.readFileSync("./app/html/role.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
+
+app.get("/availabledonations", function (req, res) {
+    let doc = fs.readFileSync("./app/html/availabledonations.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
 app.get("/sign_up", function (req, res) {
     if (req.session.admin) {
         res.redirect("/admin");
@@ -154,7 +167,7 @@ app.post("/loginInput", function (req, res) {
         host: "localhost",
         user: "root",
         password: "",
-        port: 50,
+        port: 3305,
         database: "COMP2800"
     });
 
@@ -238,7 +251,7 @@ app.post("/signup", function (req, res) {
         host: "localhost",
         user: "root",
         password: "",
-        port: 50,
+        port: 3305,
         database: "COMP2800"
     });
 
@@ -307,8 +320,8 @@ async function init() {
         host: "localhost",
         user: "root",
         password: "",
-        //port: 3305,
-        port: 50,
+        port: 3305,
+       
         multipleStatements: true
     });
     const createDBAndTables = `CREATE DATABASE IF NOT EXISTS COMP2800;
