@@ -4,15 +4,16 @@ const asyncHandler = require('express-async-handler')
 const User = require('../models/userModel')
 
 // @desc    Register new user
-// @route   POST api/users/register
+// @route   POST api/register
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password, address, role, isAdmin } = req.body
+
     if (!name || !email || !password) {
-        res.status(400).json({ 'message': 'Please add all fields' })
+        return res.json({ status: 'error', error: "Invalid" })
     }
 
-    const userExists = await User.findOne({ email })
+    const userExists = await User.findOne({ email: email })
 
     if (userExists) {
         return res.status(409) // conflict
@@ -21,7 +22,7 @@ const registerUser = asyncHandler(async (req, res) => {
     try {
         //encrypt the password
         const hashedPassword = await bcrypt.hash(password, 10)
-
+        // console.log(hashedPassword);
         //store the new user
         const newUser = await User.create({
             name,
@@ -32,6 +33,7 @@ const registerUser = asyncHandler(async (req, res) => {
             isAdmin,
         })
 
+        console.log(newUser);
         if (newUser) {
             // res.status(201).json({
             //     _id: newUser.id,
@@ -46,7 +48,9 @@ const registerUser = asyncHandler(async (req, res) => {
             res.redirect("http://localhost:8000/login")
         }
     } catch (err) {
-        res.status(500).json({ 'message': err.message })
+        if (err.code === 11000) { return res.json({ status: 'error', error: 'Username already in use' }) }
+        console.log(error);
+        throw error
     }
 })
 

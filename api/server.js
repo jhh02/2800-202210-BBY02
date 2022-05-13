@@ -2,25 +2,33 @@
 const express = require('express')
 const colors = require('colors')
 const bcrypt = require('bcrypt')
-const path = require('path')
+const session = require('express-session')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
+const cors = require('cors')
 require('dotenv').config()
 
 const { errorHandler } = require('./middleware/errorMiddleware')
 const connectDB = require('./config/db')
 const port = process.env.PORT || 3000
 
-connectDB()
+const Role =
+
+    connectDB()
+
 
 const app = express()
 //register view engine
 app.set('view engine', 'ejs')
+var corsOptions = {
+    origin: "http://localhost:8080"
+};
+app.use(cors(corsOptions));
 // app.set('views', path.join(__dirname, 'views'));
 
 //parsing the incoming data
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 //routes
 const userRoutes = require('../api/routes/userRoutes')
@@ -31,10 +39,15 @@ const loginRoutes = require('../api/routes/loginRoutes')
 app.use(express.static(__dirname))
 app.use(cookieParser())
 
+
 app.use('/', require('./routes/root'))
-app.use('/login', loginRoutes)
 app.use('/register', registeRoutes)
-app.use('/users', userRoutes)
+app.use('/login', loginRoutes)
+app.use('/user', userRoutes)
+
+app.get('/getUser', (req, res) => {
+
+})
 
 
 // app.post('/users', async (req, res) => {

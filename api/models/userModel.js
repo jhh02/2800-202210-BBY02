@@ -1,5 +1,7 @@
 const { bold } = require('colors')
 const mongoose = require('mongoose')
+const bcrypt = require('bcrypt')
+
 
 // creating a user schema
 const userSchema = new mongoose.Schema(
@@ -24,21 +26,26 @@ const userSchema = new mongoose.Schema(
             required: [true, 'Please add an address']
         },
         role: {
-            type: String
+            type: String,
+            // ref: 'Role'
         },
-        createdAt: {
-            type: Date,
-            default: () => Date.now()
-        },
-        updatedAt: {
-            type: Date,
-            default: () => Date.now()
-        },
+        // createdAt: {
+        //     type: Date,
+        //     default: () => Date.now()
+        // },
+        // updatedAt: {
+        //     type: Date,
+        //     default: () => Date.now()
+        // },
         isAdmin: {
             type: Boolean,
             default: () => false,
         },
     },
+    { collection: 'BBY_36_users' },
+    {
+        timestamps: true
+    }
 )
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('Users', userSchema)
