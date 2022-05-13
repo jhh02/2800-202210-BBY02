@@ -60,6 +60,15 @@ const addAUser = asyncHandler(async (req, res) => {
     res.json({ message: 'register User' })
 })
 
+
+const editUser = asyncHandler(async (req, res) => [
+
+])
+
+const deleteUser = asyncHandler(async (req, res) => [
+
+])
+
 module.exports = {
     addAUser
 }

@@ -4,6 +4,7 @@ const { registerUser, loginUser, getMe, editUser } = require('../controllers/use
 const { addAUser } = require('../controllers/adminController')
 const router = express.Router()
 const { protect } = require('../middleware/authMiddleware')
+const User = require('../models/userModel')
 
 router.get('/', (req, res) => {
     res.render('register')
@@ -34,8 +35,24 @@ router.get('/edit', (req, res) => {
 router.get('/getme', protect, getMe)
 
 router.get('/dashboard', (req, res) => {
-    res.render('dashboard')
+    // res.render('dashboard')
+    User.find({}).exec(function (err, users) {
+        if (err) throw err;
+        res.render('dashboard', { "users": users })
+    })
 })
+
+
+router.get('/dashboard/:id', (req, res) => {
+    const id = req.params.id
+    User.findById(id).exec(function (err, users) {
+        if (err) throw err;
+        res.render('user-details', { "user": users })
+    })
+
+})
+
+
 
 router.get('/dashboard/adduser', (req, res) => {
     res.render('addUser')
