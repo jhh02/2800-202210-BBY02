@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
     <title>Document</title>
 </head>
 
 <body>
 
     <body>
-        <form action="/logout" method="get">
+        <form action="/user/logout" method="get">
             <input class="prof" type="submit" value="Logout" />
         </form>
         <div class="admin">
@@ -54,19 +54,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="tabContainer">
-                    <!--
-                    <div class="tabButton"><span>Type of skills</span><i class="caret fas fa-angle-up"></i></div>
-                    <div class="tabButtonBorder"></div>
-                    <div class="panel">
-                        <ul>
-                            <li><input type="checkbox" /><span>Crossfit</span> </li>
-                            <li><input type="checkbox" /><span>TRX</span> </li>
-                            <li><input type="checkbox" /><span>Yoga</span> </li>
-                            <li><input type="checkbox" /><span>Box</span> </li>
-                        </ul>
-                    </div>-->
-                </div>
+
                 <div class="tabContainer">
                     <div class="tabButton"><span>By reviews</span><i class="caret fas fa-angle-up"></i></div>
                     <div class="tabButtonBorder"></div>
@@ -149,10 +137,8 @@
             -->
                 <div class="searchResultsHeader">
                     <span>Found 3 users</span>
-                    <div class="layoutContainer">
-                        <a class="table active" href="#"><i class="fas fa-table"></i></a>
-                        <a class="list" href="#"><i class="fas fa-list"></i></a>
-                    </div>
+                    <button class="addUer">Add a new user</button>
+
                 </div>
                 <div class="searchResults">
                     <div class="card">
@@ -195,12 +181,14 @@
                         <hr class="seperator" />
                         <div class="activity">
                             <div class="headerContainer">
-                                <span class="header">Activity</span>
+                                <span class="header">Action</span>
                                 <select>
                                     <option value="Today">Today</option>
                                     <option value="Tomorrow">Tomorrow</option>
                                     <option value="Toyota">Toyota</option>
                                 </select>
+                                <button class="editUser">Edit</button>
+                                <button class="deleteUser">Delete</button>
                             </div>
                             <div class="chartContainer">
                                 <canvas id="activityChart1"></canvas>
@@ -247,12 +235,16 @@
                         <hr class="seperator" />
                         <div class="activity">
                             <div class="headerContainer">
-                                <span class="header">Activity</span>
+                                <span class="header">Action</span>
                                 <select>
                                     <option value="Today">Today</option>
                                     <option value="Tomorrow">Tomorrow</option>
                                     <option value="Toyota">Toyota</option>
+                                    <button class="editUser">Edit</button>
+                                    <button class="deleteUser">Delete</button>
                                 </select>
+                                <button class="editUser">Edit</button>
+                                <button class="deleteUser">Delete</button>
                             </div>
                             <div class="chartContainer">
                                 <canvas id="activityChart2"></canvas>
@@ -299,12 +291,16 @@
                         <hr class="seperator" />
                         <div class="activity">
                             <div class="headerContainer">
-                                <span class="header">Activity</span>
+                                <span class="header">Action</span>
                                 <select>
                                     <option value="Today">Today</option>
                                     <option value="Tomorrow">Tomorrow</option>
                                     <option value="Toyota">Toyota</option>
+                                    <button class="editUser">Edit</button>
+                                    <button class="deleteUser">Delete</button>
                                 </select>
+                                <button class="editUser">Edit</button>
+                                <button class="deleteUser">Delete</button>
                             </div>
                             <div class="chartContainer">
                                 <canvas id="activityChart3"></canvas>

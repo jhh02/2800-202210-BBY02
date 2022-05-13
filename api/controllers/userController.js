@@ -60,12 +60,37 @@ const loginUser = asyncHandler(async (req, res) => {
     const user = await User.findOne({ email })
 
     if (user && (await bcrypt.compare(password, user.password))) {
-        res.json({
-            _id: user.id,
-            name: user.name,
-            email: user.email,
-            token: generateToken(user._id)
-        })
+        // res.json({
+        //     _id: user.id,
+        //     name: user.name,
+        //     email: user.email,
+        //     isAdmin: user.isAdmin,
+        //     token: generateToken(user._id)
+        // })
+        // check for admin
+        if (user.isAdmin) {
+            res.json({
+                status: 'ok', message: 'Admin access authorized.', _id: user.id,
+                name: user.name,
+                email: user.email,
+                isAdmin: user.isAdmin,
+                token: generateToken(user._id)
+            })
+            res.redirect('/user/dashboard')
+        }
+        // if (user.role === 'bakery') {
+
+        // }
+        // if (user.role === 'organization') {
+
+        // }
+        // if (user.role === 'driver') {
+
+        // }
+        if (user.role) {
+            res.redirect('/user/profile')
+        }
+
     } else {
         res.status(400)
         throw new Error('Invalid credentials')
@@ -76,7 +101,13 @@ const loginUser = asyncHandler(async (req, res) => {
 
 // private
 const getMe = asyncHandler(async (req, res) => {
-    res.json({ message: 'get data display' })
+    const { _id, name, email } = await User.findById(req.user.id)
+
+    res.status(200).json({
+        id: _id,
+        name,
+        email
+    })
 })
 
 

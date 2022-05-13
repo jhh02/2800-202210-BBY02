@@ -1,0 +1,141 @@
+@import url('../fonts/Hind-Regular.ttf');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Hind', sans-serif;
+}
+
+
+
+body {
+    background: hsla(0, 0%, 100%, 1);
+
+    background: linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+
+    background: -moz-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+
+    background: -webkit-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFF", endColorstr="#ECDCC5", GradientType=1);
+    height: 100vh;
+}
+
+.login-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.login-welcome {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+.login-welcome-messege {
+    font-size: 1rem;
+    min-width: 400px;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.form-login {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+
+}
+
+#name,
+#password {
+    width: 80vw;
+    padding: 1rem 1.5rem;
+    border-radius: 15px;
+    border: none;
+    font-size: 1rem;
+}
+
+.form-login_comp-recovery {
+    align-self: flex-end;
+    font-weight: bold;
+    color: #9c6644;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.form-login_comp input[type="submit"] {
+    width: 80vw;
+    padding: 1rem 1.5rem;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    background-color: #9c6644;
+    font-size: 1rem;
+    margin-bottom: 3rem;
+}
+
+.login-icons {
+    display: flex;
+    justify-content: space-around;
+    width: 80vw;
+}
+
+.icon {
+    margin-top: 3rem;
+    height: 80px;
+    border-radius: 15px;
+    padding: 1rem 3rem;
+    cursor: pointer;
+
+}
+
+.registernow {
+    margin-top: 5rem;
+}
+
+.registernow a {
+    text-decoration: none;
+    color: #9c6644;
+}
+
+#errorMsg {
+    font-size: 18px;
+    color: crimson;
+}
+
+
+@media screen and (min-width: 600px) {
+    .login-welcome {
+        font-size: 4rem;
+    }
+
+
+    .login-welcome-messege {
+        min-width: 60vw;
+        font-size: 3em;
+        font-weight: 100;
+        margin-bottom: 5rem;
+    }
+
+    #name,
+    #password,
+    #submit {
+        font-size: 3rem;
+    }
+
+    .login-icons {
+        font-size: 2rem;
+    }
+
+    .registernow,
+    .form-login_comp-recovery,
+    .continue {
+        font-size: 2rem;
+    }
+
+}

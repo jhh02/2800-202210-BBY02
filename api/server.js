@@ -2,19 +2,18 @@
 const express = require('express')
 const colors = require('colors')
 const bcrypt = require('bcrypt')
-const session = require('express-session')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
+const morgan = require('morgan')
 require('dotenv').config()
 
 const { errorHandler } = require('./middleware/errorMiddleware')
 const connectDB = require('./config/db')
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 8000
 
-const Role =
 
-    connectDB()
+connectDB()
 
 
 const app = express()
@@ -25,15 +24,20 @@ var corsOptions = {
 };
 app.use(cors(corsOptions));
 // app.set('views', path.join(__dirname, 'views'));
-
+app.use(morgan('tiny'))
 //parsing the incoming data
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: false }))
+
+//static files
+app.use('/css', express.static('public/css'))
+app.use('/fonts', express.static('public/fonts'))
+app.use('/img', express.static('public/img'))
 
 //routes
-const userRoutes = require('../api/routes/userRoutes')
-const registeRoutes = require('../api/routes/registerRoutes')
-const loginRoutes = require('../api/routes/loginRoutes')
+const userRoutes = require('./routes/userRoutes')
+const morgan = require('morgan')
+// const donationRoutes = require('./routes/donationRoutes')
 
 //serving public files
 app.use(express.static(__dirname))
@@ -41,9 +45,8 @@ app.use(cookieParser())
 
 
 app.use('/', require('./routes/root'))
-// app.use('/register', registeRoutes)
-// app.use('/login', loginRoutes)
 app.use('/user', userRoutes)
+// app.use('/donation', donationRoutes)
 
 
 // app.post('/users', async (req, res) => {
