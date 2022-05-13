@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs')
 
 
 // creating a user schema
-const userSchema = new mongoose.Schema(
+const adduserSchema = new mongoose.Schema(
     // fields
     {
         name: {
@@ -48,4 +48,4 @@ const userSchema = new mongoose.Schema(
     }
 )
 
-module.exports = mongoose.model('Users', userSchema)
+module.exports = mongoose.model('AddUsers', adduserSchema)

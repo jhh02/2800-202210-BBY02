@@ -1,7 +1,7 @@
 
 const express = require('express')
 const colors = require('colors')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
@@ -24,23 +24,25 @@ var corsOptions = {
 };
 app.use(cors(corsOptions));
 // app.set('views', path.join(__dirname, 'views'));
+if (process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'))
+}
 app.use(morgan('tiny'))
 //parsing the incoming data
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 //static files
 app.use('/css', express.static('public/css'))
 app.use('/fonts', express.static('public/fonts'))
 app.use('/img', express.static('public/img'))
+app.use('/js', express.static('public/js'))
 
 //routes
 const userRoutes = require('./routes/userRoutes')
-const morgan = require('morgan')
 // const donationRoutes = require('./routes/donationRoutes')
 
 //serving public files
-app.use(express.static(__dirname))
 app.use(cookieParser())
 
 

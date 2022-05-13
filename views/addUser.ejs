@@ -11,9 +11,8 @@
 
 <body>
     <div class="signup-wrapper">
-        <div class="signup-title">Sign up</div>
-        <div class="signup-msg">Create an account, It's free</div>
-        <form action="/user" method="post" class="form-signups">
+        <div class="signup-title">Add a user</div>
+        <form action="/user/dashboard/adduser" method="post" class="form-signups">
             <div class="form-signup">
                 <input type="email" name="email" id="email" placeholder="Email" required>
             </div>
@@ -43,8 +42,20 @@
                     <label for="driver">Driver</label>
                 </div>
             </div>
+            <div class="radio-title">Grant Admin Authrority:</div>
+            <div class="form-signup-radio">
+                <div>
+                    <input type="radio" name="isAdmin" value="true" checked>
+                    <label for="bakery">Yes</label>
+                </div>
+
+                <div>
+                    <input type="radio" name="isAdmin" value="false">
+                    <label for="organization">No</label>
+                </div>
+            </div>
             <div class="form-signup">
-                <button type="submit" id="submit">Register</button>
+                <button type="submit" id="submit">Add a user</button>
             </div>
         </form>
         <div class="registernow">Already a member? <a href="/user/login">Sign in</a></div>
