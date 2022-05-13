@@ -48,6 +48,10 @@ body {
 
 }
 
+h1{
+    text-align:center;
+    
+}
 .first {
 
     width: 100%;
@@ -140,7 +144,7 @@ img {
 
 .icons {
     margin-top: 10px;
-    margin-inline: 10px;
+    margin-inline: 50px;
 }
 
 .copyright {

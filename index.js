@@ -89,6 +89,13 @@ app.get("/bakery", function (req, res) {
     res.send(doc);
 });
 
+app.get("/pendingreservations", function (req, res) {
+    let doc = fs.readFileSync("./app/html/pendingreservations.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
+
 app.get("/deliveryacception", function (req, res) {
     let doc = fs.readFileSync("./app/html/deliveryacception.html", "utf8");
 
