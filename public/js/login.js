@@ -61,7 +61,7 @@ ready(function () {
                     window.location.replace("/admin");
                 } else if (dataParsed.status == "success") {
                     console.log("success!");
-                    window.location.replace("/donationform");
+                    window.location.replace("/role");
                 } else {
                     console.log("Wrong user!");
                     document.getElementById("errorMsg").innerHTML = dataParsed.msg;
