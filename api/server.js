@@ -41,13 +41,9 @@ app.use(cookieParser())
 
 
 app.use('/', require('./routes/root'))
-app.use('/register', registeRoutes)
-app.use('/login', loginRoutes)
+// app.use('/register', registeRoutes)
+// app.use('/login', loginRoutes)
 app.use('/user', userRoutes)
-
-app.get('/getUser', (req, res) => {
-
-})
 
 
 // app.post('/users', async (req, res) => {
