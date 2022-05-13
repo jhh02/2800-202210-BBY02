@@ -10,7 +10,11 @@
 
 <body>
     <h1>profile page</h1>
-    <button><a href="/user/edit">Edit</a></button>
+    <h2>Hi, <%=user.name %>
+    </h2>
+    <h3>Your role: <%= user.role %>
+    </h3>
+    <button><a href="/user/profile/<%= user.id  %> ">Edit</a></button>
 </body>
 
 </html>

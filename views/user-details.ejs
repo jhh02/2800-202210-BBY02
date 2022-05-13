@@ -21,15 +21,79 @@
         <div class="admin">
             <%= (user.isAdmin) ? 'Yes' : 'No' %>
         </div>
-        <a class="edit" data-doc="<%= user._id %> "> Edit</a>
-        <a class="delete" data-doc="<%= blog._id %>">Delete</a>
+
+
+        <button>
+            <a class="delete" data-doc="<%= user._id %> "> Delete</a>
+        </button>
+
+        <div class="edit">
+            <form action="/user/dashboard/<% user._id %> " method="PATCH" class="form-signups">
+                <div class="form-signup">
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="form-signup">
+                    <input type="text" name="name" id="name" placeholder="Name" required>
+                </div>
+                <div class="form-signup">
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                </div>
+                <div class="form-signup">
+                    <input type="text" name="address" id="address" placeholder="Address" required>
+                </div>
+                <div class="radio-title">Choose one of the following:</div>
+                <div class="form-signup-radio">
+                    <div>
+                        <input type="radio" id="bakery" name="role" value="bakery" checked>
+                        <label for="bakery">Bakery</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="organization" name="role" value="organization">
+                        <label for="organization">Organization</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="driver" name="role" value="driver">
+                        <label for="driver">Driver</label>
+                    </div>
+                    <div class="form-signup-radio">
+                        <div>
+                            <input type="radio" name="isAdmin" value="true" checked>
+                            <label for="bakery">Yes</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" name="isAdmin" value="false">
+                            <label for="organization">No</label>
+                        </div>
+                    </div>
+                    <button>
+                        <a class="edit" data-doc="<%=user.id%>">Edit</a>
+                    </button>
+
+                </div>
+        </div>
     </div>
 
-    <!-- 
+
+
     <script>
-        const trashcan = document.querySelector('a.delete');
-        trashcan.addEventListener('click', (e) => {
-            const endpoint = `/blogs/${trashcan.dataset.doc}`;
+        const editBtn = document.querySelector('a.edit');
+        editBtn.addEventListener('click', (e) => {
+            const endpoint = `/user/dashboard/${editBtn.dataset.doc}`;
+            fetch(endpoint, {
+                method: 'PATCH',
+            })
+                .then(response => response.json())
+                .then(data => window.location.href = data.redirect)
+                .catch(err => console.log(err));
+        })
+
+
+        const deleteBtn = document.querySelector('a.delete');
+        deleteBtn.addEventListener('click', (e) => {
+            const endpoint = `/user/dashboard/${deleteBtn.dataset.doc}`;
             fetch(endpoint, {
                 method: 'DELETE',
             })
@@ -38,7 +102,7 @@
                 .catch(err => console.log(err));
         });
 
-    </script> -->
+    </script>
 </body>
 
 </html>
