@@ -15,10 +15,10 @@
 
 
 
-
-    <form action="/user/logout" method="get">
+    <!-- 
+    <form action="/user/dashboard" method="get">
         <input class="prof" type="submit" value="Logout" />
-    </form>
+    </form> -->
     <div class="admin">
         <header class="admin__header">
             <div class="logo"><img src="/img/logo.png" />
@@ -120,7 +120,7 @@
 
             <div class="searchResultsHeader">
                 <span>Found 3 users</span>
-                <button class="addUser">Add a new user</button>
+                <button class="addUser"><a href="/user/dashboard/adduser"> Add a new user</a></button>
 
             </div>
 
@@ -147,8 +147,6 @@
                             <div class="admin">
                                 <%= (user.isAdmin) ? 'Yes' : 'No' %>
                             </div>
-                            <button id="<%= user._id  %> "> Edit</button>
-                            <button id="<%= user._id  %> "> Delete</button>
                         </a>
                         <%}) %>
                             <%}%>

@@ -36,12 +36,7 @@ const addAUser = asyncHandler(async (req, res) => {
     })
 
     if (user) {
-        await AddUsers.find({})
-            .then((data) => {
-                res.send(data)
-            }).catch((error) => {
-                res.status(500).send(error)
-            })
+        res.redirect('http://localhost:8000/user/dashboard')
         // res.redirect('http://localhost:8000/user/login')
         // res.status(201).json({
         //     _id: user.id,
@@ -61,14 +56,29 @@ const addAUser = asyncHandler(async (req, res) => {
 })
 
 
-const editUser = asyncHandler(async (req, res) => [
+const editAUser = asyncHandler(async (req, res) => {
+    try {
+        const id = req.params.id
+        const user = await AddUsers.findById(id)
+        const { name, email, password, address, role, isAdmin } = req.body
 
-])
+        const editedUser = await AddUsers.findByIdAndUpdate(id, { name, email, password, address, role, isAdmin }, {
+            new: true
+        })
+            .then(result => {
+                res.send(result);
+                // res.json({ redirect: '/user/dashboard' })
+            })
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
 
 const deleteUser = asyncHandler(async (req, res) => [
 
 ])
 
 module.exports = {
-    addAUser
+    addAUser,
+    editAUser
 }

@@ -70,13 +70,6 @@ const loginUser = asyncHandler(async (req, res) => {
         // })
         // check for admin
         if (user.isAdmin) {
-            // res.json({
-            //     status: 'ok', message: 'Admin access authorized.', _id: user.id,
-            //     name: user.name,
-            //     email: user.email,
-            //     isAdmin: user.isAdmin,
-            //     token: generateToken(user._id)
-            // })
             res.redirect('/user/dashboard')
         }
         // if (user.role === 'bakery') {
@@ -89,7 +82,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
         // }
         if (user.role) {
-            res.redirect('/user/profile')
+            res.redirect(`/user/profile/${user.id}`)
         }
 
     } else {
