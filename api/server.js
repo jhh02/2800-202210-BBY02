@@ -1,4 +1,4 @@
-
+"use strict";
 const express = require('express')
 const colors = require('colors')
 const bcrypt = require('bcryptjs')
