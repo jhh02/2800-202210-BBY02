@@ -48,4 +48,4 @@ const adduserSchema = new mongoose.Schema(
     }
 )
 
-module.exports = mongoose.model('AddUsers', adduserSchema)
+module.exports = mongoose.model('User2', adduserSchema)

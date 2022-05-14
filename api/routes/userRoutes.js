@@ -1,5 +1,4 @@
 const express = require('express')
-const objectId = require('mongodb').ObjectId
 const { render } = require('express/lib/response')
 const { registerUser, loginUser, getMe } = require('../controllers/userController')
 const { addAUser, editAUser } = require('../controllers/adminController')
@@ -8,20 +7,26 @@ const { protect } = require('../middleware/authMiddleware')
 const User = require('../models/userModel')
 const { db } = require('../models/userModel')
 
+// show register page /user
 router.get('/', (req, res) => {
     res.render('register')
 })
+// register user /user
 router.post('/', registerUser)
 
+// show login page /user/login
 router.get('/login', (req, res) => {
     res.render('login')
 })
+// login user /user/login
 router.post('/login', loginUser)
 
+// show logout page  /user/logout
 router.get('/logout', (req, res) => {
     res.render('login')
 })
 
+// show my profile page /user/profile/objecid
 router.get('/profile/:id', (req, res) => {
     const id = req.params.id
     User.findById(id)
@@ -30,6 +35,7 @@ router.get('/profile/:id', (req, res) => {
         })
 })
 
+// edit my profile page /user/profile/objectid
 router.post('/profile/:id', (req, res) => {
     res.render('user-edit')
 })
