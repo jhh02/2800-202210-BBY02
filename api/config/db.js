@@ -1,4 +1,7 @@
+"use strict";
+const { stripColors } = require('colors')
 const mongoose = require('mongoose')
+const { use } = require('../routes/userRoutes')
 
 const connectDB = async () => {
     try {
