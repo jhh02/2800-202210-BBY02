@@ -37,7 +37,7 @@ const registerUser = asyncHandler(async (req, res) => {
     })
 
     if (user) {
-        res.redirect('http://localhost:8000/user/login')
+        res.redirect('/user/login')
         // res.status(201).json({
         //     _id: user.id,
         //     name: user.name,
