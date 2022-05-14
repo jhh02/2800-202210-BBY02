@@ -2,9 +2,7 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const asyncHandler = require('express-async-handler')
-const AddUsers = require('../models/adduserModel')
-
-
+const User = require('../models/user2Model')
 
 const addAUser = asyncHandler(async (req, res) => {
     const { name, email, password, address, role, isAdmin } = req.body
@@ -15,19 +13,19 @@ const addAUser = asyncHandler(async (req, res) => {
     }
 
     // Check if user exists
-    const userExists = await AddUsers.findOne({ email })
+    const userExists = await User.findOne({ email })
 
     if (userExists) {
         res.status(400)
         throw new Error('User already exists')
     }
 
-    // Hast password
+    // Hash password
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
 
     // Create user 
-    const user = await AddUsers.create({
+    const user = await User.create({
         name,
         email,
         password: hashedPassword,
@@ -60,10 +58,10 @@ const addAUser = asyncHandler(async (req, res) => {
 const editAUser = asyncHandler(async (req, res) => {
     try {
         const id = req.params.id
-        const user = await AddUsers.findById(id)
+        const user = await User.findById(id)
         const { name, email, password, address, role, isAdmin } = req.body
 
-        const editedUser = await AddUsers.findByIdAndUpdate(id, { name, email, password, address, role, isAdmin }, {
+        const editedUser = await User.findByIdAndUpdate(id, { name, email, password, address, role, isAdmin }, {
             new: true
         })
             .then(result => {
