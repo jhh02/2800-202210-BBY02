@@ -18,7 +18,7 @@
     "nodemon": "^2.0.15"
   },
   "name": "2800-202210-bby36",
-  "description": "",
+  "description": "1.       Dongil Kwon, (A01267744), Aset 2.       Nischey Gupta, (A01311590), Aset 3.       Jun Ho Han,  (A01061045), Aset 4.       James Lum (A01182671), Bset",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -34,5 +34,6 @@
   "bugs": {
     "url": "https://github.com/jhh02/2800-202210-BBY36/issues"
   },
-  "homepage": "https://github.com/jhh02/2800-202210-BBY36#readme"
+  "homepage": "https://github.com/jhh02/2800-202210-BBY36#readme",
+  "keywords": []
 }
