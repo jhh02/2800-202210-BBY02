@@ -89,6 +89,12 @@ app.get("/bakery", function (req, res) {
     res.send(doc);
 });
 
+app.get("/donationdescription", function (req, res) {
+    let doc = fs.readFileSync("./app/html/donationdescription.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
 app.get("/pendingreservations", function (req, res) {
     let doc = fs.readFileSync("./app/html/pendingreservations.html", "utf8");
 
