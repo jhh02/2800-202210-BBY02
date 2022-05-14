@@ -5,7 +5,7 @@ CREATE TABLE BBY36_user (
     lastname varchar(15),
     email varchar(30),
     password varchar(30),
-    admin BOOLEAN NOT NULL,
+    admin BOOLEAN NOT NULL DEFAULT 0,
     PRIMARY KEY (UID)
 );
 

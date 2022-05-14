@@ -10,6 +10,10 @@ const {
     JSDOM
 } = require('jsdom');
 
+const path = require('path');
+const hbs = require('hbs');
+const porto = process.env.PORT || 3000;
+
 
 // just like a simple web server like Apache web server
 // we are mapping file system paths to the app's virtual paths
@@ -338,11 +342,9 @@ async function init() {
     }
 
     connection.end();
-    console.log("index.js app listening on port " + port + "!");
+    console.log("index.js app listening on port " + porto + "!");
 }
 
 
 // RUN SERVER
-let port = 8000;
-// RUN SERVER
-app.listen(port, init);
+app.listen(porto, init);
