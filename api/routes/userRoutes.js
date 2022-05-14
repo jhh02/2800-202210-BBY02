@@ -35,10 +35,12 @@ router.get('/profile/:id', (req, res) => {
         })
 })
 
-// edit my profile page /user/profile/objectid
+// direct to my profile page /user/profile/objectid
 router.post('/profile/:id', (req, res) => {
     res.render('user-edit')
 })
+
+
 
 
 // router.get('/getme', protect, getMe)

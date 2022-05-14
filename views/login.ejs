@@ -20,10 +20,22 @@
             <div class="form-login_comp">
                 <input type="password" name="password" id="password" placeholder="Password" required>
             </div>
+            <div class="continue">Or continue with</div>
+            <div class="login-icons">
+                <a
+                    href="https://accounts.google.com/signin/v2/identifier?flowName=GlifWebSignIn&flowEntry=ServiceLogin"><img
+                        src="/img/google-icon.png" alt="" class="icon google"></a>
+                <a href="https://www.icloud.com"><img src="/img/apple-icon.png" alt="" class="icon apple"></a>
+                <a href="https://www.facebook.com/login/"><img src="/img/facebook-icon.png" alt="" class="icon fb"></a>
+                <!-- <a href="https://accounts.google.com/signin/v2/identifier?flowName=GlifWebSignIn&flowEntry=ServiceLogin"><img
+                            src="/img/google-icon.png" alt="" class="icon google"></a>
+                    <a href="https://www.icloud.com"><img src="/img/apple-icon.png" alt="" class="icon apple"></a>
+                    <a href="https://www.facebook.com/login/"><img src="/img/facebook-icon.png" alt="" class="icon fb"></a> -->
+            </div>
             <div id="errorMsg"></div>
             <div class="form-login_comp-recovery">Recovery Password</div>
             <div class="form-login_comp">
-                <button type="submit">Sign in</button>
+                <button type="submit" id="submit">Sign in</button>
             </div>
 
         </form>
