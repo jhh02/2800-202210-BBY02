@@ -3,86 +3,52 @@
 
 <head>
 
-    <!------------------------>
-    <!-- Required meta tags -->
-    <!------------------------>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="/css/pendingreservations.css">
 
     <title>Pending reservations</title>
 
-    <!------------------------------------------>
-    <!-- Bootstrap Library CSS JS CDN go here -->
-    <!------------------------------------------>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
+
 
 </head>
 
 <body>
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
+    <div class="container">
 
 
-    <!-- the body of your page goes here -->
-    <!-- stuff -->
-    <!-- Templates for general use, not displayed -->
-    <!-- <template id="donationsCardTemplate">
 
-        <div class="card flex-row flex-wrap">
-            <div class="card-header border-0">
-                <img src="..." style="width:fit-content" alt="Responsive image" class="img-fluid">
+        <div class="first">
+            <div class="left">
+                <div>Current Location</div>
+                <div>Wall Street 120</div>
             </div>
-            <div class="card-block px-2">
-                <h4 class="card-title">TITLE</h4>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo labore fuga, aliquam incidunt, repudiandae hic totam impedit eveniet, voluptatibus aut ipsam explicabo ratione dolorem dolor eaque suscipit nisi temporibus illum!</p>
-                <a href="..." class="btn btn-primary">Button</a>
+            <div class="right">
+                <div>Notification</div>
+                <div>2 unread</div>
             </div>
-            <div class="w-100"></div>
+        </div>
+        <h1>Pending Reservations</h1>
+        <div class="third">
+            <div class="card">
+                <div class="image">
+                    <!-- <img src="/img/strawberry_muffins.jpg"  alt="Responsive image" class="img-fluid"> -->
+                    <img src="/img/strawberry_muffins.jpg" alt="Responsive image" class="img-fluid">
 
-    </template> -->
+                </div>
+                <div class="content">
+                    <div class="main">Quantity:x<br>Pickup Place:<br>Status:Available</div>
+                    <div class="below">Last updated : 05/05/22</div>
+                </div>
+            </div>
 
 
-    <div class="pendingReservations text-center">
-        <h1>Pending Reservations: </h1>
+        </div>
+
     </div>
 
-    <div class="card flex-row flex-wrap">
-        <div class="card-header border-0">
-            <img src="/public/img/strawberry_muffins.jpg" style="width: 250px; ; height: 250px" alt="Responsive image" class="img-fluid">
-        </div>
-        <div class="card-block px-2">
-            <h4 class="card-title">Strawberry muffins</h4>
-            <p class="card-text">Quantity: x <br>
-                Pickup Location: Beaucoup Bakery, 2150 Fir St, Vancouver, BC V6J 3B5 <br>
-                Drop-off Location: #354, Denman Street. </p>
-            <a href="/app/html/deliveryacception.html" class="btn btn-primary">Accept Delivery</a>
-        </div>
-        <div class="w-100"></div>
-    </div>    
-
-    <div class="card flex-row flex-wrap">
-        <div class="card-header border-0">
-            <img src="/public/img/buns.jpg" style="width: 250px; ; height: 250px" alt="Responsive image" class="img-fluid">
-        </div>
-        <div class="card-block px-2">
-            <h4 class="card-title">Buns</h4>
-            <p class="card-text">Quantity: z <br>
-                Pickup Location: Breka Bakery & Café (Bute) <br>
-                Drop-off Location: #852, Pacific Boulevard. </p>
-            <a href="/app/html/deliveryacception.html" class="btn btn-primary">Accept Delivery</a>
-        </div>
-        <div class="w-100"></div>
-    </div>    
-
-   
 </body>
 
 </html>
