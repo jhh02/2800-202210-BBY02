@@ -61,7 +61,7 @@ const editAUser = asyncHandler(async (req, res) => {
         const user = await User.findById(id)
         const { name, email, password, address, role, isAdmin } = req.body
 
-        const editedUser = await User.findByIdAndUpdate(id, { name, email, password, address, role, isAdmin }, {
+        const editedUser = await user.findByIdAndUpdate(id, { name, email, password, address, role, isAdmin }, {
             new: true
         })
             .then(result => {
