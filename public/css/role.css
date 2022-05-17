@@ -125,13 +125,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: Onc
+    /* height: Onc */
 }
 
 /* width: 390px; height: 844px;
   */
-
-
 
 .deliverFood,
 .reserveFood,
@@ -139,23 +137,23 @@ body {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 28px;
     line-height: 28px;
 
-    width: 271px;
-    height: 98px;
+    width: 300px;
+    height: 100px;
     text-align: center;
     vertical-align: center;
     display: grid;
     place-items: center;
-
+    border-radius: 25px;
 
 }
 
 .role-wrapper {
     display: grid;
     place-items: center;
-    min-height: 80vh;
+    min-height: 90vh;
 
 }
 
@@ -168,7 +166,6 @@ a {
 
     color: #FFFFFF;
     background: black;
-    border-radius: 25px;
     text-decoration-line: none;
 }
 
@@ -176,13 +173,11 @@ a {
 
     color: #FFFFFF;
     background: #9f4e0b;
-    border-radius: 25px;
 }
 
 .reserveFood {
 
     background: #7B7B7B;
-    border-radius: 25px;
 }
 
 .prof {
@@ -190,14 +185,14 @@ a {
     border: none;
     color: white;
     background-color: #9c6644;
-    border-bottom-left-radius: 10px;
+    border-radius: 10px;
     font-size: 1rem;
     cursor: pointer;
     float: right;
     width: 20vw;
     border-radius: 15px;
 
-    margin: 0;
+    margin: 2px 2px 2px 2px;
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
