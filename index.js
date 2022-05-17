@@ -192,7 +192,7 @@ app.post("/loginInput", function (req, res) {
         host: "localhost",
         user: "root",
         password: "",
-        port: 3305,
+        // port: 3305,
         database: "COMP2800"
     });
 
@@ -276,7 +276,7 @@ app.post("/signup", function (req, res) {
         host: "localhost",
         user: "root",
         password: "",
-        port: 3305,
+        // port: 3305,
         database: "COMP2800"
     });
 
@@ -345,7 +345,7 @@ async function init() {
         host: "localhost",
         user: "root",
         password: "",
-        port: 3305,
+        // port: 3305,
        
         multipleStatements: true
     });
