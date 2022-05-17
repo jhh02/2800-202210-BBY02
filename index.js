@@ -116,7 +116,12 @@ app.get("/driver", function (req, res) {
     res.send(doc);
 });
 
+app.get("/deliverydescription", function (req, res) {
+    let doc = fs.readFileSync("./app/html/deliverydescription.html", "utf8");
 
+    // just send the text stream
+    res.send(doc);
+});
 
 app.get("/organization", function (req, res) {
     let doc = fs.readFileSync("./app/html/organization.html", "utf8");
