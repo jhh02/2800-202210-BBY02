@@ -1,6 +1,5 @@
 const { bold } = require('colors')
 const mongoose = require('mongoose')
-const bcrypt = require('bcryptjs')
 
 
 // creating a user schema

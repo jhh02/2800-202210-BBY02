@@ -5,7 +5,6 @@ const { addAUser, editAUser } = require('../controllers/adminController')
 const router = express.Router()
 const { protect } = require('../middleware/authMiddleware')
 const User = require('../models/userModel')
-const { db } = require('../models/userModel')
 
 // show register page /user
 router.get('/', (req, res) => {
