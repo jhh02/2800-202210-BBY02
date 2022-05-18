@@ -124,7 +124,12 @@ app.get("/addedtocart", function (req, res) {
     res.send(doc);
 });
 
+app.get("/cart", function (req, res) {
+    let doc = fs.readFileSync("./app/html/cart.html", "utf8");
 
+    // just send the text stream
+    res.send(doc);
+});
 app.get("/thanksdriver", function (req, res) {
     let doc = fs.readFileSync("./app/html/thanksdriver.html", "utf8");
 
