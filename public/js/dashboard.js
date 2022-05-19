@@ -1,219 +1,140 @@
-function getCustomers() {
 
-    const xhr = new XMLHttpRequest();
-    xhr.onload = function () {
-        if (this.readyState == XMLHttpRequest.DONE) {
-
-            // 200 means everthing worked
-            if (xhr.status === 200) {
-
-                let data = JSON.parse(this.responseText);
-                console.log(data);
-                if (data.status == "success") {
-
-                    let str = `        <tr>
-    <th class="id_header"><span>ID</span></th>
-    <th class="name_header"><span>Name</span></th>
-    <th class="email_header"><span>Email</span></th>
-    <th class="address_header"><span>Address</span></th>
-    <th class="role_header"><span>Role</span></th>
-    <th class="admin_header"><span>Admin</span></th>
-  </tr>`;
-                    for (let i = 0; i < data.rows.length; i++) {
-                        let row = data.rows[i];
-                        //console.log("row", row);
-                        str += ("<tr><td class='id'>" + row._id
-                            + "</td><td class='name'><span>" + row.name + "</span>"
-                            + "</td><td class='email'><span>" + row.email + "</span>"
-                            + "</td><td class='address'><span>" + row.address + "</span>"
-                            + "</td><td class='admin'><span>" + row.admin + "</span>"
-                            + "</td></tr>");
-                    }
-                    //console.log(str);
-                    document.getElementById("users").innerHTML = str;
-
-                    // select all spans under the email class of td elements
-                    let emails = document.querySelectorAll("td[class='email'] span");
-                    for (let j = 0; j < emails.length; j++) {
-                        emails[j].addEventListener("click", editCell);
-                    }
-
-                    // select all spans under the name class of td elements
-                    let names = document.querySelectorAll("td[class='name'] span");
-                    for (let j = 0; j < names.length; j++) {
-                        names[j].addEventListener("click", editCell);
-                    }
-
-                    // select all spans under the address class of td elements
-                    let address = document.querySelectorAll("td[class='address'] span");
-                    for (let j = 0; j < address.length; j++) {
-                        address[j].addEventListener("click", editCell);
-                    }
-
-                    // select all spans under the admin class of td elements
-                    let admin = document.querySelectorAll("td[class='admin'] span");
-                    for (let j = 0; j < admin.length; j++) {
-                        admin[j].addEventListener("click", editCell);
-                    }
+const username = document.getElementById('name')
+const email = document.getElementById('email')
+const address = document.getElementById('address')
+const password = document.getElementById('password')
+const role = document.getElementById('role')
+const usersContainer = document.querySelector('.searchResults')
+const addUserForm = document.querySelector('.add-user-form')
 
 
+const renderUsers = (users) => {
+    users.forEach(user => {
+        output += `
+    <div class="card">
+        <div class="user">
+            <div class="img"></div>
+            <div class="name">${user.name}</div>
+            <div class="email">${user.email}</div>
 
-
-
-
-
-
-
-
-                } else {
-                    console.log("Error!");
-                }
-
-            } else {
-
-                // not a 200, could be anything (404, 500, etc.)
-                console.log(this.status);
-
-            }
-
-        } else {
-            console.log("ERROR", this.status);
-        }
-    }
-    xhr.open("GET", "/user/dashboard");
-    xhr.send();
+        </div>
+   
+        <hr class="seperator">
+        <div class="buttonContainer">
+            <button class="editBtn">edit</button>
+            <button class="deleteBtn">delete</button>
+        </div>
+    </div>
+        `
+    })
+    usersContainer.innerHTML = output
 }
-getCustomers();
 
-function editCell(e) {
+let output = ''
+const url = 'http://localhost:8000/api/users'
+fetch(url)
+    .then(res => res.json())
+    .then(data => renderUsers(data))
+    .catch((err) => console.log(err))
 
-    // add a listener for clicking on the field to change email
-    // span's text
-    let spanText = e.target.innerHTML;
-    // span's parent (td)
-    let parent = e.target.parentNode;
-    // create a new input, and add a key listener to it
-    let input = document.createElement("input");
-    input.value = spanText;
-    input.addEventListener("keyup", function (e) {
-        let s = null;
-        let v = null;
-        // pressed enter
-        if (e.which == 13) {
-            v = input.value;
-            let newSpan = document.createElement("span");
-            // have to wire an event listener to the new element
-            newSpan.addEventListener("click", editCell);
-            newSpan.innerHTML = v;
-            parent.innerHTML = "";
-            parent.appendChild(newSpan);
-            let dataToSend = {
-                id: parent.parentNode.querySelector(".id").innerHTML,
-                name: parent.parentNode.querySelector(".name").innerHTML,
-                email: v
-            };
+// const editBtn = document.querySelector('.editBtn')
+// editBtn.addEventListener('click', () => console.log('clicked'))
 
-            // now send
-            const xhr = new XMLHttpRequest();
-            xhr.onload = function () {
-                if (this.readyState == XMLHttpRequest.DONE) {
+async function handleForm(e) {
+    e.preventDefault();
 
-                    // 200 means everthing worked
-                    if (xhr.status === 200) {
-                        document.getElementById("status").innerHTML = "Record updated.";
-                        getCustomers();
+    let myForm = e.target
+    let fd = new FormData(myForm)
 
+    //look at all the contents
+    // for (let key of fd.keys()) {
+    //     console.log(key, fd.get(key));
+    // }
+    let json = await convertFD2JSON(fd)
+    // console.log(json);
+    //send request with the formdata
+    let url = 'http://localhost:8000/user/dashboard'
 
-                    } else {
+    // let req = new Request(url, {
+    //     headers: {
+    //         Accept: 'application/json',
+    //         'Content-Type': 'application/json',
+    //     },
+    //     body: json,
+    //     method: 'POST'
+    // })
+    // console.log(req);
+    sendHttpRequest('POST', url, json)
+        .then(res => {
+            console.log(res);
+        })
 
-                        // not a 200, could be anything (404, 500, etc.)
-                        console.log(this.status);
+}
+const sendHttpRequest = async (method, url, data) => {
+    return await fetch(url, {
+        method: method,
+        body: data,
+        headers: data ? { 'Content-Type': 'application/json' } : {}
+    })
+        .then(res => res.json())
+        .then(user => console.log(user))
+        // .then(data => renderUsers(data))
+        .catch((err) => console.log(err))
+}
 
-                    }
-
-                } else {
-                    console.log("ERROR", this.status);
-                }
-            }
-            xhr.open("POST", "/update-customer");
-            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            //console.log("dataToSend", "id=" + dataToSend.id + "&email=" + dataToSend.email);
-            xhr.send("id=" + dataToSend.id + "&email=" + dataToSend.email);
-
-        }
-    });
-    parent.innerHTML = "";
-    parent.appendChild(input);
-
+async function convertFD2JSON(formData) {
+    let obj = {}
+    for (let key of formData.keys()) {
+        obj[key] = formData.get(key)
+    }
+    return JSON.stringify(obj)
 }
 
 
-document.getElementById("submit").addEventListener("click", function (e) {
-    e.preventDefault();
 
-    let formData = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value
-    };
-    document.getElementById("name").value = "";
-    document.getElementById("email").value = "";
+//Create - Insert new user
+//Method: post
+addUserForm.addEventListener('submit', handleForm)
+    // (e) => {
+    //     const formData = new FormData(addUserForm)
+    //     const searchParams = new URLSearchParams()
+
+    //     for (const pair of formData) {
+    //         searchParams.append(pair[0], pair[1])
+    //     }
+
+    //     console.log(searchParams);
+
+    //     async function addUser(url = '', data) {
+    //         try {
+    //             const response = await fetch(url, {
+    //                 method: 'POST',
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+
+    //                 },
+    //                 body: data
+    //             })
+    //             return response.json()
+    //         } catch (err) { console.log(err) };
+    //     }
+
+    //     addUser('http://localhost:8000/user/dashboard',
+    //         searchParams
+    //         // name: username.value,
+    //         // email: email.value,
+    //         //     password: password.value,
+    //         //     address: address.value,
+    //         //     role: role.value
+    //         // })
+    //     )
+    //         .then(data => {
+    //             console.log('Success:', data);
+    //         })
+    //         .catch(err => console.log("Error:", err))
 
 
-    const xhr = new XMLHttpRequest();
-    xhr.onload = function () {
-        if (this.readyState == XMLHttpRequest.DONE) {
+    // })
 
-            // 200 means everthing worked
-            if (xhr.status === 200) {
 
-                getCustomers();
-                document.getElementById("status").innerHTML = "DB updated.";
 
-            } else {
-
-                // not a 200, could be anything (404, 500, etc.)
-                console.log(this.status);
-
-            }
-
-        } else {
-            console.log("ERROR", this.status);
-        }
-    }
-    xhr.open("POST", "/add-customer");
-    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.send("name=" + formData.name + "&email=" + formData.email);
-
-})
-
-document.getElementById("deleteAll").addEventListener("click", function (e) {
-    e.preventDefault();
-
-    const xhr = new XMLHttpRequest();
-    xhr.onload = function () {
-        if (this.readyState == XMLHttpRequest.DONE) {
-
-            // 200 means everthing worked
-            if (xhr.status === 200) {
-
-                getCustomers();
-                document.getElementById("status").innerHTML = "All records deleted.";
-
-            } else {
-
-                // not a 200, could be anything (404, 500, etc.)
-                console.log(this.status);
-
-            }
-
-        } else {
-            console.log("ERROR", this.status);
-        }
-    }
-    xhr.open("POST", "/delete-all-customers");
-    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.send();
-});

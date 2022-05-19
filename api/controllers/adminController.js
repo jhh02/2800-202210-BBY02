@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler')
 const User = require('../models/userModel')
 
 const addUser = asyncHandler(async (req, res) => {
-    const { name, email, password, address, role, isAdmin } = req.body
+    const { name, email } = req.body
 
     if (!name || !email || !password) {
         res.status(400)
@@ -27,10 +27,10 @@ const addUser = asyncHandler(async (req, res) => {
     const user = await User.create({
         name,
         email,
-        password: hashedPassword,
-        address,
-        role,
-        isAdmin,
+        // password: hashedPassword,
+        // address,
+        // role,
+        // isAdmin,
     })
 
     if (user) {
@@ -58,8 +58,8 @@ const editUser = asyncHandler(async (req, res) => {
     try {
         const id = req.params.id
 
-        const { name, email, password, address, role, isAdmin } = req.body
-        console.log(req.body);
+        // const { name, email, password, address, role, isAdmin } = req.body
+        console.log(req.body.payload);
 
         const updatedUser = await User.findByIdAndUpdate(id, { $set: req.body }, {
             new: true

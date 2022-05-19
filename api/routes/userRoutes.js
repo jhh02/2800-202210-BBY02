@@ -8,6 +8,7 @@ const User = require('../models/userModel')
 
 
 
+
 // show register page /user
 router.get('/', (req, res) => {
     let doc = fs.readFileSync('./public/html/register.html', "utf8");
@@ -66,26 +67,66 @@ router.post('/profile/:id', (req, res) => {
 
 // router.get('/getme', protect, getMe)
 
-router.get('/dashboard', (req, res) => {
-    User.find({}).exec(function (err, users) {
-        if (err) throw err;
-        // res.render('dashboard', { "users": users })
-        res.sendFile(path.join(__dirname + '../../../views/dashboard.html'))
+router.get('/dashboard', async (req, res) => {
+    let doc = await fs.readFileSync('./public/html/dashboard.html', "utf8");
+    res.send(doc)
+})
+
+router.post('/dashboard', async (req, res) => {
+    console.log(req.body);
+    const { name, email, password, address, role, isAdmin } = req.body
+
+    // Create user 
+    const newUser = await User.create({
+        name: name,
+        email: email,
+        // password: hashedPassword,
+        // address,
+        // role,
+        // isAdmin,
     })
-})
+    // console.log(newUser.name, newUser.email);
 
-router.get('/dashboard/adduser', (req, res) => {
-    res.render('addUser')
-})
+    if (newUser) {
+        res.json({
+            status: 'success',
+            name: name,
+            email: email,
+        })
+        // let doc = fs.readFileSync('./public/html/dashboard.html', "utf8");
+        // res.send(doc)
+        // res.send('/user/dashboard')
+        // res.status(201).json({
+        //     _id: user.id,
+        //     name: user.name,
+        //     email: user.email,
+        //     password: user.password,
+        //     address: user.address,
+        //     role: user.role,
+        //     isAdmin: user.isAdmin,
+        //     token: generateToken(user._id)
+        // })
+    } else {
+        res.status(400)
+        throw new Error('Invalid User')
+    }
 
-router.post('/dashboard/adduser', addUser)
+})
 
 router.get('/dashboard/:id', (req, res) => {
     const id = req.params.id
+    console.log(req.params);
     User.findById(id)
         .then(result => {
-            res.render('user-details', { user: result })
+            return result;
         })
+        .then(data => {
+            console.log(data);
+            res.send(data)
+        })
+
+    // let doc = fs.readFileSync(`./public/html/dashboard/${id}`)
+
 })
 
 // router.get('/dashboard/:id', (req, res) => {
@@ -108,3 +149,6 @@ router.get('/dashboard/adduser', (req, res) => {
 router.post('/dashboard/adduser', addUser)
 
 module.exports = router
+
+
+
