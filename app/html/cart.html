@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/css/availabledonations.css">
+    <link rel="stylesheet" href="/css/cart.css">
     <!-- <link rel="stylesheet" href="css/availabledonations.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>availabledonations</title>
+    <title>cart</title>
 
 
 </head>
@@ -26,22 +26,18 @@
                 <div>2 unread</div>
             </div>
         </div>
-
-        <div class="">
-            <div class="home">
-                <a href="/app/html/role.html">
-                    <i class="fa fa-shopping-cart fa-3x"></i>
-                </a>
-            </div>
-            <h1> Your Cart</h1>
+        <div class="client"><i class="fa fa-user fa-1.5x"></i>Hi, Dongil</div>
+       
+        <div class="home">   
+            <h1> Your Cart<a href="/app/html/role.html">
+                <i class="fa fa-shopping-cart fa-2x"></i></a></h1>
         </div>
-
 
         <div class="third">
             <div class="card">
                 <div class="image">
                     <!-- <img src="/img/strawberry_muffins.jpg"  alt="Responsive image" class="img-fluid"> -->
-                    <img src="/public/img/strawberry_muffins.jpg" alt="Responsive image" class="img-fluid">
+                    <img src="/img/strawberry_muffins.jpg" alt="Responsive image" class="img-fluid">
 
                 </div>
                 <div class="content">
@@ -51,7 +47,7 @@
             </div>
             <div class="card">
                 <div class="image">
-                    <img src="/public/img/croissant.jpg" alt="Responsive image" class="img-fluid">
+                    <img src="/img/croissant.jpg" alt="Responsive image" class="img-fluid">
 
                 </div>
                 <div class="content">
@@ -61,32 +57,33 @@
             </div>
 
         </div>
-
-        <a href="./thanksreceiver.html">
-            <input type="submit" value="Reserve Order" class="cart-continue">
-        </a>
+        <div class="btngroup">
+            <button class="btnCart" onclick="location.href='/thanksreceiver' ">Reserve Order</button> 
+        </div>
+    
+        
         <div class="footer">
             <div class="copyright">&copy 2022 Team BBY36 Comp2800</div>
 
             <div class="icons">
 
-                <div class="home">
+                <div class="child">
                     <a href="/app/html/role.html">
                         <i class="fa fa-home fa-3x"></i>
                     </a>
                 </div>
 
-                <div class="cart">
+                <div class="child">
                     <a href="/app/html/cart.html">
                         <i class="fa fa-cart-plus fa-3x"></i>
                     </a>
                 </div>
 
-                <div class="chat">
+                <div class="child">
 
                     <i class="fa fa-wechat fa-3x"></i>
                 </div>
-                <div class="profile">
+                <div class="child">
                     <a href="/app/html/profile.html">
                         <i class="fa fa-user fa-3x"></i>
                     </a>

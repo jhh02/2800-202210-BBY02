@@ -109,6 +109,50 @@ app.get("/deliveryacception", function (req, res) {
     res.send(doc);
 });
 
+app.get("/thanksdonor", function (req, res) {
+    let doc = fs.readFileSync("./app/html/thanksdonor.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
+
+
+app.get("/addedtocart", function (req, res) {
+    let doc = fs.readFileSync("./app/html/addedtocart.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
+
+app.get("/cart", function (req, res) {
+    let doc = fs.readFileSync("./app/html/cart.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
+
+
+app.get("/thanksreceiver", function (req, res) {
+    let doc = fs.readFileSync("./app/html/thanksreceiver.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
+
+app.get("/thanksdriver", function (req, res) {
+    let doc = fs.readFileSync("./app/html/thanksdriver.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
+
+app.get("/index2", function (req, res) {
+    let doc = fs.readFileSync("./app/html/index2.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
+
 app.get("/driver", function (req, res) {
     let doc = fs.readFileSync("./app/html/driver.html", "utf8");
 

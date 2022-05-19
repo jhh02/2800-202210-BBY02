@@ -120,10 +120,17 @@ body {
     filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFF", endColorstr="#ECDCC5", GradientType=1);
 }
 
-.landing-img {
+.left img{
     height: 50vh;
-    /* width: 50vh; */
+    width: 100vh; 
     margin-bottom: 3rem;
+    object-fit: fill;
+}
+.left{
+ 
+    justify-content: center;
+    vertical-align: middle;
+    float:left;
 }
 
 .words {
@@ -203,4 +210,9 @@ button a {
         font-size: 2rem;
         font-weight: bold;
     }
+}
+
+@media screen and (min-width: 1980px) {
+    
+
 }
