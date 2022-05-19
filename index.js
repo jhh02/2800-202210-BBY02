@@ -146,6 +146,13 @@ app.get("/thanksdriver", function (req, res) {
     res.send(doc);
 });
 
+app.get("/index2", function (req, res) {
+    let doc = fs.readFileSync("./app/html/index2.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
+
 app.get("/driver", function (req, res) {
     let doc = fs.readFileSync("./app/html/driver.html", "utf8");
 
