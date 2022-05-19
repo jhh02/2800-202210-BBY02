@@ -27,8 +27,8 @@
             <a class="delete" data-doc="<%= user._id %> "> Delete</a>
         </button>
 
-        <div class="edit">
-            <form action="/user/dashboard/<% user._id %> " method="PATCH" class="form-signups">
+        <div class="edit-form">
+            <form action="/user/dashboard/<% user._id %> " method="post" class="form-signups">
                 <div class="form-signup">
                     <input type="email" name="email" id="email" placeholder="Email" required>
                 </div>
@@ -68,11 +68,11 @@
                             <label for="organization">No</label>
                         </div>
                     </div>
-                    <button>
-                        <a class="edit" data-doc="<%=user.id%>">Edit</a>
-                    </button>
 
                 </div>
+                <button>
+                    <a class="edit" data-doc="<%= user._id %>">Edit</a>
+                </button>
         </div>
     </div>
 
@@ -83,10 +83,10 @@
         editBtn.addEventListener('click', (e) => {
             const endpoint = `/user/dashboard/${editBtn.dataset.doc}`;
             fetch(endpoint, {
-                method: 'PATCH',
+                method: 'PATCH'
             })
-                .then(response => response.json())
-                .then(data => window.location.href = data.redirect)
+                .then(response => console.log(response))
+                // .then(data => window.location.href = data.redirect)
                 .catch(err => console.log(err));
         })
 
@@ -97,9 +97,9 @@
             fetch(endpoint, {
                 method: 'DELETE',
             })
-                .then(response => response.json())
-                .then(data => window.location.href = data.redirect)
-                .catch(err => console.log(err));
+                .then(response => console.log(response))
+            // .then(data => window.location.href = data.redirect)
+            // .catch(err => console.log(err));
         });
 
     </script>

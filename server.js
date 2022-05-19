@@ -8,18 +8,31 @@ const cors = require('cors')
 const morgan = require('morgan')
 require('dotenv').config()
 
-const { errorHandler } = require('./middleware/errorMiddleware')
-const connectDB = require('./config/db')
+const { errorHandler } = require('./api/middleware/errorMiddleware')
+const connectDB = require('./api/config/db')
 const port = process.env.PORT || 8000
 
+
+async function toArray(iterator) {
+    return new Promise((resolve, reject) => {
+        iterator.toArray((err, res) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(res);
+            }
+        });
+    });
+}
+
 //connect to mongodb
-connectDB()
+connectDB();
+
 //initialize express
 const app = express()
 //register view engine
-app.set('view engine', 'ejs')
 var corsOptions = {
-    origin: "http://localhost:8080"
+    origin: "http://localhost:8000"
 };
 app.use(cors(corsOptions));
 // app.set('views', path.join(__dirname, 'views'));
@@ -28,23 +41,25 @@ if (process.env.NODE_ENV === 'development') {
 }
 app.use(morgan('tiny'))
 //parsing the incoming data
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cookieParser())
 
 //static files
+app.use('/html', express.static('./public/html'))
 app.use('/css', express.static('public/css'))
 app.use('/fonts', express.static('public/fonts'))
 app.use('/img', express.static('public/img'))
 app.use('/js', express.static('public/js'))
-//serving public files
-app.use(cookieParser())
 
 //routes
-const userRoutes = require('./routes/userRoutes')
-const rootRoutes = require('./routes/root')
+const rootRoutes = require('./api/routes/root')
+const apiRoutes = require('./api/routes/apiRoutes')
+const userRoutes = require('./api/routes/userRoutes');
 // const donationRoutes = require('./routes/donationRoutes')
 
 app.use('/', rootRoutes)
+app.use('/api', apiRoutes)
 app.use('/user', userRoutes)
 // app.use('/donation', donationRoutes)
 

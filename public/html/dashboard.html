@@ -6,19 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/dashboard.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="/js/dashboard.js" defer></script>
-    <title>Document</title>
+    <title>Dashboard</title>
 </head>
 
 <body>
     <h1>Users</h1>
-
-
-
-    <!-- 
-    <form action="/user/dashboard" method="get">
-        <input class="prof" type="submit" value="Logout" />
-    </form> -->
     <div class="admin">
         <header class="admin__header">
             <div class="logo"><img src="/img/logo.png" />
@@ -101,20 +95,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="tabContainer">
-                <!--
-                    <div class="tabButton"><span>Customer base</span><i class="caret fas fa-angle-up"></i></div>
-                    <div class="tabButtonBorder"></div>
-                    <div class="panel">
-                        <ul>
-                            <li><input type="checkbox" /><span>İstanbul</span> </li>
-                            <li><input type="checkbox" /><span>Ankara</span> </li>
-                            <li><input type="checkbox" /><span>İzmir</span> </li>
-                            <li><input type="checkbox" /><span>Balıkesir</span> </li>
-                        </ul>
-                    </div>
-                -->
-            </div>
+
         </aside>
         <main class="admin__main">
 
@@ -125,32 +106,26 @@
             </div>
 
 
-            <div class="user-content">
-                <% if (users.length> 0) { %>
-                    <% users.forEach(user=> { %>
-                        <a href="/user/dashboard/<%= user._id  %> ">
-                            <h3 class="name">
-                                <%= user.name %>
-                            </h3>
-                            <div class="email">
-                                <%= user.email %>
-                            </div>
-                            <div class="password">
-                                <%= user.password %>
-                            </div>
-                            <div class="address">
-                                <%= user.address %>
-                            </div>
-                            <div class="role">
-                                <%= user.role %>
-                            </div>
-                            <div class="admin">
-                                <%= (user.isAdmin) ? 'Yes' : 'No' %>
-                            </div>
-                        </a>
-                        <%}) %>
-                            <%}%>
+            <div id="users">
+                <!-- Populate users -->
             </div>
+
+
+            <form>
+                <fieldset>
+                    <legend>Add a User</legend>
+                    <input type="text" placeholder="name" id="name" />
+                    <input type="email" placeholder="email" id="email" />
+                    <input type="password" placeholder="password" id="password" />
+                    <input type="text" placeholder="address" id="address" />
+                    <input type="text" placeholder="role" id="role" />
+                    <input type="button" id="submit" value="Submit" />
+                </fieldset>
+                <fieldset>
+                    <legend>Delete All Customers (use with caution!)</legend>
+                    <input type="button" id="deleteAll" value="Delete All" />
+                </fieldset>
+            </form>
 
 
             <div class="searchResults">
@@ -320,173 +295,8 @@
                         </div>
                     </div>
                 </div>
-                <!--<div class="card">
-                        <div class="user">
-                            <div class="img"></div>
-                            <div class="nameAndStars">
-                                <div class="name">Jane Anderson</div>
-                                <div class="stars">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                            <div class="options">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </div>
-                        </div>
-                        <div class="skills">
-                            <span class="header">Skills</span>
-                            <div class="skillsContainer">
-                                <a href="#" class="skill">Crossfit</a>
-                                <a href="#" class="skill">TRX</a>
-                                <a href="#" class="skill">Yoga</a>
-                            </div>
-                        </div>
-                        <hr class="seperator" />
-                        <div class="customers">
-                            <span class="header">Customers</span>
-                            <div class="customersContainer">
-                                <img src="https://i.pravatar.cc/50?img=1" />
-                                <img src="https://i.pravatar.cc/50?img=2" />
-                                <img src="https://i.pravatar.cc/50?img=3" />
-                                <img src="https://i.pravatar.cc/50?img=4" />
-                                <img src="https://i.pravatar.cc/50?img=5" />
-                            </div>
-
-                        </div>
-                        <hr class="seperator" />
-                        <div class="activity">
-                            <div class="headerContainer">
-                                <span class="header">Activity</span>
-                                <select>
-                                    <option value="Today">Today</option>
-                                    <option value="Tomorrow">Tomorrow</option>
-                                    <option value="Toyota">Toyota</option>
-                                </select>
-                            </div>
-                            <div class="chartContainer">
-                                <canvas id="activityChart4"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="user">
-                            <div class="img"></div>
-                            <div class="nameAndStars">
-                                <div class="name">Jane Anderson</div>
-                                <div class="stars">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                            <div class="options">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </div>
-                        </div>
-                        <div class="skills">
-                            <span class="header">Skills</span>
-                            <div class="skillsContainer">
-                                <a href="#" class="skill">Crossfit</a>
-                                <a href="#" class="skill">TRX</a>
-                                <a href="#" class="skill">Yoga</a>
-                            </div>
-                        </div>
-                        <hr class="seperator" />
-                        <div class="customers">
-                            <span class="header">Customers</span>
-                            <div class="customersContainer">
-                                <img src="https://i.pravatar.cc/50?img=1" />
-                                <img src="https://i.pravatar.cc/50?img=2" />
-                                <img src="https://i.pravatar.cc/50?img=3" />
-                                <img src="https://i.pravatar.cc/50?img=4" />
-                                <img src="https://i.pravatar.cc/50?img=5" />
-                            </div>
-
-                        </div>
-                        <hr class="seperator" />
-                        <div class="activity">
-                            <div class="headerContainer">
-                                <span class="header">Activity</span>
-                                <select>
-                                    <option value="Today">Today</option>
-                                    <option value="Tomorrow">Tomorrow</option>
-                                    <option value="Toyota">Toyota</option>
-                                </select>
-                            </div>
-                            <div class="chartContainer">
-                                <canvas id="activityChart5"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="user">
-                            <div class="img"></div>
-                            <div class="nameAndStars">
-                                <div class="name">Jane Anderson</div>
-                                <div class="stars">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                            <div class="options">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </div>
-                        </div>
-                        <div class="skills">
-                            <span class="header">Skills</span>
-                            <div class="skillsContainer">
-                                <a href="#" class="skill">Crossfit</a>
-                                <a href="#" class="skill">TRX</a>
-                                <a href="#" class="skill">Yoga</a>
-                            </div>
-                        </div>
-                        <hr class="seperator" />
-                        <div class="customers">
-                            <span class="header">Customers</span>
-                            <div class="customersContainer">
-                                <img src="https://i.pravatar.cc/50?img=1" />
-                                <img src="https://i.pravatar.cc/50?img=2" />
-                                <img src="https://i.pravatar.cc/50?img=3" />
-                                <img src="https://i.pravatar.cc/50?img=4" />
-                                <img src="https://i.pravatar.cc/50?img=5" />
-                            </div>
-
-                        </div>
-                        <hr class="seperator" />
-                        <div class="activity">
-                            <div class="headerContainer">
-                                <span class="header">Activity</span>
-                                <select>
-                                    <option value="Today">Today</option>
-                                    <option value="Tomorrow">Tomorrow</option>
-                                    <option value="Toyota">Toyota</option>
-                                </select>
-                            </div>
-                            <div class="chartContainer">
-                                <canvas id="activityChart6"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
         </main>
-        <footer class="admin__footer">
-            <a class="link active" href="#"><i class="fa fa-home"></i><span>Dashboard</span></a>
-            <a class="link" href="#"><i class="fa fa-calendar"></i><span>Schedule</span></a>
-            <a class="link" href="#"><i class="fas fa-chalkboard-teacher"></i><span>Trainers</span></a>
-            <a class="link" href="#"><i class="fa fa-users"></i><span>Customers</span></a>
-        </footer>
     </div>
-
-</body>
 </body>
 
 </html>
