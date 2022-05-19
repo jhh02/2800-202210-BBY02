@@ -209,15 +209,30 @@ body {
 }
 
 
-@media screen and (min-width: 600px) {
+/* @media screen and (min-width: 600px) {
+
+    body {
+        background: hsla(0, 0%, 100%, 1);
+    
+        background: linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+    
+        background: -moz-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+    
+        background: -webkit-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+    
+        filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFF", endColorstr="#ECDCC5", GradientType=1);
+        height: 140vh;
+    }
+
     .login-welcome {
-        font-size: 4rem;
+        margin-top: 10rem;
+        font-size: 3.5rem;
     }
 
 
     .login-welcome-messege {
-        min-width: 60vw;
-        font-size: 3em;
+        max-width: 70vw;
+        font-size: 2.5em;
         font-weight: 100;
         margin-bottom: 5rem;
     }
@@ -225,7 +240,7 @@ body {
     #name,
     #password,
     #submit {
-        font-size: 3rem;
+        font-size: 2rem;
     }
 
     .login-icons {
@@ -238,4 +253,4 @@ body {
         font-size: 2rem;
     }
 
-}
+} */
