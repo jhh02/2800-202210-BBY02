@@ -1,3 +1,10 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
 /* hind-300 - latin */
 @font-face {
     font-family: 'Hind';
@@ -98,16 +105,10 @@
     /* Legacy iOS */
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Hind', sans-serif;
-}
-
-
-
 body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Hind', sans-serif;
     background: hsla(0, 0%, 100%, 1);
 
     background: linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
@@ -117,80 +118,101 @@ body {
     background: -webkit-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
 
     filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFF", endColorstr="#ECDCC5", GradientType=1);
-    height: 100vh;
 }
 
-.signup-wrapper {
+.left img{
+    height: 50vh;
+    width: 100vh; 
+    margin-bottom: 3rem;
+    object-fit: fill;
+}
+.left{
+ 
+    justify-content: center;
+    vertical-align: middle;
+    float:left;
+}
+
+.words {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
 }
 
-.signup-title {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-}
-
-.signup-msg {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-    min-width: 200px;
+.description {
+    font-size: 2.5rem;
+    max-width: 100%;
+    font-weight: bolder;
     text-align: center;
+    margin-bottom: 2.5rem;
 }
 
-.form-signups {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-}
-
-#name,
-#email,
-#password,
-#address {
-    width: 80vw;
-    padding: 1rem 2rem;
-    border-radius: 15px;
-    border: none;
-    font-size: 1rem;
-}
-
-
-.form-signup #submit {
-    width: 80vw;
-    padding: 1rem 1rem;
-    border-radius: 15px;
-    border: none;
-    color: white;
-    background-color: #9c6644;
-    font-size: 1.3rem;
-    margin-bottom: 5rem;
-    margin-top: 5rem;
-    font-weight: 900;
-}
-
-
-.radio-title {
-    margin: 2rem 0;
-    font-size: 1rem;
-    font-weight: 700;
-}
-
-
-.form-signup-radio {
-    display: flex;
-    justify-content: space-around;
-    width: 80vw;
-    font-size: 1rem;
+.explanation {
+    max-width: 400px;
+    font-size: 1.5rem;
     font-weight: 500;
+    margin-bottom: 3.5rem;
 }
 
 
-.registernow a {
+.btns {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+button {
+    padding: 1.5rem 3.5rem;
+    border-radius: 20px;
+    background-color: white;
+    border: white solid 2px;
+    cursor: pointer;
+}
+
+#signin-btn {
+    background-color: #472c17;
+    color: white;
+    font-size: medium;
+}
+
+button a {
+    list-style: none;
     text-decoration: none;
-    color: #9c6644;
+    font-size: 1.8rem;
+    color: #262626;
+    font-weight: bold;
+}
+
+#register-btn {
+    font-size: medium;
+}
+
+
+@media screen and (min-width: 600px) {
+    .description {
+        font-size: 4rem;
+        min-width: 80vw;
+    }
+
+    .explanation {
+        min-width: 80vw;
+        font-size: 2rem;
+        font-weight: 100;
+        margin-bottom: 5rem;
+    }
+
+    button {
+        padding: 2rem 6rem;
+        border-radius: 20px;
+        background-color: white;
+        border: white solid 2px;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+}
+
+@media screen and (min-width: 1980px) {
+    
+
 }

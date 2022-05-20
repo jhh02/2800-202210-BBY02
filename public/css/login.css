@@ -129,13 +129,14 @@ body {
 }
 
 .login-welcome {
+    margin-top: 40px;
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 2rem;
 }
 
 .login-welcome-messege {
-    font-size: 1rem;
+    font-size: 1.2rem;
     min-width: 400px;
     text-align: center;
     margin-bottom: 3rem;
@@ -166,7 +167,7 @@ body {
     margin-bottom: 1rem;
 }
 
-.form-login_comp #submit {
+.form-login_comp input[type="submit"] {
     width: 80vw;
     padding: 1rem 1.5rem;
     border-radius: 15px;
@@ -174,7 +175,7 @@ body {
     color: white;
     background-color: #9c6644;
     font-size: 1rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2.25rem;
     cursor: pointer;
 }
 
@@ -185,16 +186,16 @@ body {
 }
 
 .icon {
-    margin-top: 3rem;
+    margin-top: 1.25rem;
     height: 80px;
     border-radius: 15px;
-    padding: 1rem 3rem;
+    padding: 1rem 2.5rem;
     cursor: pointer;
 
 }
 
 .registernow {
-    margin-top: 5rem;
+    margin-top: 2rem;
 }
 
 .registernow a {
@@ -208,19 +209,33 @@ body {
 }
 
 
-@media screen and (min-width: 600px) {
+/* @media screen and (min-width: 600px) {
+
+    body {
+        background: hsla(0, 0%, 100%, 1);
+    
+        background: linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+    
+        background: -moz-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+    
+        background: -webkit-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+    
+        filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFF", endColorstr="#ECDCC5", GradientType=1);
+        height: 140vh;
+    }
+
     .login-welcome {
-        font-size: 4rem;
+        margin-top: 10rem;
+        font-size: 3.5rem;
     }
 
 
     .login-welcome-messege {
-        min-width: 60vw;
-        font-size: 3em;
+        max-width: 70vw;
+        font-size: 2.5em;
         font-weight: 100;
         margin-bottom: 5rem;
     }
-
 
     #name,
     #password,
@@ -233,8 +248,9 @@ body {
     }
 
     .registernow,
+    .form-login_comp-recovery,
     .continue {
         font-size: 2rem;
     }
 
-}
+} */

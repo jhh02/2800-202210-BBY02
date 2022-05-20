@@ -5,6 +5,7 @@ const router = express.Router()
 const fs = require('fs')
 const { protect } = require('../middleware/authMiddleware')
 const User = require('../models/userModel')
+const { append } = require('express/lib/response')
 
 
 
@@ -68,19 +69,20 @@ router.post('/profile/:id', (req, res) => {
 // router.get('/getme', protect, getMe)
 
 router.get('/dashboard', async (req, res) => {
-    let doc = await fs.readFileSync('./public/html/dashboard.html', "utf8");
+    let doc = fs.readFileSync('./public/html/dashboard.html', "utf8")
     res.send(doc)
 })
 
 router.post('/dashboard', async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const { name, email, password, address, role, isAdmin } = req.body
+    // console.log(name, email);
 
     // Create user 
     const newUser = await User.create({
         name: name,
         email: email,
-        // password: hashedPassword,
+        // password: hashedPassword, 
         // address,
         // role,
         // isAdmin,
@@ -93,8 +95,9 @@ router.post('/dashboard', async (req, res) => {
             name: name,
             email: email,
         })
-        // let doc = fs.readFileSync('./public/html/dashboard.html', "utf8");
+        // let doc = fs.readFile('./public/html/dashboard.html', "utf8");
         // res.send(doc)
+
         // res.send('/user/dashboard')
         // res.status(201).json({
         //     _id: user.id,

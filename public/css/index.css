@@ -1,111 +1,6 @@
-* {
-    box-sizing: border-box;
+body {
     margin: 0;
     padding: 0;
-
-}
-
-/* hind-300 - latin */
-@font-face {
-    font-family: 'Hind';
-    font-style: normal;
-    font-weight: 300;
-    src: url('../fonts/hind-v16-latin-300.eot');
-    /* IE9 Compat Modes */
-    src: local(''),
-        url('../fonts/hind-v16-latin-300.eot?#iefix') format('embedded-opentype'),
-        /* IE6-IE8 */
-        url('../fonts/hind-v16-latin-300.woff2') format('woff2'),
-        /* Super Modern Browsers */
-        url('../fonts/hind-v16-latin-300.woff') format('woff'),
-        /* Modern Browsers */
-        url('../fonts/hind-v16-latin-300.ttf') format('truetype'),
-        /* Safari, Android, iOS */
-        url('../fonts/hind-v16-latin-300.svg#Hind') format('svg');
-    /* Legacy iOS */
-}
-
-/* hind-regular - latin */
-@font-face {
-    font-family: 'Hind';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../fonts/hind-v16-latin-regular.eot');
-    /* IE9 Compat Modes */
-    src: local(''),
-        url('../fonts/hind-v16-latin-regular.eot?#iefix') format('embedded-opentype'),
-        /* IE6-IE8 */
-        url('../fonts/hind-v16-latin-regular.woff2') format('woff2'),
-        /* Super Modern Browsers */
-        url('../fonts/hind-v16-latin-regular.woff') format('woff'),
-        /* Modern Browsers */
-        url('../fonts/hind-v16-latin-regular.ttf') format('truetype'),
-        /* Safari, Android, iOS */
-        url('../fonts/hind-v16-latin-regular.svg#Hind') format('svg');
-    /* Legacy iOS */
-}
-
-/* hind-500 - latin */
-@font-face {
-    font-family: 'Hind';
-    font-style: normal;
-    font-weight: 500;
-    src: url('../fonts/hind-v16-latin-500.eot');
-    /* IE9 Compat Modes */
-    src: local(''),
-        url('../fonts/hind-v16-latin-500.eot?#iefix') format('embedded-opentype'),
-        /* IE6-IE8 */
-        url('../fonts/hind-v16-latin-500.woff2') format('woff2'),
-        /* Super Modern Browsers */
-        url('../fonts/hind-v16-latin-500.woff') format('woff'),
-        /* Modern Browsers */
-        url('../fonts/hind-v16-latin-500.ttf') format('truetype'),
-        /* Safari, Android, iOS */
-        url('../fonts/hind-v16-latin-500.svg#Hind') format('svg');
-    /* Legacy iOS */
-}
-
-/* hind-600 - latin */
-@font-face {
-    font-family: 'Hind';
-    font-style: normal;
-    font-weight: 600;
-    src: url('../fonts/hind-v16-latin-600.eot');
-    /* IE9 Compat Modes */
-    src: local(''),
-        url('../fonts/hind-v16-latin-600.eot?#iefix') format('embedded-opentype'),
-        /* IE6-IE8 */
-        url('../fonts/hind-v16-latin-600.woff2') format('woff2'),
-        /* Super Modern Browsers */
-        url('../fonts/hind-v16-latin-600.woff') format('woff'),
-        /* Modern Browsers */
-        url('../fonts/hind-v16-latin-600.ttf') format('truetype'),
-        /* Safari, Android, iOS */
-        url('../fonts/hind-v16-latin-600.svg#Hind') format('svg');
-    /* Legacy iOS */
-}
-
-/* hind-700 - latin */
-@font-face {
-    font-family: 'Hind';
-    font-style: normal;
-    font-weight: 700;
-    src: url('../fonts/hind-v16-latin-700.eot');
-    /* IE9 Compat Modes */
-    src: local(''),
-        url('../fonts/hind-v16-latin-700.eot?#iefix') format('embedded-opentype'),
-        /* IE6-IE8 */
-        url('../fonts/hind-v16-latin-700.woff2') format('woff2'),
-        /* Super Modern Browsers */
-        url('../fonts/hind-v16-latin-700.woff') format('woff'),
-        /* Modern Browsers */
-        url('../fonts/hind-v16-latin-700.ttf') format('truetype'),
-        /* Safari, Android, iOS */
-        url('../fonts/hind-v16-latin-700.svg#Hind') format('svg');
-    /* Legacy iOS */
-}
-
-body {
     display: flex;
     flex-direction: column;
     font-family: 'Hind', sans-serif;
@@ -120,85 +15,139 @@ body {
     filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFF", endColorstr="#ECDCC5", GradientType=1);
 }
 
-.landing-img {
-    height: 50vh;
-    margin-bottom: 5rem;
+.a_layer {
+    display: table;
+    width: 100%;
+    height: 100vh;
+    
 }
 
-.words {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.description {
-    font-size: 2rem;
-    max-width: 300px;
-    font-weight: bolder;
+.a_layer_inner {
+    display: table-cell;
     text-align: center;
-    margin-bottom: 2.5rem;
+    vertical-align: middle;
 }
 
-.explanation {
-    max-width: 300px;
-    font-size: 1rem;
-    font-weight: 100;
-    margin-bottom: 5rem;
+.a_content {
+    display: inline-block;
+    color: #fff;
 }
 
+.box_a,
+.box_b {
+    width: 100vp;
+    height: 100vp;
 
-.btns {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
+    color: #fff;
+    text-align: center;
+    float: left;
+   
 }
 
-button {
-    padding: 1rem 3rem;
+.box_b {
+    
     border-radius: 20px;
-    background-color: white;
+}
+
+img {
+    width: 90%;
+    height: 90%;
+  
+}
+a{
+    text-decoration: none;
+    color :black;
+}
+.words {
+    font-size : 180%;
+    color: black;
+    margin-bottom: 15%;
+}
+.words img{
+    width: 100%;
+    height: 55%;
+    object-fit: fill;
+    
+}
+button {
+    font-size:120%;
+    padding: 1.5rem 3.5rem;
+    border-radius: 20px;
+    background-color: rgb(214, 214, 214);
     border: white solid 2px;
     cursor: pointer;
 }
 
 #signin-btn {
     background-color: #472c17;
-    color: #262626;
+    color: white;
+    font-size:120%;
 }
 
 button a {
     list-style: none;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: #262626;
     font-weight: bold;
 }
 
-#signin-btn {
-    color: white;
-}
 
-
-@media screen and (min-width: 600px) {
+@media only screen and (max-width: 600px) {
+    .a_layer_inner {
+       
+        margin: 0;
+        padding: 0;
+        
+    }
     .description {
-        font-size: 4rem;
+        font-size: 2rem;
         min-width: 80vw;
+        padding-left : 15px;
     }
 
     .explanation {
-        min-width: 60vw;
-        font-size: 2rem;
+        min-width: 80vw;
+        font-size: 1.5rem;
         font-weight: 100;
         margin-bottom: 5rem;
+        padding-left : 15px;
     }
-
+    .btns{
+        padding-left: 15px;
+    }
     button {
-        padding: 2rem 6rem;
+       
+        padding: 1.5rem 3.5rem;
         border-radius: 20px;
-        background-color: white;
+        background-color: rgb(207, 207, 207);
         border: white solid 2px;
-        font-size: 2rem;
+        font-size: 1rem;
         font-weight: bold;
     }
+
+    
+    
+    #signin-btn {
+        background-color: #472c17;
+        color: white;
+        font-size: medium;
+    }
+    
+    button a {
+        list-style: none;
+        text-decoration: none;
+        font-size: 1.8rem;
+        color: #262626;
+        font-weight: bold;
+    }
+
+    img{
+        width: 100%;
+        height: 50%;
+        object-fit: cover;
+     
+    }
+    
 }
+

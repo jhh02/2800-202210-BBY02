@@ -33,14 +33,20 @@ const renderUsers = (users) => {
 let output = ''
 const url = 'http://localhost:8000/api/users'
 fetch(url)
-    .then(res => res.json())
-    .then(data => renderUsers(data))
+    .then(res => {
+        console.log(res)
+        return res.json()
+    })
+    .then(data => {
+        console.log(data);
+        renderUsers(data)
+    })
     .catch((err) => console.log(err))
 
 // const editBtn = document.querySelector('.editBtn')
 // editBtn.addEventListener('click', () => console.log('clicked'))
 
-async function handleForm(e) {
+async function addUser(e) {
     e.preventDefault();
 
     let myForm = e.target
@@ -51,11 +57,10 @@ async function handleForm(e) {
     //     console.log(key, fd.get(key));
     // }
     let json = await convertFD2JSON(fd)
-    // console.log(json);
+    console.log(json);
     //send request with the formdata
-    let url = 'http://localhost:8000/user/dashboard'
-
-    // let req = new Request(url, {
+    let url = '/user/dashboard'
+    // let req = new 'Request(url, {
     //     headers: {
     //         Accept: 'application/json',
     //         'Content-Type': 'application/json',
@@ -64,21 +69,30 @@ async function handleForm(e) {
     //     method: 'POST'
     // })
     // console.log(req);
-    sendHttpRequest('POST', url, json)
-        .then(res => {
-            console.log(res);
-        })
+    return sendHttpRequest('POST', url, json)
+    // .then(res => {
+    //     console.log(res);
+    //     // return res.json() 
+    // })
+    // .then(data => {
+    //     console.log(data);
+    // })
 
 }
 const sendHttpRequest = async (method, url, data) => {
     return await fetch(url, {
         method: method,
-        body: data,
-        headers: data ? { 'Content-Type': 'application/json' } : {}
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(data),
+
     })
-        .then(res => res.json())
-        .then(user => console.log(user))
-        // .then(data => renderUsers(data))
+        .then(res => res.json({}))
+        .then((data) => {
+            // console.log(data.name, data.email);
+        })
         .catch((err) => console.log(err))
 }
 
@@ -87,14 +101,14 @@ async function convertFD2JSON(formData) {
     for (let key of formData.keys()) {
         obj[key] = formData.get(key)
     }
-    return JSON.stringify(obj)
+    return obj
 }
 
 
 
 //Create - Insert new user
 //Method: post
-addUserForm.addEventListener('submit', handleForm)
+addUserForm.addEventListener('submit', addUser)
     // (e) => {
     //     const formData = new FormData(addUserForm)
     //     const searchParams = new URLSearchParams()
