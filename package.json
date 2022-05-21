@@ -6,10 +6,10 @@
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^15.0.0",
-    "ejs": "^3.1.7",
     "express": "^4.17.2",
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
+    "mongo-sanitize": "^1.1.0",
     "mongoose": "^6.1.9",
     "morgan": "^1.10.0"
   },
@@ -22,8 +22,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
     "start": "node api/server.js",
     "dev": "nodemon api/server.js"
+=======
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+>>>>>>> d99754239d8b30a6390daced8b50ac583e193f44
   },
   "repository": {
     "type": "git",

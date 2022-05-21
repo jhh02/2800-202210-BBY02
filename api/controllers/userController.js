@@ -15,7 +15,7 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 
     // Check if user exists
-    const userExists = await User.findOne({ email })
+    const userExists = await User.findOne({ email }).exec()
 
     if (userExists) {
         res.status(400)
@@ -119,6 +119,13 @@ const generateToken = (id) => {
         expiresIn: '30d',
     })
 }
+
+
+
+
+
+
+
 
 module.exports = {
     registerUser,
