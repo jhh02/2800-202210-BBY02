@@ -1,54 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/profile.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/css/profile.css">
-    <title>Document</title>
+    <script src="/js/profile.js"></script>
 </head>
-
-
-<!-- <button><a href="/user/profile/<%= user.id  %> ">Edit</a></button> -->
-
+<title>Profile Page</title>
 
 <body>
     <div class="wrapper-profile">
         <div class="top-wraper">
             <div class="top-main-profile">
                 <div class="profile-pic-div">
-                    <img src="/img/logo.png" alt="" id="photo">
-                    <label for="file" id="uploadBtn" class="picturechange">Change profile picture</label>
+                    <img src="img/logo.png" alt="" id="photo">
                     <input type="file" id="file">
+                    <label for="file" id="uploadBtn">Choose a photo</label>
                 </div>
             </div>
-            <div class="username">Hi, <%=user.name %>
+            <div class="username">Jun Ho Han</div>
+            <div class="date">Joined Date: Mar 6, 2022</div>
+            <button class="edit">Edit</button>
+        </div>
+        <div class="timeline">
+            <div class="timeline-title">
+                <p>Timeline</p>
+            </div>
+            <div class="user-data">
+                <div class="review">
+                    <p class="profile-timeline-titles">Posts</p>
+                    <p>0</p>
+                </div>
+                <div class="visited">
+                    <p class="profile-timeline-titles">Donated</p>
+                    <p>0</p>
+                </div>
+                <div class="photo">
+                    <p class="profile-timeline-titles">Photo</p>
+                    <p>0</p>
+                </div>
             </div>
         </div>
+
     </div>
-    <div class="timeline">
-        <div class="timeline-title">
-            <p class="a">Achivements</p>
-        </div>
-        <div class="user-data">
-            <div class="review">
-                <p class="profile-timeline-titles">Posts</p>
-                <p class="pt">0</p>
-            </div>
-            <div class="visited">
-                <p class="profile-timeline-titles">Donated</p>
-                <p class="pt">0</p>
-            </div>
-            <div class="photo">
-                <p class="profile-timeline-titles">Photo</p>
-                <p class="pt">0</p>
-            </div>
-        </div>
-    </div>
-    <form action="/user/profile/<%= user._id %> " method="post">
-        <button class="edit">Edit</button>
-    </form>
 
 </body>
 

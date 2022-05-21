@@ -8,8 +8,8 @@ const cors = require('cors')
 const morgan = require('morgan')
 require('dotenv').config()
 
-const { errorHandler } = require('./api/middleware/errorMiddleware')
-const connectDB = require('./api/config/db')
+const { errorHandler } = require('./doughme/api/middleware/errorMiddleware')
+const connectDB = require('./doughme/api/config/db')
 const port = process.env.PORT || 8000
 
 
@@ -53,9 +53,9 @@ app.use('/img', express.static('public/img'))
 app.use('/js', express.static('public/js'))
 
 //routes
-const rootRoutes = require('./api/routes/root')
+const rootRoutes = require('./doughme/api/routes/root')
 const apiRoutes = require('./api/routes/apiRoutes')
-const userRoutes = require('./api/routes/userRoutes');
+const userRoutes = require('./doughme/api/routes/userRoutes');
 // const donationRoutes = require('./routes/donationRoutes')
 
 app.use('/', rootRoutes)
