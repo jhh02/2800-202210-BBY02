@@ -120,129 +120,99 @@ body {
     filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFF", endColorstr="#ECDCC5", GradientType=1);
 }
 
+.left img{
+    height: 50vh;
+    width: 100vh; 
+    margin-bottom: 3rem;
+    object-fit: fill;
+}
+.left{
+ 
+    justify-content: center;
+    vertical-align: middle;
+    float:left;
+}
 
-.role-wrapper {
+.words {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-<<<<<<< HEAD
-    height: Onc
-=======
-    /* height: Onc */
->>>>>>> Nischey_Gupta_front_end
 }
 
-/* width: 390px; height: 844px;
-  */
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> Nischey_Gupta_front_end
-.deliverFood,
-.reserveFood,
-.donateFood {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-<<<<<<< HEAD
-    font-size: 24px;
-    line-height: 28px;
-
-    width: 271px;
-    height: 98px;
-=======
-    font-size: 28px;
-    line-height: 28px;
-
-    width: 300px;
-    height: 100px;
->>>>>>> Nischey_Gupta_front_end
+.description {
+    font-size: 2.5rem;
+    max-width: 100%;
+    font-weight: bolder;
     text-align: center;
-    vertical-align: center;
-    display: grid;
-    place-items: center;
-<<<<<<< HEAD
-
-=======
-    border-radius: 25px;
->>>>>>> Nischey_Gupta_front_end
-
+    margin-bottom: 2.5rem;
 }
 
-.role-wrapper {
-    display: grid;
-    place-items: center;
-<<<<<<< HEAD
-    min-height: 80vh;
-=======
-    min-height: 90vh;
->>>>>>> Nischey_Gupta_front_end
-
+.explanation {
+    max-width: 400px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 3.5rem;
 }
 
-a {
-    text-decoration-line: none;
-<<<<<<< HEAD
-    color: hsla(0, 0%, 100%, 1);
-=======
-    color :hsla(0, 0%, 100%, 1);
->>>>>>> Nischey_Gupta_front_end
+
+.btns {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
 }
 
-.donateFood {
-
-    color: #FFFFFF;
-    background: black;
-<<<<<<< HEAD
-    border-radius: 25px;
-=======
->>>>>>> Nischey_Gupta_front_end
-    text-decoration-line: none;
-}
-
-.deliverFood {
-
-    color: #FFFFFF;
-    background: #9f4e0b;
-<<<<<<< HEAD
-    border-radius: 25px;
-=======
->>>>>>> Nischey_Gupta_front_end
-}
-
-.reserveFood {
-
-    background: #7B7B7B;
-<<<<<<< HEAD
-    border-radius: 25px;
-=======
->>>>>>> Nischey_Gupta_front_end
-}
-
-.prof {
-    padding: 0 1rem;
-    border: none;
-    color: white;
-    background-color: #9c6644;
-<<<<<<< HEAD
-    border-bottom-left-radius: 10px;
-=======
-    border-radius: 10px;
->>>>>>> Nischey_Gupta_front_end
-    font-size: 1rem;
+button {
+    padding: 1.5rem 3.5rem;
+    border-radius: 20px;
+    background-color: white;
+    border: white solid 2px;
     cursor: pointer;
-    float: right;
-    width: 20vw;
-    border-radius: 15px;
+}
 
-<<<<<<< HEAD
-    margin: 0;
-=======
-    margin: 2px 2px 2px 2px;
->>>>>>> Nischey_Gupta_front_end
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
+#signin-btn {
+    background-color: #472c17;
+    color: white;
+    font-size: medium;
+}
+
+button a {
+    list-style: none;
+    text-decoration: none;
+    font-size: 1.8rem;
+    color: #262626;
+    font-weight: bold;
+}
+
+#register-btn {
+    font-size: medium;
+}
+
+
+@media screen and (min-width: 600px) {
+    .description {
+        font-size: 4rem;
+        min-width: 80vw;
+    }
+
+    .explanation {
+        min-width: 80vw;
+        font-size: 2rem;
+        font-weight: 100;
+        margin-bottom: 5rem;
+    }
+
+    button {
+        padding: 2rem 6rem;
+        border-radius: 20px;
+        background-color: white;
+        border: white solid 2px;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+}
+
+@media screen and (min-width: 1980px) {
+    
+
 }
