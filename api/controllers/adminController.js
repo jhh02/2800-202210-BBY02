@@ -1,11 +1,10 @@
-"use strict";
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const asyncHandler = require('express-async-handler')
-const User = require('../models/user2Model')
+const User = require('../models/userModel')
 
-const addAUser = asyncHandler(async (req, res) => {
-    const { name, email, password, address, role, isAdmin } = req.body
+const addUser = asyncHandler(async (req, res) => {
+    const { name, email } = req.body
 
     if (!name || !email || !password) {
         res.status(400)
@@ -28,10 +27,10 @@ const addAUser = asyncHandler(async (req, res) => {
     const user = await User.create({
         name,
         email,
-        password: hashedPassword,
-        address,
-        role,
-        isAdmin,
+        // password: hashedPassword,
+        // address,
+        // role,
+        // isAdmin,
     })
 
     if (user) {
@@ -55,29 +54,38 @@ const addAUser = asyncHandler(async (req, res) => {
 })
 
 
-const editAUser = asyncHandler(async (req, res) => {
+const editUser = asyncHandler(async (req, res) => {
     try {
         const id = req.params.id
-        const user = await User.findById(id)
-        const { name, email, password, address, role, isAdmin } = req.body
 
-        const editedUser = await user.findByIdAndUpdate(id, { name, email, password, address, role, isAdmin }, {
+        // const { name, email, password, address, role, isAdmin } = req.body
+        console.log(req.body.payload);
+
+        const updatedUser = await User.findByIdAndUpdate(id, { $set: req.body }, {
             new: true
         })
             .then(result => {
-                res.send(result);
-                // res.json({ redirect: '/user/dashboard' })
+                res.json(result)
             })
     } catch (error) {
         res.status(400).send(error)
     }
 })
 
-const deleteUser = asyncHandler(async (req, res) => [
+const deleteUser = asyncHandler(async (req, res) => {
+    const id = req.params.id
 
-])
+    User.findByIdAndDelete(id)
+        .then(result => {
+            res.json({ redirect: '/user/dashboard' })
+        })
+        .catch(err => {
+            console.log(err);
+        })
+})
 
 module.exports = {
-    addAUser,
-    editAUser
+    addUser,
+    editUser,
+    deleteUser
 }

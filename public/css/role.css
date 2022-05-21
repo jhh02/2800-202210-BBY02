@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 * {
     box-sizing: border-box;
     margin: 0;
@@ -201,4 +202,204 @@ a {
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
+=======
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
+/* hind-300 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 300;
+    src: url('../fonts/hind-v16-latin-300.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-300.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-300.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-300.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-300.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-300.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-regular - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/hind-v16-latin-regular.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-regular.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-regular.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-regular.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-regular.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-regular.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-500 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/hind-v16-latin-500.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-500.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-500.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-500.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-500.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-500.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-600 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/hind-v16-latin-600.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-600.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-600.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-600.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-600.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-600.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-700 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/hind-v16-latin-700.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-700.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-700.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-700.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-700.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-700.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Hind', sans-serif;
+    background: hsla(0, 0%, 100%, 1);
+
+    background: linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+
+    background: -moz-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+
+    background: -webkit-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFF", endColorstr="#ECDCC5", GradientType=1);
+}
+
+
+.role-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* height: Onc */
+}
+
+/* width: 390px; height: 844px;
+  */
+
+.deliverFood,
+.reserveFood,
+.donateFood {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 28px;
+
+    width: 300px;
+    height: 100px;
+    text-align: center;
+    vertical-align: center;
+    display: grid;
+    place-items: center;
+    border-radius: 25px;
+
+}
+
+.role-wrapper {
+    display: grid;
+    place-items: center;
+    min-height: 90vh;
+
+}
+
+a {
+    text-decoration-line: none;
+    color :hsla(0, 0%, 100%, 1);
+}
+
+.donateFood {
+
+    color: #FFFFFF;
+    background: black;
+    text-decoration-line: none;
+}
+
+.deliverFood {
+
+    color: #FFFFFF;
+    background: #9f4e0b;
+}
+
+.reserveFood {
+
+    background: #7B7B7B;
+}
+
+.prof {
+    padding: 0 1rem;
+    border: none;
+    color: white;
+    background-color: #9c6644;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    float: right;
+    width: 20vw;
+    border-radius: 15px;
+
+    margin: 2px 2px 2px 2px;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+>>>>>>> Jun_revert-commit-938613e033bad71d96ecc3d2015de3be13d74cd5
 }
