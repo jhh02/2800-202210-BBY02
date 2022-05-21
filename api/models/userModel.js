@@ -1,3 +1,4 @@
+"use strict";
 const { bold } = require('colors')
 const mongoose = require('mongoose')
 

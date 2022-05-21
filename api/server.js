@@ -16,13 +16,10 @@ const port = process.env.PORT || 8000
 connectDB()
 //initialize express
 const app = express()
-//register view engine
-app.set('view engine', 'ejs')
 var corsOptions = {
     origin: "http://localhost:8080"
 };
 app.use(cors(corsOptions));
-// app.set('views', path.join(__dirname, 'views'));
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
 }
@@ -32,6 +29,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 //static files
+app.use('/html', express.static('public/html'))
 app.use('/css', express.static('public/css'))
 app.use('/fonts', express.static('public/fonts'))
 app.use('/img', express.static('public/img'))

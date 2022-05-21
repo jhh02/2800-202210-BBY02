@@ -1,3 +1,4 @@
+"use strict";
 const mongoose = require("mongoose");
 const roleSchema = new mongoose.model(
     "Role",
