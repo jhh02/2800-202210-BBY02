@@ -1,4 +1,103 @@
-@import url('../fonts/Hind-Regular.ttf');
+<<<<<<< HEAD
+/* hind-300 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 300;
+    src: url('../fonts/hind-v16-latin-300.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-300.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-300.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-300.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-300.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-300.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-regular - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/hind-v16-latin-regular.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-regular.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-regular.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-regular.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-regular.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-regular.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-500 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/hind-v16-latin-500.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-500.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-500.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-500.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-500.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-500.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-600 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/hind-v16-latin-600.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-600.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-600.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-600.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-600.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-600.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-700 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/hind-v16-latin-700.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-700.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-700.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-700.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-700.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-700.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
 
 * {
     box-sizing: border-box;
@@ -19,7 +118,7 @@ body {
     background: -webkit-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
 
     filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFF", endColorstr="#ECDCC5", GradientType=1);
-    height: 100vh;
+    height: 95vh;
 }
 
 .donation-wrapper {
@@ -33,14 +132,14 @@ body {
 .donation-title {
     font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 1rem;
+
 }
 
 .donation-msg {
-    font-size: 1rem;
+    font-size: 1.5em;
     width: 80vw;
     text-align: center;
-    margin-bottom: 1rem;
+    padding: 20px;
 }
 
 .form-donations {
@@ -75,6 +174,19 @@ body {
     color: white;
     background-color: #9c6644;
     font-size: 1rem;
+    margin-top: 2rem;
+}
+
+.cancel-donation input[type="submit"] {
+    height: 30px;
+    width: 30vw;
+    padding: 0rem 1rem;
+    border-radius: 15px;
+    border: none;
+    color: black;
+    background-color: rgb(249, 100, 100);
+    font-size: 1rem;
+    margin-top: 0rem;
 }
 
 .prof {
@@ -82,11 +194,277 @@ body {
     border: none;
     color: white;
     background-color: #9c6644;
-    border-bottom-left-radius: 10px;
     font-size: 1rem;
     cursor: pointer;
+    width: 20vw;
+    border-radius: 15px;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin-top: 2px;
+    margin-right: 2px;
+
 }
 
 form {
     text-align: end;
+}
+
+
+@media screen and (min-width: 600px) {
+    .description {
+        font-size: 4rem;
+        min-width: 80vw;
+    }
+
+    .explanation {
+        min-width: 60vw;
+        font-size: 2rem;
+        font-weight: 100;
+        margin-bottom: 5rem;
+    }
+
+    button {
+        padding: 2rem 6rem;
+        border-radius: 20px;
+        background-color: white;
+        border: white solid 2px;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+=======
+/* hind-300 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 300;
+    src: url('../fonts/hind-v16-latin-300.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-300.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-300.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-300.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-300.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-300.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-regular - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/hind-v16-latin-regular.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-regular.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-regular.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-regular.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-regular.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-regular.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-500 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/hind-v16-latin-500.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-500.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-500.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-500.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-500.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-500.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-600 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/hind-v16-latin-600.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-600.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-600.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-600.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-600.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-600.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-700 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/hind-v16-latin-700.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-700.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-700.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-700.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-700.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-700.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Hind', sans-serif;
+}
+
+
+
+body {
+    background: hsla(0, 0%, 100%, 1);
+
+    background: linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+
+    background: -moz-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+
+    background: -webkit-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFF", endColorstr="#ECDCC5", GradientType=1);
+    height: 95vh;
+}
+
+.donation-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.donation-title {
+    font-size: 2rem;
+    font-weight: bold;
+
+}
+
+.donation-msg {
+    font-size: 1.5em;
+    width: 80vw;
+    text-align: center;
+    padding: 20px;
+}
+
+.form-donations {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+#title,
+#food-description,
+#picklocation,
+#bestbefore,
+#file {
+    width: 80vw;
+    padding: 1rem 1rem;
+    border-radius: 15px;
+    border: none;
+    font-size: 1rem;
+}
+
+.bestbefore {
+    align-self: flex-start;
+    font-size: 1rem;
+}
+
+.form-donation input[type="submit"] {
+    width: 80vw;
+    padding: 1rem 1rem;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    background-color: #9c6644;
+    font-size: 1rem;
+    margin-top: 2rem;
+}
+
+.cancel-donation input[type="submit"] {
+    height: 30px;
+    width: 30vw;
+    padding: 0rem 1rem;
+    border-radius: 15px;
+    border: none;
+    color: black;
+    background-color: rgb(249, 100, 100);
+    font-size: 1rem;
+    margin-top: 0rem;
+}
+
+.prof {
+    padding: 0 1rem;
+    border: none;
+    color: white;
+    background-color: #9c6644;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 20vw;
+    border-radius: 15px;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin-top: 2px;
+    margin-right: 2px;
+
+}
+
+form {
+    text-align: end;
+}
+
+
+@media screen and (min-width: 600px) {
+    .description {
+        font-size: 4rem;
+        min-width: 80vw;
+    }
+
+    .explanation {
+        min-width: 60vw;
+        font-size: 2rem;
+        font-weight: 100;
+        margin-bottom: 5rem;
+    }
+
+    button {
+        padding: 2rem 6rem;
+        border-radius: 20px;
+        background-color: white;
+        border: white solid 2px;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+>>>>>>> d99754239d8b30a6390daced8b50ac583e193f44
 }

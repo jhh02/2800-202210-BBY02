@@ -16,6 +16,7 @@ const {
 app.use("/js", express.static("./public/js"));
 app.use("/css", express.static("./public/css"));
 app.use("/img", express.static("./public/img"));
+app.use("/fonts", express.static("./public/fonts"));
 
 app.use(session({
     secret: "extra text that no one will guess",
@@ -35,10 +36,17 @@ app.get("/", function (req, res) {
 })
 
 app.get("/profile", function (req, res) {
-    let doc = fs.readFileSync("./app/html/profile.html", "utf8");
-
-    // just send the text stream
-    res.send(doc);
+    if (!req.session.loggedIn) {
+        res.redirect("/login");
+    } else if (!req.session.admin) {
+        res.redirect("/login");
+    } else {
+        let doc = fs.readFileSync("./app/html/profile.html", "utf8");
+        res.set("Server", "Wazubi Engine");
+        res.set("X-Powered-By", "Wazubi");
+        // just send the text stream
+        res.send(doc);
+    }
 });
 
 
@@ -61,15 +69,85 @@ app.get("/donationform", function (req, res) {
         res.redirect("/login");
     } else {
         let doc = fs.readFileSync("./app/html/donationform.html", "utf8");
+
+        let docDOM = new JSDOM(doc);
+
+        docDOM.window.document.getElementsByClassName("donation-msg")[0].innerHTML
+            = "Ready to donate " + req.session.name + "?";
+
         res.set("Server", "Wazubi Engine");
         res.set("X-Powered-By", "Wazubi");
         // just send the text stream
-        res.send(doc);
+        res.send(docDOM.serialize());
     }
 })
 
 app.get("/bakery", function (req, res) {
     let doc = fs.readFileSync("./app/html/bakery.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
+
+app.get("/donationdescription", function (req, res) {
+    let doc = fs.readFileSync("./app/html/donationdescription.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
+app.get("/pendingreservations", function (req, res) {
+    let doc = fs.readFileSync("./app/html/pendingreservations.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
+
+app.get("/deliveryacception", function (req, res) {
+    let doc = fs.readFileSync("./app/html/deliveryacception.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
+
+app.get("/thanksdonor", function (req, res) {
+    let doc = fs.readFileSync("./app/html/thanksdonor.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
+
+
+app.get("/addedtocart", function (req, res) {
+    let doc = fs.readFileSync("./app/html/addedtocart.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
+
+app.get("/cart", function (req, res) {
+    let doc = fs.readFileSync("./app/html/cart.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
+
+
+app.get("/thanksreceiver", function (req, res) {
+    let doc = fs.readFileSync("./app/html/thanksreceiver.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
+
+app.get("/thanksdriver", function (req, res) {
+    let doc = fs.readFileSync("./app/html/thanksdriver.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
+
+app.get("/index2", function (req, res) {
+    let doc = fs.readFileSync("./app/html/index2.html", "utf8");
 
     // just send the text stream
     res.send(doc);
@@ -82,7 +160,12 @@ app.get("/driver", function (req, res) {
     res.send(doc);
 });
 
+app.get("/deliverydescription", function (req, res) {
+    let doc = fs.readFileSync("./app/html/deliverydescription.html", "utf8");
 
+    // just send the text stream
+    res.send(doc);
+});
 
 app.get("/organization", function (req, res) {
     let doc = fs.readFileSync("./app/html/organization.html", "utf8");
@@ -91,6 +174,19 @@ app.get("/organization", function (req, res) {
     res.send(doc);
 });
 
+app.get("/role", function (req, res) {
+    let doc = fs.readFileSync("./app/html/role.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
+
+app.get("/availabledonations", function (req, res) {
+    let doc = fs.readFileSync("./app/html/availabledonations.html", "utf8");
+
+    // just send the text stream
+    res.send(doc);
+});
 app.get("/sign_up", function (req, res) {
     if (req.session.admin) {
         res.redirect("/admin");
@@ -140,7 +236,7 @@ app.post("/loginInput", function (req, res) {
         host: "localhost",
         user: "root",
         password: "",
-        port: 50,
+        // port: 3305,
         database: "COMP2800"
     });
 
@@ -224,7 +320,7 @@ app.post("/signup", function (req, res) {
         host: "localhost",
         user: "root",
         password: "",
-        port: 50,
+        // port: 3305,
         database: "COMP2800"
     });
 
@@ -246,7 +342,7 @@ app.post("/signup", function (req, res) {
                 console.log("did you misspell a table/field value?");
             }
             //console.log(mailResults, userResults, passResults);
-            console.log(results[0])
+            //console.log(results[0])
 
             // check if user and email taken
             if (results.length > 0) {
@@ -293,8 +389,8 @@ async function init() {
         host: "localhost",
         user: "root",
         password: "",
-        //port: 3305,
-        port: 50,
+        // port: 3305,
+       
         multipleStatements: true
     });
     const createDBAndTables = `CREATE DATABASE IF NOT EXISTS COMP2800;

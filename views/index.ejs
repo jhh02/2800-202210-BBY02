@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css" type="text/css">
+    <!-- <link rel="stylesheet" href="/css/index.css" type="text/css"> -->
+<<<<<<< HEAD
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/snowfall.jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".team").hide();
+        });
+
+        function ester() {
+            var size = {
+                width: window.innerWidth || document.body.clientWidth,
+                height: window.innerHeight || document.body.clientHeight
+            }
+
+
+            //ester egg with mobile
+            if (size.width < 700) {
+                $(".team").show();
+                $(document).snowfall({
+                    minSize: 5,
+                    maxSize: 10,
+                    round: true
+
+                });
+                document.getElementById("explanation").innerHTML = 
+                "Great..! You found the secret - The developer team!"
+                +"Thanks for your noble cause of charity work ❤️";
+            }
+        }
+
+        function original() {
+            location.reload();
+        }
+    </script>
+=======
+>>>>>>> d99754239d8b30a6390daced8b50ac583e193f44
+    <title>Doughme</title>
+
+</head>
+
+<body>
+<<<<<<< HEAD:views/index.ejs
+    <img src="/img/logo.png" alt="" class="landing-img">
+    <!-- <img src="/img/logo.png" alt="" class="landing-img"> -->
+    <div class="words">
+        <h1 class="description">Donate your baked goods here</h1>
+        <p class="explanation">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia doloremque, ab sequi
+            culpa
+        </p>
+    </div>
+    <div class="btns">
+        <a href="/user"><button id="register-btn"> Register</button></a>
+        <a href="/user/login"><button id="signin-btn"> Sign in</button></a>
+=======
+    <div class="a_layer">
+        <div class="a_layer_inner">
+            <div class="a_content">
+                <div class="box_a"><img src="/img/logo.png" alt=""></div>
+                <div class="box_b">
+                    <div class="words">
+                        <h1 class="description"><a href="javascript:original();">Welcome to D</a><a
+                                href="javascript:ester();">o</a><a href="javascript:original();">ughMe</a></h1>
+                        <img class="team" src="/img/team.jpg">
+                        <h2 class="explanation" id="explanation">Donate your baked goods here</h2>
+                    </div>
+                    <div class="btns">
+                        <a href="/sign_up"><button id="register-btn"> Register</button></a>
+                        <a href="/login"><button id="signin-btn"> Sign in</button></a>
+>>>>>>> Nischey_Gupta_front_end:app/html/index.html
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
