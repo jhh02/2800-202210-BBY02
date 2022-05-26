@@ -8,7 +8,8 @@ body {
     background-color: white;
     margin: 15px 15px 15px 15px;
     border-radius: 20px 20px 20px 20px;
-    height: 103vh
+   
+   
 }
 
 .top {
@@ -48,10 +49,6 @@ body {
 
 }
 
-h1{
-    text-align:center;
-    
-}
 .first {
 
     width: 100%;
@@ -113,7 +110,7 @@ h1{
     margin-left: 10px;
     margin-right: 10px;
     border: 1px solid;
-    height: 120px;
+    height: 135px;
     width: 95%;
     border-radius: 20px 20px 20px 20px;
 }
@@ -131,22 +128,32 @@ img {
     margin-left: 10px;
 }
 
-.footer .copyright {
-    margin-top: 15px;
-    font-size: 9px;
+.footer{
+   
+    margin-top: 70px;
+   
+    margin-bottom: 50px;
+}
+.copyright {
+    font-size :9px;
 }
 
-.home, .cart, .chat, .profile {
-    float: left;
-    margin-right: 20px;
-    margin-left: 20px;
+
+.child {
+    flex: 1;
+    margin-right :30px;
 }
 
 .icons {
+    display: flex;
     margin-top: 10px;
     margin-inline: 50px;
+    text-align: center;
 }
-
+a{
+    color : black;
+    text-decoration-line: none;
+}
 .copyright {
     padding-left: 10px;
 }

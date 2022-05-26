@@ -1,45 +1,176 @@
 "use strict";
 const express = require('express')
-const { registerUser, loginUser, getMe } = require('../controllers/userController')
-const { addUser, editUser, deleteUser } = require('../controllers/adminController')
+//const { loginUser, getMe } = require('../controllers/userController')
+//const { addUser, editUser, deleteUser } = require('../controllers/adminController')
 const router = express.Router()
 const fs = require('fs')
-const { protect } = require('../middleware/authMiddleware')
-const User = require('../models/userModel')
 const { append } = require('express/lib/response')
+const session = require("express-session");
+const { JSDOM } = require('jsdom');
 
+router.use(session(
+    {
+      secret: "secret",
+      name: "sessionID",
+      resave: false,
+      saveUninitialized: true,
+    })
+);
 
-
+const mysql = require("mysql2");
+const connection = mysql.createPool({
+    connectionLimit : 100,
+    host     : "localhost",
+    user     : "root",
+    password : "",
+    database : "comp2800",
+});
 
 // show register page /user
 router.get('/', (req, res) => {
     let doc = fs.readFileSync('./public/html/register.html', "utf8");
+    res.set("Server", "Wazubi Engine");
+    res.set("X-Powered-By", "Wazubi");
     res.send(doc)
 })
+
 // register user /user
-router.post('/', registerUser)
+router.post('/register', (req, res) => {
+    let usr = req.body.username;
+    let eml = req.body.email;
+    let pwd = req.body.password;
+    let adr = req.body.address;
+    connection.query(
+        "SELECT * FROM BBY36_user WHERE username = ? OR email = ?", [usr, eml],
+        function(error, results, fields) {
+          if (error) {
+            throw error;
+          }
+          console.log(results);
+          if (results.length >= 1) {
+            console.log("ID taken!")
+            res.send({ status: "error", msg: "ID taken!" });
+          } else {
+            console.log("not taken")
+            
+            connection.query('INSERT INTO BBY36_user (email, username, password, address) VALUES (?, ?, ?, ?)',
+                    [eml, usr, pwd, adr],
+                    function (error, results, fields) {
+                        if (error) {
+                            console.log("Uh oh");
+                            console.log(error);
+                        }
+                        //console.log('Rows returned are: ', results);
+                        res.send({ status: "success", msg: "Record added."});
+                    });
+            
+          }
+        }
+    )
+})
 
 // show login page /user/login
 router.get('/login', (req, res) => {
     let doc = fs.readFileSync('./public/html/login.html', "utf8");
+    res.set("Server", "Wazubi Engine");
+    res.set("X-Powered-By", "Wazubi");
     res.send(doc)
 })
 // login user /user/login
-router.post('/login', loginUser)
+router.post('/login', (req, res) => {
+    res.setHeader("Content-Type", "application/json");
+    let usr = req.body.username;
+    let pwd = req.body.password;
+    connection.query(
+        "SELECT * FROM BBY36_user WHERE username = ? AND password = ?", [usr, pwd],
+        function(error, results, fields) {
+          if (error) {
+            throw error;
+          }
+          if (results.length >= 1) {
+            // email and password found
+            if (results[0].admin >= 1) {
+                console.log("admin")
+                req.session.loggedIn = true;
+                req.session.user_id = results[0].UID;
+                req.session.name = results[0].username;
+                req.session.admin = true;
+                //req.session.role = results[0].role
+                //req.session.pic = results[0].profilepic
+                console.log("success")
+                res.send({
+                    status: "admin", msg: "Admin login", sessionID: req.session.user_id
+                })
+            } else {
+                console.log(results);
+                req.session.loggedIn = true;
+                req.session.user_id = results[0].UID;
+                req.session.name = results[0].username;
+                //req.session.role = results[0].role
+                //req.session.pic = results[0].profilepic
+                console.log(req.session.user_id)
+                console.log("success")
+                res.send({
+                    status: "success", msg: "Login", sessionID: req.session.user_id
+                })
+            }
+          } else {
+            console.log("failure")
+            res.send({
+                status: "failure", msg: "User not found!"
+            })
+          }
+        }
+      );
+})
+
 
 // show logout page  /user/logout
 router.get('/logout', (req, res) => {
     let doc = fs.readFileSync('./public/html/logout.html', "utf8");
+    res.set("Server", "Wazubi Engine");
+    res.set("X-Powered-By", "Wazubi");
     res.send(doc)
 })
+
 
 // show my profile page /user/profile/objecid
 router.get('/profile/:id', (req, res) => {
     const id = req.params.id
+    
+    connection.query(
+        "SELECT * FROM BBY36_user WHERE UID = ?", [id],
+        function(error, results, fields) {
+          if (error) {
+            throw error;
+          }
+          if (results.length >= 1) {
+            
+            let doc = fs.readFileSync('./public/html/profile.html', "utf8");
+            res.set("Server", "Wazubi Engine");
+            res.set("X-Powered-By", "Wazubi");
+            
+            let docDOM = new JSDOM(doc);
+            docDOM.window.document.getElementsByClassName("username")[0].innerHTML
+            = results[0].username;
+            docDOM.window.document.getElementsByClassName("email")[0].innerHTML
+            = results[0].email;
+            res.send(docDOM.serialize());
+            
+            //res.send(doc)
+            console.log(results);
+          } else {
+            console.log("cannot find user")
+          }
+        }
+    )
+
+/*
     User.findById(id)
         .then(result => {
             res.render('profile', { user: result })
         })
+        */
 })
 
 // direct to my profile page /user/profile/objectid
@@ -47,17 +178,10 @@ router.post('/profile/:id', (req, res) => {
     res.render('user-edit')
     try {
         const id = req.params.id
-        console.log(id);
-        // const user = await User.findById(id)
-        // const { name, email, password, address, role, isAdmin } = req.body
 
-        // const editedUser = await user.findByIdAndUpdate(id, { name, email, password, address, role, isAdmin }, {
-        //     new: true
-        // })
-        //     .then(result => {
-        //         res.send(result);
-        //         // res.json({ redirect: '/user/dashboard' })
-        //     })
+        res.set("Server", "Wazubi Engine");
+        res.set("X-Powered-By", "Wazubi");
+        console.log(id);
     } catch (error) {
         res.status(400).send(error)
     }
@@ -68,9 +192,11 @@ router.post('/profile/:id', (req, res) => {
 
 
 // router.get('/getme', protect, getMe)
-
+/*
 router.get('/dashboard', async (req, res) => {
     let doc = fs.readFileSync('./public/html/dashboard.html', "utf8")
+    res.set("Server", "Wazubi Engine");
+    res.set("X-Powered-By", "Wazubi");
     res.send(doc)
 })
 
@@ -151,8 +277,5 @@ router.get('/dashboard/adduser', (req, res) => {
 })
 
 router.post('/dashboard/adduser', addUser)
-
+*/
 module.exports = router
-
-
-

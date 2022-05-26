@@ -41,31 +41,29 @@ ready(function () {
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.send(params);
     }
-    // login
+
     document.querySelector("#submit").addEventListener("click", function (e) {
         console.log("clicked button");
         e.preventDefault();
 
         let username = document.getElementById("name");
+        let email = document.getElementById("email");
         let password = document.getElementById("password");
+        let address = document.getElementById("address");
 
-        let queryString = "&username=" + username.value + "&password=" + password.value;
-        const vars = { "username": username, "password": password }
-        //console.log(queryString);
-        ajaxPOST("/user/login", function (data) {
+        let queryString = "&username=" + username.value + "&email=" + email.value +
+        "&password=" + password.value + "&address=" + address.value;
+        const vars = { "username": username, "email": email, "password": password, "address": address }
+        console.log(queryString);
+        ajaxPOST("/user/register", function (data) {
             if (data) {
                 let dataParsed = JSON.parse(data);
                 console.log(dataParsed);
-                if (dataParsed.status == "admin") {
-                    console.log("admin login!");
-                    console.log(dataParsed.sessionID);
-                    window.location.replace(`/user/profile/${dataParsed.sessionID}`);
-                } else if (dataParsed.status == "success") {
-                    console.log("success!");
-                    console.log(dataParsed.sessionID);
-                    window.location.replace(`/user/profile/${dataParsed.sessionID}`);
+                if (dataParsed.status == "success") {
+                    console.log("success");
+                    window.location.replace('/user/login');
                 } else {
-                    console.log("Wrong user!");
+                    console.log("ID taken!");
                     document.getElementById("errorMsg").innerHTML = dataParsed.msg;
 
                 }

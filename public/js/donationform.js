@@ -41,38 +41,42 @@ ready(function () {
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.send(params);
     }
-    // login
+
     document.querySelector("#submit").addEventListener("click", function (e) {
         console.log("clicked button");
         e.preventDefault();
 
-        let username = document.getElementById("name");
-        let password = document.getElementById("password");
+        let title = document.getElementById("title");
+        let description = document.getElementById("description");
+        let location = document.getElementById("location");
+        //let bestbefore = document.getElementById("bestbefore");
+        date = new Date();
+        console.log(date);
+        console.log(date.toISOString());
+        date = date.toISOString();
 
-        let queryString = "&username=" + username.value + "&password=" + password.value;
-        const vars = { "username": username, "password": password }
-        //console.log(queryString);
-        ajaxPOST("/user/login", function (data) {
+        let queryString = "&title=" + title.value + "&description=" + description.value +
+        "&location=" + location.value + "&date=" + date;
+        const vars = { "title": title, "description": description, "location": location, "date": date }
+        console.log(queryString);
+        
+        ajaxPOST("/donation/donationform", function (data) {
             if (data) {
                 let dataParsed = JSON.parse(data);
                 console.log(dataParsed);
-                if (dataParsed.status == "admin") {
-                    console.log("admin login!");
-                    console.log(dataParsed.sessionID);
-                    window.location.replace(`/user/profile/${dataParsed.sessionID}`);
-                } else if (dataParsed.status == "success") {
-                    console.log("success!");
-                    console.log(dataParsed.sessionID);
-                    window.location.replace(`/user/profile/${dataParsed.sessionID}`);
+                
+                if (dataParsed.status == "success") {
+                    console.log("success");
+                    window.location.replace('/donation/thanksdonor');
                 } else {
-                    console.log("Wrong user!");
-                    document.getElementById("errorMsg").innerHTML = dataParsed.msg;
+                    console.log("no msg");
+                    //document.getElementById("errorMsg").innerHTML = dataParsed.msg;
 
                 }
             }
         }, queryString);
+        
     });
-
 })
 
 function ready(callback) {
