@@ -1,0 +1,42 @@
+[
+    {
+        "name": "admin",
+        "email": "admin@admin.com",
+        "password": "admin",
+        "address": "123 admin street",
+        "role": "bakery",
+        "isAdmin": true
+    },
+    {
+        "name": "juno",
+        "email": "juno@juno.com",
+        "password": "juno",
+        "address": "123 juno street",
+        "role": "driver",
+        "isAdmin": true
+    },
+    {
+        "name": "dongil",
+        "email": "dongil@dongil.com",
+        "password": "dongil",
+        "address": "123 dongil street",
+        "role": "bakery",
+        "isAdmin": true
+    },
+    {
+        "name": "james",
+        "email": "james@james.com",
+        "password": "james",
+        "address": "123 james street",
+        "role": "driver",
+        "isAdmin": true
+    },
+    {
+        "name": "nischey",
+        "email": "nischey@nischey.com",
+        "password": "nischey",
+        "address": "123 nischey street",
+        "role": "organization",
+        "isAdmin": true
+    }
+]

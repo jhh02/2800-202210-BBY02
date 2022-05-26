@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/profile.css">
+    <title>Document</title>
+</head>
+
+
+<!-- <button><a href="/user/profile/<%= user.id  %> ">Edit</a></button> -->
+
+
+<body>
+    <div class="wrapper-profile">
+        <div class="top-wraper">
+            <div class="top-main-profile">
+                <div class="profile-pic-div">
+                    <img src="/img/logo.png" alt="" id="photo">
+                    <label for="file" id="uploadBtn" class="picturechange">Change profile picture</label>
+                    <input type="file" id="file">
+                </div>
+            </div>
+            <div class="username">Hi, <%=user.name %>
+            </div>
+        </div>
+    </div>
+    <div class="timeline">
+        <div class="timeline-title">
+            <p class="a">Achivements</p>
+        </div>
+        <div class="user-data">
+            <div class="review">
+                <p class="profile-timeline-titles">Posts</p>
+                <p class="pt">0</p>
+            </div>
+            <div class="visited">
+                <p class="profile-timeline-titles">Donated</p>
+                <p class="pt">0</p>
+            </div>
+            <div class="photo">
+                <p class="profile-timeline-titles">Photo</p>
+                <p class="pt">0</p>
+            </div>
+        </div>
+    </div>
+    <form action="/user/profile/<%= user._id %> " method="post">
+        <button class="edit">Edit</button>
+    </form>
+
+</body>
+
+</html>
