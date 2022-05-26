@@ -1,3 +1,4 @@
+"use strict";
 const express = require('express')
 const { registerUser, loginUser, getMe } = require('../controllers/userController')
 const { addUser, editUser, deleteUser } = require('../controllers/adminController')
