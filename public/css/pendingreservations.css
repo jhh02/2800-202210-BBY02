@@ -1,7 +1,118 @@
+/* hind-300 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 300;
+    src: url('../fonts/hind-v16-latin-300.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-300.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-300.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-300.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-300.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-300.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-regular - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/hind-v16-latin-regular.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-regular.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-regular.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-regular.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-regular.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-regular.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-500 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/hind-v16-latin-500.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-500.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-500.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-500.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-500.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-500.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-600 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/hind-v16-latin-600.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-600.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-600.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-600.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-600.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-600.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-700 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/hind-v16-latin-700.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-700.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-700.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-700.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-700.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-700.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
 body {
     margin: 0;
     padding: 0;
-    background-color: rgb(223, 222, 222);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Hind', sans-serif;
+    background: hsla(0, 0%, 100%, 1);
+
+    background: linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+
+    background: -moz-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+
+    background: -webkit-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFF", endColorstr="#ECDCC5", GradientType=1);
 }
 
 .container {
@@ -48,10 +159,11 @@ body {
 
 }
 
-h1{
-    text-align:center;
-    
+h1 {
+    text-align: center;
+
 }
+
 .first {
 
     width: 100%;
@@ -136,7 +248,10 @@ img {
     font-size: 9px;
 }
 
-.home, .cart, .chat, .profile {
+.home,
+.cart,
+.chat,
+.profile {
     float: left;
     margin-right: 20px;
     margin-left: 20px;
