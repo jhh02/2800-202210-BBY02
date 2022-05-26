@@ -157,3 +157,69 @@ button a {
     }
 
 }
+
+@media only screen and (max-width: 1024px) {
+    .a_content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .a_layer_inner {
+        margin: 0;
+        padding: 0;
+
+    }
+
+    .description {
+        font-size: 2rem;
+        min-width: 80vw;
+        padding-left: 15px;
+    }
+
+    .explanation {
+        min-width: 80vw;
+        font-size: 1.5rem;
+        font-weight: 100;
+        margin-bottom: 5rem;
+        padding-left: 15px;
+    }
+
+    .btns {
+        padding-left: 15px;
+    }
+
+    button {
+
+        padding: 1.5rem 3.5rem;
+        border-radius: 20px;
+        background-color: rgb(207, 207, 207);
+        border: white solid 2px;
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+
+
+    #signin-btn {
+        background-color: #472c17;
+        color: white;
+        font-size: medium;
+    }
+
+    button a {
+        list-style: none;
+        text-decoration: none;
+        font-size: 1.8rem;
+        color: #262626;
+        font-weight: bold;
+    }
+
+    img {
+        width: 100%;
+        height: 50%;
+        object-fit: cover;
+
+    }
+
+}

@@ -167,7 +167,7 @@ body {
     margin-bottom: 1rem;
 }
 
-.form-login_comp input[type="submit"] {
+.form-login_comp #submit {
     width: 80vw;
     padding: 1rem 1.5rem;
     border-radius: 15px;
