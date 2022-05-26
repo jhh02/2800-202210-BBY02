@@ -1,6 +1,123 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
+/* hind-300 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 300;
+    src: url('../fonts/hind-v16-latin-300.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-300.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-300.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-300.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-300.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-300.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-regular - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/hind-v16-latin-regular.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-regular.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-regular.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-regular.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-regular.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-regular.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-500 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/hind-v16-latin-500.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-500.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-500.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-500.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-500.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-500.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-600 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/hind-v16-latin-600.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-600.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-600.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-600.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-600.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-600.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-700 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/hind-v16-latin-700.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-700.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-700.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-700.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-700.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-700.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+body {
+=======
 body {
     margin: 0;
     padding: 0;
+>>>>>>> Nischey_Gupta_front_end
+=======
+body {
+    margin: 0;
+    padding: 0;
+>>>>>>> d99754239d8b30a6390daced8b50ac583e193f44
     display: flex;
     flex-direction: column;
     font-family: 'Hind', sans-serif;
@@ -19,6 +136,62 @@ body {
     display: table;
     width: 100%;
     height: 100vh;
+<<<<<<< HEAD
+    
+}
+
+.a_layer_inner {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.a_content {
+    display: inline-block;
+    color: #fff;
+}
+
+.box_a,
+.box_b {
+    width: 100vp;
+    height: 100vp;
+
+    color: #fff;
+    text-align: center;
+    float: left;
+   
+}
+
+.box_b {
+    
+    border-radius: 20px;
+}
+
+img {
+    width: 90%;
+    height: 90%;
+  
+}
+a{
+    text-decoration: none;
+    color :black;
+}
+.words {
+    font-size : 180%;
+    color: black;
+    margin-bottom: 15%;
+}
+.words img{
+    width: 100%;
+    height: 55%;
+    object-fit: fill;
+    
+}
+button {
+    font-size:120%;
+    padding: 1.5rem 3.5rem;
+    border-radius: 20px;
+=======
 
 }
 
@@ -77,6 +250,7 @@ button {
     font-size: 120%;
     padding: 1.5rem 3.5rem;
     border-radius: 20px;
+>>>>>>> d99754239d8b30a6390daced8b50ac583e193f44
     background-color: rgb(214, 214, 214);
     border: white solid 2px;
     cursor: pointer;
@@ -85,7 +259,11 @@ button {
 #signin-btn {
     background-color: #472c17;
     color: white;
+<<<<<<< HEAD
+    font-size:120%;
+=======
     font-size: 120%;
+>>>>>>> d99754239d8b30a6390daced8b50ac583e193f44
 }
 
 button a {
@@ -99,6 +277,17 @@ button a {
 
 @media only screen and (max-width: 600px) {
     .a_layer_inner {
+<<<<<<< HEAD
+       
+        margin: 0;
+        padding: 0;
+        
+    }
+    .description {
+        font-size: 2rem;
+        min-width: 80vw;
+        padding-left : 15px;
+=======
 
         margin: 0;
         padding: 0;
@@ -109,6 +298,7 @@ button a {
         font-size: 2rem;
         min-width: 80vw;
         padding-left: 15px;
+>>>>>>> d99754239d8b30a6390daced8b50ac583e193f44
     }
 
     .explanation {
@@ -116,15 +306,24 @@ button a {
         font-size: 1.5rem;
         font-weight: 100;
         margin-bottom: 5rem;
+<<<<<<< HEAD
+        padding-left : 15px;
+    }
+    .btns{
+=======
         padding-left: 15px;
     }
 
     .btns {
+>>>>>>> d99754239d8b30a6390daced8b50ac583e193f44
         padding-left: 15px;
     }
-
     button {
+<<<<<<< HEAD
+       
+=======
 
+>>>>>>> d99754239d8b30a6390daced8b50ac583e193f44
         padding: 1.5rem 3.5rem;
         border-radius: 20px;
         background-color: rgb(207, 207, 207);
@@ -133,14 +332,23 @@ button a {
         font-weight: bold;
     }
 
+<<<<<<< HEAD
+    
+    
+=======
 
 
+>>>>>>> d99754239d8b30a6390daced8b50ac583e193f44
     #signin-btn {
         background-color: #472c17;
         color: white;
         font-size: medium;
     }
+<<<<<<< HEAD
+    
+=======
 
+>>>>>>> d99754239d8b30a6390daced8b50ac583e193f44
     button a {
         list-style: none;
         text-decoration: none;
@@ -149,6 +357,17 @@ button a {
         font-weight: bold;
     }
 
+<<<<<<< HEAD
+    img{
+        width: 100%;
+        height: 50%;
+        object-fit: cover;
+     
+    }
+    
+}
+
+=======
     img {
         width: 100%;
         height: 50%;
@@ -157,3 +376,4 @@ button a {
     }
 
 }
+>>>>>>> d99754239d8b30a6390daced8b50ac583e193f44

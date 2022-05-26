@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .deliveryLogo{
     margin-top: 30px;
 }
@@ -36,4 +37,44 @@ img {
   a{
       text-decoration: none;
       color :white;
+=======
+.deliveryLogo{
+    margin-top: 30px;
+}
+img {
+    width: 60%;
+    height: 60%;
+    padding: 10px 10px;
+    object-fit: fill;
+
+  }
+
+
+  .deliveryLogo{
+      text-align: center;
+      position:absolute;
+      top: 15%;
+  }
+
+  .deliverybutton{
+    border-radius: 20px;
+    background: #9f4e0b;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 50px;
+    padding: 20px;
+   
+    margin-top: 20px;
+    width: 271px;
+    height: 98px;
+
+    place-items: center;
+    
+  }
+
+  a{
+      text-decoration: none;
+      color :white;
+>>>>>>> d99754239d8b30a6390daced8b50ac583e193f44
   }
