@@ -1,20 +1,3 @@
-body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    font-family: 'Hind', sans-serif;
-    background: hsla(0, 0%, 100%, 1);
-
-    background: linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
-
-    background: -moz-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
-
-    background: -webkit-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
-
-    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFF", endColorstr="#ECDCC5", GradientType=1);
-}
-
 /* hind-300 - latin */
 @font-face {
     font-family: 'Hind';
@@ -116,6 +99,8 @@ body {
 }
 
 body {
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     font-family: 'Hind', sans-serif;
@@ -129,7 +114,6 @@ body {
 
     filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFF", endColorstr="#ECDCC5", GradientType=1);
 }
-
 
 .role-wrapper {
     display: flex;

@@ -177,7 +177,7 @@ router.post('/profile/:id', (req, res) => {
 })
 
 router.get('/fix', (req, res) => {
-    let doc = fs.readFileSync('./public/html/availabledonations.html', "utf8");
+    let doc = fs.readFileSync('./public/html/thanksreceiver.html', "utf8");
     res.set("Server", "Wazubi Engine");
     res.set("X-Powered-By", "Wazubi");
     res.send(doc)

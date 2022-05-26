@@ -5,19 +5,14 @@ body {
     flex-direction: column;
     font-family: 'Hind', sans-serif;
     background: hsla(0, 0%, 100%, 1);
-
     background: linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
-
     background: -moz-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
-
     background: -webkit-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
-
     filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFF", endColorstr="#ECDCC5", GradientType=1);
 }
 
 
 .top {
-
     position: relative;
     text-align: center;
     color: #FFFFFF;
@@ -87,11 +82,13 @@ button {
 }
 
 .button1 {
-    background-color: #000000;
+    border-radius: 20px;
+    background-color: #472c17;
 }
 
 .button2 {
-    background-color: #7b7b7b;
+    border-radius: 20px;
+    background-color: white;
     color: black;
 }
 

@@ -15,6 +15,8 @@ body {
     filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFF", endColorstr="#ECDCC5", GradientType=1);
 }
 
+
+
 .btngroup {
     margin-top: 50px;
     display: flex;
@@ -26,7 +28,7 @@ body {
 
 .btnCart {
     background-color: #9fa19f;
-
+    border-radius: 20px;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -38,7 +40,8 @@ body {
 }
 
 .btnView {
-    background-color: #000000;
+    border-radius: 20px;
+    background-color: #472c17;
     margin-left: 20px;
     border: none;
     color: white;
@@ -63,4 +66,8 @@ body {
 .content {
     margin-top: 20px;
     text-align: center;
+}
+
+img {
+    height: 50px;
 }

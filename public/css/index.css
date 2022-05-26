@@ -78,8 +78,8 @@ button {
     padding: 1.5rem 3.5rem;
     border-radius: 20px;
     background-color: rgb(214, 214, 214);
-    border: white solid 2px;
     cursor: pointer;
+    border: none;
 }
 
 #signin-btn {
@@ -136,7 +136,7 @@ button a {
 
 
     #signin-btn {
-        background-color: #472c17;
+        background-color: #9c6644;
         color: white;
         font-size: medium;
     }

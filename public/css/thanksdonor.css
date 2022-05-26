@@ -106,19 +106,11 @@ body {
     flex-direction: column;
     font-family: 'Hind', sans-serif;
     background: hsla(0, 0%, 100%, 1);
-
     background: linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
-
     background: -moz-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
-
     background: -webkit-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
-
     filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFF", endColorstr="#ECDCC5", GradientType=1);
 }
-
-
-
-
 
 .thankyou-wrapper {
     display: flex;
@@ -134,7 +126,7 @@ body {
 }
 
 .thankyou-title {
-    font-size: 5rem;
+    font-size: 3rem;
     font-weight: bold;
     width: 100%;
     text-align: center;
@@ -156,5 +148,4 @@ input[type="submit"] {
 
 .foodlisted {
     font-size: 1.5rem;
-    font-family: 'Indie Flower', cursive;
 }
