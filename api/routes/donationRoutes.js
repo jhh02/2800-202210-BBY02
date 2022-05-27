@@ -17,6 +17,7 @@ router.use(session(
 );
 
 const mysql = require("mysql2");
+const { route } = require('./root');
 const connection = mysql.createPool({
     connectionLimit: 100,
     host: "localhost",
@@ -244,19 +245,13 @@ router.get('/cart', (req, res) => {
     const sid = req.session.user_id;
     let str = "<!---->";
     let did;
-    console.log("one")
     connection.query("SELECT * FROM bby36_donations INNER JOIN bby36_cart ON donation_ID = bby36_cart.item_ID AND bby36_cart.buyer_ID = ?",
         [sid],
         function (error, results, fields) {
-            console.log("two");
             if (error) {
                 throw error;
             }
             if (results.length >= 1) {
-                console.log(results);
-                console.log(results[0]);
-                console.log(results[1]);
-                console.log("three");
                 for (let i = 0; i < results.length; i++) {
                     str += "<div class='card'" + "id='" + results[i].donation_ID + "'>";
 
@@ -290,17 +285,37 @@ router.get('/cart', (req, res) => {
                 res.set("X-Powered-By", "Wazubi");
                 let docDOM = new JSDOM(doc);
                 docDOM.window.document.getElementsByClassName("container")[0].innerHTML = str;
-                console.log("sedning str");
                 res.send(docDOM.serialize());
 
 
             } else {
+                let doc = fs.readFileSync('./public/html/cart.html', "utf8");
+                res.set("Server", "Wazubi Engine");
                 console.log("cannot find donations");
                 res.send(doc);
             }
         }
     )
 
+})
+
+router.post('/confirmCart', (req, res) => {
+    const sid = req.session.user_id;
+    const dat = req.body.date;
+    console.log(sid + " " + dat)
+    
+    connection.query("UPDATE bby36_donations INNER JOIN bby36_cart ON bby36_donations.donation_ID = bby36_cart.item_ID SET bby36_donations.status = ?, bby36_donations.organization_ID = ?, bby36_donations.delivered_date = ? WHERE bby36_donations.donation_ID = bby36_cart.item_ID", [1, sid, dat],
+    function (err, data, fields) {
+        console.log("in first")
+        if (err) throw err;
+        connection.query("DELETE FROM bby36_cart WHERE buyer_ID = ?", [sid], function (err, data, fields) {
+            console.log("in second")
+            if (err) throw err;
+            res.setHeader("Content-Type", "application/json");
+            res.send({ status: "success", msg: "Confirmed cart" });
+        });
+    });
+        
 })
 
 router.get('/thanksreceiver', (req, res) => {

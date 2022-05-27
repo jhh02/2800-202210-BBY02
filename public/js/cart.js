@@ -42,6 +42,30 @@ ready(function () {
         xhr.send(params);
     }
 
+    var confirmbutton = document.getElementsByClassName("btnCart");
+
+    for (var i = 0; i < confirmbutton.length; i++) {
+        confirmbutton[i].addEventListener('click', function (e) {
+                console.log("clicked button");
+                let id = event.srcElement.parentElement.parentElement.id;
+                console.log(id);
+                date = new Date();
+                console.log(date);
+                console.log(date.toISOString());
+                date = date.toISOString();
+                let queryString = "&date=" + date;
+                const vars = { "date": date}
+                ajaxPOST("/donation/confirmCart", function (data) {
+                    let dataParsed = JSON.parse(data);
+                    console.log(dataParsed);
+                    if (dataParsed.status == "success") {
+                        console.log("success");
+                        window.location.replace('/donation/thanksreceiver')
+                    }
+                }, queryString)
+        });
+    }
+/*
     var deletebutton = document.getElementsByClassName("delete");
 
 
@@ -52,7 +76,7 @@ ready(function () {
                 console.log(id);
                 let queryString = "&donationID=" + id;
                 const vars = { "donationID": id}
-                ajaxPOST("/donation/deleteHistory", function (data) {
+                ajaxPOST("/", function (data) {
                     let dataParsed = JSON.parse(data);
                     console.log(dataParsed);
                     if (dataParsed.status == "success") {
@@ -60,28 +84,9 @@ ready(function () {
                     }
                 }, queryString)
         });
-    }
+    }*/
 })
 
-var deletebutton = document.getElementsByClassName("delete");
-
-
-    for (var i = 0; i < deletebutton.length; i++) {
-        deletebutton[i].addEventListener('click', function (e) {
-                console.log("clicked button");
-                let id = event.srcElement.parentElement.parentElement.id;
-                console.log(id);
-                let queryString = "&donationID=" + id;
-                const vars = { "donationID": id}
-                ajaxPOST("/donation/deleteHistory", function (data) {
-                    let dataParsed = JSON.parse(data);
-                    console.log(dataParsed);
-                    if (dataParsed.status == "success") {
-                        window.location.replace('/donation/history')
-                    }
-                }, queryString)
-        });
-    }
 
     function ready(callback) {
         if (document.readyState != "loading") {
