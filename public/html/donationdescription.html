@@ -1,17 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
-    <!------------------------>
-    <!-- Required meta tags -->
-    <!------------------------>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
     <link rel="stylesheet" href="/css/donationdescription.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Donation Description</title>
@@ -20,45 +13,34 @@
 
 <body>
 
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
-
-    <!-- the body of your page goes here -->
-
     <div class="top">
         <img src="/img/strawberry_muffins.jpg">
-        <div class="back">Back</div>
-        <div class="name">BBY36 cupcake</div>
+        <div class="back"> Back</div> 
+        <div class="name" id="name"></div>
     </div>
     <div class="location">
-        <div class="label">Pickup Location</div>
-        <div class="content">Beaucoup Bakery, 2150 Fir St, Vancouver </div>
-
+        <div class="label">Status</div>
+        <div class="content" id="status">
     </div>
 
     <div class="divide"></div>
     <div class="quantity">
-        <div class="label">Available Quantity</div>
-        <div class="content">6 Boxes(x pieces each)</div>
+        <div class="label">Posted Date</div>
+        <div class="content" id="date"></div>
     </div>
     <div class="divide"></div>
     <div class="dropoff">
-        <div class="label">Drop-off Location</div>
-        <div class="content">#354, Denman Street, Vancouver</div>
+        <div class="label">Location</div>
+        <div class="content" id="location"></div>
     </div>
     <div class="divide"></div>
     <div class="detail">
         <div class="label">Details</div>
-        <div class="content"> - Freshly prepared<br>- creamy<br>- soft<br>- with strawberries on the top<br>- good
-            presentation
+        <div class="content" id="description">
         </div>
     </div>
-    <div class="groupbutton">
-        <div class="qty">Quantity : <input type="text" size="1px" value="1"></div>
-
-        <button type="button" onclick="location.href='/app/html/addedtocart.html' ">Add to Cart</button>
-
+    <div class="groupbutton" id="groupbutton">
+    
     </div>
 
 </body>

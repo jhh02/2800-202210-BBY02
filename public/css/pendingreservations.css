@@ -1,12 +1,121 @@
-<<<<<<< HEAD
+/* hind-300 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 300;
+    src: url('../fonts/hind-v16-latin-300.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-300.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-300.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-300.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-300.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-300.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-regular - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/hind-v16-latin-regular.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-regular.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-regular.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-regular.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-regular.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-regular.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-500 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/hind-v16-latin-500.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-500.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-500.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-500.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-500.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-500.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-600 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/hind-v16-latin-600.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-600.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-600.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-600.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-600.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-600.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
+/* hind-700 - latin */
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/hind-v16-latin-700.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/hind-v16-latin-700.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/hind-v16-latin-700.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/hind-v16-latin-700.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/hind-v16-latin-700.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/hind-v16-latin-700.svg#Hind') format('svg');
+    /* Legacy iOS */
+}
+
 body {
     margin: 0;
     padding: 0;
-    background-color: rgb(223, 222, 222);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Hind', sans-serif;
+    background: hsla(0, 0%, 100%, 1);
+
+    background: linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+
+    background: -moz-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+
+    background: -webkit-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFF", endColorstr="#ECDCC5", GradientType=1);
 }
 
 .container {
-    background-color: white;
     margin: 15px 15px 15px 15px;
     border-radius: 20px 20px 20px 20px;
     height: 103vh
@@ -49,10 +158,11 @@ body {
 
 }
 
-h1{
-    text-align:center;
-    
+h1 {
+    text-align: center;
+
 }
+
 .first {
 
     width: 100%;
@@ -137,7 +247,10 @@ img {
     font-size: 9px;
 }
 
-.home, .cart, .chat, .profile {
+.home,
+.cart,
+.chat,
+.profile {
     float: left;
     margin-right: 20px;
     margin-left: 20px;
@@ -150,157 +263,4 @@ img {
 
 .copyright {
     padding-left: 10px;
-=======
-body {
-    margin: 0;
-    padding: 0;
-    background-color: rgb(223, 222, 222);
-}
-
-.container {
-    background-color: white;
-    margin: 15px 15px 15px 15px;
-    border-radius: 20px 20px 20px 20px;
-    height: 103vh
-}
-
-.top {
-    border: 1px solid red;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.searchbar {
-    border: 1px solid green;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.card {
-    border: 1px solid blue;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.first .left {
-    float: left;
-    font-size: 10px;
-    box-sizing: border-box;
-    margin-top: 15px;
-    margin-left: 15px;
-
-
-}
-
-.first .right {
-    float: right;
-    font-size: 10px;
-    margin-top: 15px;
-    margin-right: 15px;
-
-
-}
-
-h1{
-    text-align:center;
-    
-}
-.first {
-
-    width: 100%;
-    box-sizing: border-box;
-    height: 50px;
-
-}
-
-.search {
-    box-sizing: border-box;
-    margin-left: 10px;
-    margin-top: 15px;
-    width: 95%;
-    position: relative;
-    display: flex;
-}
-
-.third {
-    width: 100%;
-    box-sizing: border-box;
-
-}
-
-.second .search {
-    width: 90%;
-    position: relative;
-    display: flex;
-
-}
-
-.searchTerm {
-    width: 100%;
-    border: 3px solid #00B4CC;
-    border-right: none;
-    padding: 5px;
-    height: 20px;
-    border-radius: 5px 0 0 5px;
-    outline: none;
-    color: #9DBFAF;
-
-}
-
-.searchTerm:focus {
-    color: #000000;
-}
-
-.searchButton {
-    width: 40px;
-    height: 36px;
-    text-align: center;
-    color: rgb(0, 0, 0);
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    font-size: 20px;
-}
-
-.card {
-    margin-top: 15px;
-    margin-left: 10px;
-    margin-right: 10px;
-    border: 1px solid;
-    height: 120px;
-    width: 95%;
-    border-radius: 20px 20px 20px 20px;
-}
-
-img {
-    width: 90px;
-    height: 90px;
-    padding: 10px 10px;
-    object-fit: fill;
-    float: left;
-}
-
-.card .content {
-    margin-top: 10px;
-    margin-left: 10px;
-}
-
-.footer .copyright {
-    margin-top: 15px;
-    font-size: 9px;
-}
-
-.home, .cart, .chat, .profile {
-    float: left;
-    margin-right: 20px;
-    margin-left: 20px;
-}
-
-.icons {
-    margin-top: 10px;
-    margin-inline: 50px;
-}
-
-.copyright {
-    padding-left: 10px;
->>>>>>> d99754239d8b30a6390daced8b50ac583e193f44
 }

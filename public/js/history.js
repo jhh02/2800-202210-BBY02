@@ -41,38 +41,26 @@ ready(function () {
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.send(params);
     }
-    // login
-    document.querySelector("#submit").addEventListener("click", function (e) {
-        console.log("clicked button");
-        e.preventDefault();
 
-        let username = document.getElementById("name");
-        let password = document.getElementById("password");
+    var deletebutton = document.getElementsByClassName("delete");
 
-        let queryString = "&username=" + username.value + "&password=" + password.value;
-        const vars = { "username": username, "password": password }
-        //console.log(queryString);
-        ajaxPOST("/user/login", function (data) {
-            if (data) {
-                let dataParsed = JSON.parse(data);
-                console.log(dataParsed);
-                if (dataParsed.status == "admin") {
-                    console.log("admin login!");
-                    console.log(dataParsed.sessionID);
-                    window.location.replace(`/user/profile/${dataParsed.sessionID}`);
-                } else if (dataParsed.status == "success") {
-                    console.log("success!");
-                    console.log(dataParsed.sessionID);
-                    window.location.replace(`/user/profile/${dataParsed.sessionID}`);
-                } else {
-                    console.log("Wrong user!");
-                    document.getElementById("errorMsg").innerHTML = dataParsed.msg;
 
-                }
-            }
-        }, queryString);
-    });
-
+    for (var i = 0; i < deletebutton.length; i++) {
+        deletebutton[i].addEventListener('click', function (e) {
+                console.log("clicked button");
+                let id = event.srcElement.parentElement.parentElement.id;
+                console.log(id);
+                let queryString = "&donationID=" + id;
+                const vars = { "donationID": id}
+                ajaxPOST("/donation/deleteHistory", function (data) {
+                    let dataParsed = JSON.parse(data);
+                    console.log(dataParsed);
+                    if (dataParsed.status == "success") {
+                        window.location.replace('/donation/history')
+                    }
+                }, queryString)
+        });
+    }
 })
 
 function ready(callback) {

@@ -1,11 +1,13 @@
+# 2800-202210-BBY36
 ### Team BBY36
 
-## My Web Application (DoughMe)
+## My Web Application - DoughMe
  
 * [General info](#general-info)
-* [Team Members](#team-members)
-* [Technologies](#technologies)
+* [Developer's Details](#developers-details)
+* [Technologies Used](#technologies-used)
 * [Contents](#content)
+* [Contact Information](#contact-information)
 
 ## General Info
 This browser based web application is a food donation platform that helps the authorized people and charity organizations by providing them with a platform to get bakery products which are donated by the bakeries.
@@ -14,22 +16,22 @@ Our app is different from the other apps because it only allows authorized indiv
 
 
 ## Developer's Details
-Sr.No.  NAME                Student ID          Set
-1.      Dongil Kwon         A01267744           set A
-2.      Nischey Gupta       A01311590           set A
-3.      Jun Ho Han          A01061045           set A
-4.      James Lum           A01182671           set B
+1.      Dongil Kwon                 A01267744           set A
+2.      Nischey Gupta               A01311590           set A
+3.      Jun Ho Han                  A01061045           set A
+4.      James Lum                   A01182671           set B
 
-## Technologies
+## Technologies Used
 Technologies used for this project:
-* HTML, CSS
-* JavaScript 
-* MySQL
+* Front-end: HTML, CSS
+* Back-end: JavaScript, NodeJS
+* Backend-packages: BcryptJS, Bcrypt, Express Router, Express Sessions, JSDOM, Multer
+* Database: MySQL
 
 ## Content
 Content of the project folder:
 
-```
+<!-- ``` -->
  Top level of project folder: 
 ├── .env                    # 
 ├── .gitignore              # Git ignore files
@@ -75,8 +77,8 @@ It has the following subfolders and files:
         /root.js
         /userRoutes.js
 
-├── public                 #
-    /css
+├── public                 # 
+    /css                   # Folder for CSS files
         /addedtocart.css
         /admin.css
         /availabledonations.css
@@ -108,7 +110,7 @@ It has the following subfolders and files:
         /thanksreceiver 2.css
         /thanksreceiver.css
 
-    /fonts                  
+    /fonts                  # Folder for fonts
         /Hind-Bold 2.ttf
         /Hind-Bold.ttf
         /Hind-Light 2.ttf
@@ -170,7 +172,7 @@ It has the following subfolders and files:
         /hind-v16-latin-regular.woff
         /hind-v16-latin-regular.woff2
 
-    /html                   
+    /html                   # Folder for Html files
         /templates
             /footer.html
             /nav.html
@@ -230,7 +232,7 @@ It has the following subfolders and files:
         /user-edit.html
 
 
-    /img                    #Folder for (jpg,png,webp) images
+    /img                    # Folder for (jpg,png,webp) images
         /addedtocart 2.png
         /addedtocart.png
         /apple-icon 2.png
@@ -262,7 +264,7 @@ It has the following subfolders and files:
         /thankyou 2.png
         /thankyou.png
 
-    /js                     #Folder for js files
+    /js                     # Folder for javascript files
         /dashboard 2.js
         /dashboard.js
         /footer 2.js
@@ -274,7 +276,7 @@ It has the following subfolders and files:
         /snowfall.jquery 2.js
         /snowfall.jquery.js
 
-├── views                   #
+├── views                   # Folder for ejs files
     /addUser.ejs
     /bakery.ejs
     /charity.ejs
@@ -290,3 +292,12 @@ It has the following subfolders and files:
     /updateUser.ejs
     /user-details.ejs
     /user-edit.ejs
+
+<!-- ``` -->
+
+## Contact Information
+
+1.      Dongil Kwon             dikwon79@gmail.com
+2.      Nischey Gupta           nischeyg@gmail.com
+3.      Jun Ho Han              junhohan2@gmail.com
+4.      James Lum               james.09461@gmail.com
