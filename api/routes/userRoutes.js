@@ -130,6 +130,40 @@ router.get('/logout', (req, res) => {
     res.send(doc)
 })
 
+router.get('/profile', (req, res) => {
+    const id = req.session.user_id;
+
+    connection.query(
+        "SELECT * FROM BBY36_user WHERE UID = ?", [id],
+        function (error, results, fields) {
+            if (error) {
+                throw error;
+            }
+            if (results.length >= 1) {
+
+                let doc = fs.readFileSync('./public/html/profile.html', "utf8");
+                res.set("Server", "Wazubi Engine");
+                res.set("X-Powered-By", "Wazubi");
+
+                let docDOM = new JSDOM(doc);
+                docDOM.window.document.getElementsByClassName("username")[0].innerHTML
+                    = results[0].username;
+                docDOM.window.document.getElementsByClassName("email")[0].innerHTML
+                    = results[0].email;
+                docDOM.window.document.getElementsByClassName("address")[0].innerHTML
+                    = results[0].address;
+                res.send(docDOM.serialize());
+
+                //res.send(doc)
+                console.log(results);
+            } else {
+                console.log("cannot find user")
+            }
+        }
+    )
+})
+
+
 // show my profile page /user/profile/objecid
 router.get('/profile/:id', (req, res) => {
     const id = req.params.id
@@ -151,6 +185,8 @@ router.get('/profile/:id', (req, res) => {
                     = results[0].username;
                 docDOM.window.document.getElementsByClassName("email")[0].innerHTML
                     = results[0].email;
+                docDOM.window.document.getElementsByClassName("address")[0].innerHTML
+                    = results[0].address;
                 res.send(docDOM.serialize());
 
                 //res.send(doc)
@@ -186,14 +222,14 @@ router.get('/fix', (req, res) => {
 
 
 // router.get('/getme', protect, getMe)
-/*
+
 router.get('/dashboard', async (req, res) => {
     let doc = fs.readFileSync('./public/html/dashboard.html', "utf8")
     res.set("Server", "Wazubi Engine");
     res.set("X-Powered-By", "Wazubi");
     res.send(doc)
 })
-
+/*
 router.post('/dashboard', async (req, res) => {
     // console.log(req.body);
     const { name, email, password, address, role, isAdmin } = req.body

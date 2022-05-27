@@ -332,7 +332,7 @@ router.get('/history', (req, res) => {
     res.set("X-Powered-By", "Wazubi");
     const id = req.session.user_id;
     connection.query(
-        "SELECT * FROM BBY36_donations WHERE bakery_id = ?", [id],
+        "SELECT * FROM BBY36_donations WHERE bakery_id = ? OR organization_id = ?", [id, id],
         function (error, results, fields) {
             if (error) {
                 throw error;
@@ -365,6 +365,35 @@ router.get('/history', (req, res) => {
 
                         str += "<div class='deleteButton'>"
                         str += "<button class='delete'>Delete</button>"
+                        str += "</div>";
+
+                        str += "</div>"
+
+                        str += "</div>";
+                    } else if (results[i].organization_ID == id) {
+                        str += "<div class='card'>";
+
+                        str += "<div class='image'>"
+                        str += "<img src='/img/strawberry_muffins.jpg' alt='Responsive image' class='img-fluid'>";
+                        str += "</div>";
+
+                        str += "<div class='content'>";
+
+                        str += "<div class='main'>"
+                        str += "Title: " + results[i].title + "<br>";
+                        str += "Description: " + results[i].description + "<br>";
+                        str += "Location: " + results[i].location + "<br>";
+                        str += "Status: Complete"
+                        str += "</div>";
+
+                        str += "<div class='below'>";
+                        str += "Last updated: " + results[i].delivered_date
+                        str += "</div>";
+
+                        str += "</div>";
+
+                        str += "<div class='delete'>"
+                        str += "Donor ID: " + results[i].bakery_ID;
                         str += "</div>";
 
                         str += "</div>"

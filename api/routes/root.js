@@ -11,4 +11,16 @@ router.get('/', (req, res) => {
     res.send(doc);
 })
 
+router.get("/logout", function (req, res) {
+    if (req.session) {
+        req.session.destroy(function (error) {
+            if (error) {
+                res.status(400).send("Unable to log out")
+            } else {
+                res.redirect("/");
+            }
+        });
+    }
+});
+
 module.exports = router
