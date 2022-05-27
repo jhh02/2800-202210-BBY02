@@ -1,15 +1,34 @@
-<<<<<<< HEAD
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Hind', sans-serif;
+    background: hsla(0, 0%, 100%, 1);
+
+    background: linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+
+    background: -moz-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+
+    background: -webkit-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(35, 51%, 85%, 1) 99%);
+
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFF", endColorstr="#ECDCC5", GradientType=1);
+}
+
+
+
 .btngroup {
     margin-top: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-  
+
 
 }
+
 .btnCart {
     background-color: #9fa19f;
-
+    border-radius: 20px;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -19,9 +38,11 @@
     font-size: 16px;
 
 }
+
 .btnView {
-    background-color: #000000;
-    margin-left:20px;
+    border-radius: 20px;
+    background-color: #472c17;
+    margin-left: 20px;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -32,61 +53,21 @@
 
 }
 
-.username{
-  margin-top : 10%;  
-  display: flex;
-  justify-content: center;
-  
-  font-size:1.5rem;
-    
-}
-.tickLogo, .content{
-    margin-top: 20px;
-    text-align: center;
-=======
-.btngroup {
-    margin-top: 50px;
+.username {
+    margin-top: 10%;
     display: flex;
-    align-items: center;
     justify-content: center;
-  
 
-}
-.btnCart {
-    background-color: #9fa19f;
-
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-
-}
-.btnView {
-    background-color: #000000;
-    margin-left:20px;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+    font-size: 1.5rem;
 
 }
 
-.username{
-  margin-top : 10%;  
-  display: flex;
-  justify-content: center;
-  
-  font-size:1.5rem;
-    
-}
-.tickLogo, .content{
+.tickLogo,
+.content {
     margin-top: 20px;
     text-align: center;
->>>>>>> d99754239d8b30a6390daced8b50ac583e193f44
+}
+
+img {
+    height: 50px;
 }
