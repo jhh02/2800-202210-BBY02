@@ -43,7 +43,6 @@ ready(function () {
     }
 
     document.querySelector("#submit").addEventListener("click", function (e) {
-        console.log("clicked button");
         e.preventDefault();
 
         let username = document.getElementById("name");
@@ -54,16 +53,13 @@ ready(function () {
         let queryString = "&username=" + username.value + "&email=" + email.value +
         "&password=" + password.value + "&address=" + address.value;
         const vars = { "username": username, "email": email, "password": password, "address": address }
-        console.log(queryString);
         ajaxPOST("/user/register", function (data) {
             if (data) {
                 let dataParsed = JSON.parse(data);
                 console.log(dataParsed);
                 if (dataParsed.status == "success") {
-                    console.log("success");
                     window.location.replace('/user/login');
                 } else {
-                    console.log("ID taken!");
                     document.getElementById("errorMsg").innerHTML = dataParsed.msg;
 
                 }

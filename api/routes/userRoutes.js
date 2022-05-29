@@ -16,12 +16,21 @@ router.use(session(
 );
 
 const mysql = require("mysql2");
-const connection = mysql.createPool({
-    connectionLimit: 100,
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "comp2800",
+const isHeroku = process.env.IS_HEROKU || false;
+
+const mysql = require("mysql2");
+const connection = isHeroku ? mysql.createPool({
+  connectionLimit: 100,
+  host: "us-cdbr-east-05.cleardb.net",
+  user: "b006227519002a",
+  password: "d3959aa0",
+  database: "heroku_1140e7d79bf1d16",
+}) : mysql.createPool({
+  connectionLimit: 100,
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "comp2800",
 });
 
 // show register page /user
@@ -88,7 +97,6 @@ router.post('/login', (req, res) => {
             if (results.length >= 1) {
                 // email and password found
                 if (results[0].admin >= 1) {
-                    console.log("admin")
                     req.session.loggedIn = true;
                     req.session.user_id = results[0].UID;
                     req.session.name = results[0].username;
@@ -100,13 +108,11 @@ router.post('/login', (req, res) => {
                         status: "admin", msg: "Admin login", sessionID: req.session.user_id
                     })
                 } else {
-                    console.log(results);
                     req.session.loggedIn = true;
                     req.session.user_id = results[0].UID;
                     req.session.name = results[0].username;
                     //req.session.role = results[0].role
                     //req.session.pic = results[0].profilepic
-                    console.log(req.session.user_id)
                     console.log("success")
                     res.send({
                         status: "success", msg: "Login", sessionID: req.session.user_id
@@ -130,6 +136,39 @@ router.get('/logout', (req, res) => {
     res.send(doc)
 })
 
+router.get('/profile', (req, res) => {
+    const id = req.session.user_id;
+
+    connection.query(
+        "SELECT * FROM BBY36_user WHERE UID = ?", [id],
+        function (error, results, fields) {
+            if (error) {
+                throw error;
+            }
+            if (results.length >= 1) {
+
+                let doc = fs.readFileSync('./public/html/profile.html', "utf8");
+                res.set("Server", "Wazubi Engine");
+                res.set("X-Powered-By", "Wazubi");
+
+                let docDOM = new JSDOM(doc);
+                docDOM.window.document.getElementsByClassName("username")[0].innerHTML
+                    = results[0].username;
+                docDOM.window.document.getElementsByClassName("email")[0].innerHTML
+                    = results[0].email;
+                docDOM.window.document.getElementsByClassName("address")[0].innerHTML
+                    = results[0].address;
+                res.send(docDOM.serialize());
+
+                //res.send(doc)
+            } else {
+                console.log("cannot find user")
+            }
+        }
+    )
+})
+
+
 // show my profile page /user/profile/objecid
 router.get('/profile/:id', (req, res) => {
     const id = req.params.id
@@ -151,10 +190,11 @@ router.get('/profile/:id', (req, res) => {
                     = results[0].username;
                 docDOM.window.document.getElementsByClassName("email")[0].innerHTML
                     = results[0].email;
+                docDOM.window.document.getElementsByClassName("address")[0].innerHTML
+                    = results[0].address;
                 res.send(docDOM.serialize());
 
                 //res.send(doc)
-                console.log(results);
             } else {
                 console.log("cannot find user")
             }
@@ -170,7 +210,6 @@ router.post('/profile/:id', (req, res) => {
 
         res.set("Server", "Wazubi Engine");
         res.set("X-Powered-By", "Wazubi");
-        console.log(id);
     } catch (error) {
         res.status(400).send(error)
     }
@@ -186,14 +225,14 @@ router.get('/fix', (req, res) => {
 
 
 // router.get('/getme', protect, getMe)
-/*
+
 router.get('/dashboard', async (req, res) => {
     let doc = fs.readFileSync('./public/html/dashboard.html', "utf8")
     res.set("Server", "Wazubi Engine");
     res.set("X-Powered-By", "Wazubi");
     res.send(doc)
 })
-
+/*
 router.post('/dashboard', async (req, res) => {
     // console.log(req.body);
     const { name, email, password, address, role, isAdmin } = req.body

@@ -22,7 +22,7 @@ ready(function () {
         let params = typeof data == 'string' ? data : Object.keys(data).map(
             function (k) { return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
         ).join('&');
-        //console.log("params in ajaxPOST", params);
+        console.log("params in ajaxPOST", params);
 
         const xhr = new XMLHttpRequest();
         xhr.onload = function () {
@@ -41,34 +41,27 @@ ready(function () {
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.send(params);
     }
-    // login
-    document.querySelector("#submit").addEventListener("click", function (e) {
+
+    document.querySelector("#addToCart").addEventListener("click", function (e) {
         e.preventDefault();
-
-        let username = document.getElementById("name");
-        let password = document.getElementById("password");
-
-        let queryString = "&username=" + username.value + "&password=" + password.value;
-        const vars = { "username": username, "password": password }
-        ajaxPOST("/user/login", function (data) {
+        let title = document.getElementById('name').textContent;
+        
+        let queryString = "&title=" + title;
+        const vars = { "title": title }
+        ajaxPOST("/donation/addToCart", function (data) {
             if (data) {
                 let dataParsed = JSON.parse(data);
-                console.log(dataParsed);
-                if (dataParsed.status == "admin") {
-
-                    window.location.replace(`/user/profile/${dataParsed.sessionID}`);
-                } else if (dataParsed.status == "success") {
-
-                    window.location.replace(`/user/profile/${dataParsed.sessionID}`);
+                if (dataParsed.status == "success") {
+                    window.location.replace("/donation/addedtocart");
                 } else {
-                    console.log("Wrong user!");
-                    document.getElementById("errorMsg").innerHTML = dataParsed.msg;
+                    console.log("ID taken!");
+                    //document.getElementById("errorMsg").innerHTML = dataParsed.msg;
 
                 }
             }
         }, queryString);
+        
     });
-
 })
 
 function ready(callback) {
