@@ -7,7 +7,6 @@ const role = document.getElementById('role')
 const usersContainer = document.querySelector('.searchResults')
 const addUserForm = document.querySelector('.add-user-form')
 
-
 const renderUsers = (users) => {
     users.forEach(user => {
         output += `

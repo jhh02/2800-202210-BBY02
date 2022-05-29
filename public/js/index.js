@@ -18,16 +18,6 @@ router.get('/', function (req, res, next) {
     res.render('index', { viewCount });
 })
 
-
-
-
-
-
-
-
-
-
-
 // just like a simple web server like Apache web server
 // we are mapping file system paths to the app's virtual paths
 app.use("/js", express.static("./public/js"));
@@ -59,8 +49,6 @@ app.get("/admin", function (req, res) {
     res.send(doc);
 });
 
-
-
 app.get("/driver", function (req, res) {
     let doc = fs.readFileSync("./app/html/driver.html", "utf8");
 
@@ -75,15 +63,12 @@ app.get("/profile", function (req, res) {
     res.send(doc);
 });
 
-
 app.get("/organization", function (req, res) {
     let doc = fs.readFileSync("./app/html/organization.html", "utf8");
 
     // just send the text stream
     res.send(doc);
 });
-
-
 
 app.get("/sign_up", function (req, res) {
     if (req.session.loggedIn) {
@@ -169,7 +154,6 @@ app.post("/loginInput", function (req, res) {
     //-----------------------------------------------------------------
 
 });
-
 
 app.get("/logout", function (req, res) {
 
@@ -266,8 +250,6 @@ app.use(function (req, res, next) {
     res.status(404).send("<html><head><title>Page not found!</title></head><body><p>Nothing here.</p></body></html>");
 });
 
-
-
 async function init() {
 
     const mysql = require("mysql2/promise");
@@ -291,7 +273,6 @@ async function init() {
         PRIMARY KEY (UID));`;
     await connection.query(createDBAndTables);
 
-
     const [rows, fields] = await connection.query("SELECT * FROM BBY36_user");
     // no records? Let's add a couple - for testing purposes
     if (rows.length == 0) {
@@ -307,7 +288,6 @@ async function init() {
     connection.end();
     console.log("index.js app listening on port " + port + "!");
 }
-
 
 // RUN SERVER
 let port = 8000;
