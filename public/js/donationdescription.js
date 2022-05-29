@@ -43,20 +43,15 @@ ready(function () {
     }
 
     document.querySelector("#addToCart").addEventListener("click", function (e) {
-        console.log("clicked button");
         e.preventDefault();
         let title = document.getElementById('name').textContent;
-        console.log(title);
         
         let queryString = "&title=" + title;
         const vars = { "title": title }
-        console.log(queryString);
         ajaxPOST("/donation/addToCart", function (data) {
             if (data) {
                 let dataParsed = JSON.parse(data);
-                console.log(dataParsed);
                 if (dataParsed.status == "success") {
-                    console.log("success");
                     window.location.replace("/donation/addedtocart");
                 } else {
                     console.log("ID taken!");

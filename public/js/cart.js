@@ -27,7 +27,6 @@ ready(function () {
         const xhr = new XMLHttpRequest();
         xhr.onload = function () {
             if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-                //console.log('responseText:' + xhr.responseText);
                 callback(this.responseText);
 
             } else {
@@ -50,41 +49,17 @@ ready(function () {
                 let id = event.srcElement.parentElement.parentElement.id;
                 console.log(id);
                 date = new Date();
-                console.log(date);
-                console.log(date.toISOString());
                 date = date.toISOString();
                 let queryString = "&date=" + date;
                 const vars = { "date": date}
                 ajaxPOST("/donation/confirmCart", function (data) {
                     let dataParsed = JSON.parse(data);
-                    console.log(dataParsed);
                     if (dataParsed.status == "success") {
-                        console.log("success");
                         window.location.replace('/donation/thanksreceiver')
                     }
                 }, queryString)
         });
     }
-/*
-    var deletebutton = document.getElementsByClassName("delete");
-
-
-    for (var i = 0; i < deletebutton.length; i++) {
-        deletebutton[i].addEventListener('click', function (e) {
-                console.log("clicked button");
-                let id = event.srcElement.parentElement.parentElement.id;
-                console.log(id);
-                let queryString = "&donationID=" + id;
-                const vars = { "donationID": id}
-                ajaxPOST("/", function (data) {
-                    let dataParsed = JSON.parse(data);
-                    console.log(dataParsed);
-                    if (dataParsed.status == "success") {
-                        window.location.replace('/donation/history')
-                    }
-                }, queryString)
-        });
-    }*/
 })
 
 

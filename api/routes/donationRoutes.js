@@ -49,7 +49,6 @@ router.post('/donationform', (req, res) => {
     let loc = req.body.location;
     let dat = req.body.date;
     let did = req.session.user_id;
-    console.log(did + " " + tle + " " + des + " " + loc + " " + dat);
 
     connection.query('INSERT INTO BBY36_donations (bakery_ID, title, description, location, donated_date) VALUES (?, ?, ?, ?, ?)',
         [did, tle, des, loc, dat],
@@ -79,7 +78,6 @@ router.get('/availabledonations', (req, res) => {
     res.set("Server", "Wazubi Engine");
     res.set("X-Powered-By", "Wazubi");
     const lid = req.session.user_id;
-    //console.log(id);
     connection.query(
         "SELECT * FROM BBY36_donations WHERE status = 0",
         function (error, results, fields) {
@@ -212,14 +210,12 @@ router.get('/donationdescription/:id', (req, res) => {
 router.post("/addToCart", (req, res) => {
     const id = req.body.title;
     const sid = req.session.user_id;
-    console.log(sid);
     connection.query("SELECT donation_ID from bby36_donations WHERE title = ?", [id],
         function (error, results, fields) {
             if (error) {
                 throw error;
             }
             let did = results[0].donation_ID;
-            console.log(did);
             connection.query(
                 "INSERT INTO bby36_cart (buyer_ID, item_ID) VALUES (?, ?)", [sid, did],
                 function (error, results, fields) {
@@ -302,14 +298,11 @@ router.get('/cart', (req, res) => {
 router.post('/confirmCart', (req, res) => {
     const sid = req.session.user_id;
     const dat = req.body.date;
-    console.log(sid + " " + dat)
     
     connection.query("UPDATE bby36_donations INNER JOIN bby36_cart ON bby36_donations.donation_ID = bby36_cart.item_ID SET bby36_donations.status = ?, bby36_donations.organization_ID = ?, bby36_donations.delivered_date = ? WHERE bby36_donations.donation_ID = bby36_cart.item_ID", [1, sid, dat],
     function (err, data, fields) {
-        console.log("in first")
         if (err) throw err;
         connection.query("DELETE FROM bby36_cart WHERE buyer_ID = ?", [sid], function (err, data, fields) {
-            console.log("in second")
             if (err) throw err;
             res.setHeader("Content-Type", "application/json");
             res.send({ status: "success", msg: "Confirmed cart" });

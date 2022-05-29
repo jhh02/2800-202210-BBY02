@@ -43,7 +43,6 @@ ready(function () {
     }
     // login
     document.querySelector("#submit").addEventListener("click", function (e) {
-        console.log("clicked button");
         e.preventDefault();
 
         let username = document.getElementById("name");
@@ -51,18 +50,15 @@ ready(function () {
 
         let queryString = "&username=" + username.value + "&password=" + password.value;
         const vars = { "username": username, "password": password }
-        //console.log(queryString);
         ajaxPOST("/user/login", function (data) {
             if (data) {
                 let dataParsed = JSON.parse(data);
                 console.log(dataParsed);
                 if (dataParsed.status == "admin") {
-                    console.log("admin login!");
-                    console.log(dataParsed.sessionID);
+
                     window.location.replace(`/user/profile/${dataParsed.sessionID}`);
                 } else if (dataParsed.status == "success") {
-                    console.log("success!");
-                    console.log(dataParsed.sessionID);
+
                     window.location.replace(`/user/profile/${dataParsed.sessionID}`);
                 } else {
                     console.log("Wrong user!");

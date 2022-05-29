@@ -47,14 +47,11 @@ ready(function () {
 
     for (var i = 0; i < deletebutton.length; i++) {
         deletebutton[i].addEventListener('click', function (e) {
-                console.log("clicked button");
                 let id = event.srcElement.parentElement.parentElement.id;
-                console.log(id);
                 let queryString = "&donationID=" + id;
                 const vars = { "donationID": id}
                 ajaxPOST("/donation/deleteHistory", function (data) {
                     let dataParsed = JSON.parse(data);
-                    console.log(dataParsed);
                     if (dataParsed.status == "success") {
                         window.location.replace('/donation/history')
                     }

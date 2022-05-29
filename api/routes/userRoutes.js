@@ -88,7 +88,6 @@ router.post('/login', (req, res) => {
             if (results.length >= 1) {
                 // email and password found
                 if (results[0].admin >= 1) {
-                    console.log("admin")
                     req.session.loggedIn = true;
                     req.session.user_id = results[0].UID;
                     req.session.name = results[0].username;
@@ -100,13 +99,11 @@ router.post('/login', (req, res) => {
                         status: "admin", msg: "Admin login", sessionID: req.session.user_id
                     })
                 } else {
-                    console.log(results);
                     req.session.loggedIn = true;
                     req.session.user_id = results[0].UID;
                     req.session.name = results[0].username;
                     //req.session.role = results[0].role
                     //req.session.pic = results[0].profilepic
-                    console.log(req.session.user_id)
                     console.log("success")
                     res.send({
                         status: "success", msg: "Login", sessionID: req.session.user_id
@@ -155,7 +152,6 @@ router.get('/profile', (req, res) => {
                 res.send(docDOM.serialize());
 
                 //res.send(doc)
-                console.log(results);
             } else {
                 console.log("cannot find user")
             }
@@ -190,7 +186,6 @@ router.get('/profile/:id', (req, res) => {
                 res.send(docDOM.serialize());
 
                 //res.send(doc)
-                console.log(results);
             } else {
                 console.log("cannot find user")
             }
@@ -206,7 +201,6 @@ router.post('/profile/:id', (req, res) => {
 
         res.set("Server", "Wazubi Engine");
         res.set("X-Powered-By", "Wazubi");
-        console.log(id);
     } catch (error) {
         res.status(400).send(error)
     }
