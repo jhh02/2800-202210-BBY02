@@ -124,9 +124,9 @@ body {
     height: 200px;
     width: 200px;
     position: absolute;
-    top: 13rem;
+    top: 15rem;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -33%);
     border-radius: 50%;
     overflow: hidden;
     border: 1px solid grey;
@@ -210,6 +210,24 @@ body {
     align-items: center;
     margin-top: 1rem;
     font-size: .9rem;
+}
+
+.prof {
+    padding: 0 1rem;
+    border: none;
+    color: white;
+    background-color: #9c6644;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    float: right;
+    width: 20vw;
+    border-radius: 15px;
+
+    margin: 2px 2px 2px 2px;
+    font-family: inherit;
+    font-size: 0.9em;
+    line-height: inherit;
 }
 
 .review,
