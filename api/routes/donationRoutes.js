@@ -18,12 +18,21 @@ router.use(session(
 
 const mysql = require("mysql2");
 const { route } = require('./root');
-const connection = mysql.createPool({
-    connectionLimit: 100,
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "comp2800",
+const isHeroku = process.env.IS_HEROKU || false;
+
+const mysql = require("mysql2");
+const connection = isHeroku ? mysql.createPool({
+  connectionLimit: 100,
+  host: "us-cdbr-east-05.cleardb.net",
+  user: "b006227519002a",
+  password: "d3959aa0",
+  database: "heroku_1140e7d79bf1d16",
+}) : mysql.createPool({
+  connectionLimit: 100,
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "comp2800",
 });
 
 
